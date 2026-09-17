@@ -5,436 +5,421 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</title>
 <meta name="description" content="فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی – بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان">
-<meta name="theme-color" content="#03140a">
+<meta name="theme-color" content="#01100a">
 <link rel="icon" href="assets/img/sports-board-logo.png">
 <style>
-@font-face{
-  font-family:'Rabar';
-  src:url('assets/fonts/Rabar_008.woff2') format('woff2'),
-      url('assets/fonts/Rabar_008.ttf') format('truetype');
-  font-weight:normal;
-  font-style:normal;
-  font-display:swap;
-}
+/* ---------- Zain (Google Fonts, self-hosted) ---------- */
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-arabic-400.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-latin-400.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-arabic-700.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-latin-700.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-arabic-900.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-latin-900.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
 
 :root{
   color-scheme:dark;
-  --bg-0:#04170c;
-  --bg-1:#072211;
-  --bg-2:#0a2c17;
-  --panel:rgba(7,32,17,.88);
-  --panel-2:rgba(5,24,13,.95);
+  --black:#000000;
+  --deep-1:#01100a;
+  --deep-2:#031a0f;
+  --deep-3:#052414;
 
-  --neon:#3dfba0;
-  --neon-dim:rgba(61,251,160,.55);
-  --neon-line:rgba(61,251,160,.26);
-  --neon-glow:rgba(61,251,160,.22);
+  --neon:#4dffab;
+  --neon-2:#22e894;
+  --line:rgba(77,255,171,.20);
+  --line-soft:rgba(77,255,171,.11);
+  --glow:rgba(77,255,171,.16);
 
-  --gold:#e5c46a;
-  --gold-2:#c9a227;
-  --gold-line:rgba(229,196,106,.30);
+  --text:#eafff4;
+  --text-2:#c6e8d6;
+  --muted:#7fa992;
+  --alert:#ff6f87;
 
-  --text:#e8f7ee;
-  --muted:#96b8a4;
-  --red:#ff6b81;
-  --radius:20px;
+  --panel:rgba(4,22,13,.62);
+  --radius:22px;
 }
 
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
-  font-family:'Rabar','Segoe UI',Tahoma,sans-serif;
+  font-family:'Zain','Segoe UI',Tahoma,sans-serif;
+  font-weight:400;
+  font-size:18px;
   color:var(--text);
-  line-height:1.9;
-  background-color:var(--bg-0);
+  line-height:1.85;
+  background-color:var(--black);
   background-image:
-    radial-gradient(1000px 520px at 50% -8%, rgba(61,251,160,.10), transparent 62%),
-    radial-gradient(760px 420px at 100% 12%, rgba(229,196,106,.07), transparent 60%),
-    radial-gradient(700px 500px at 0% 40%, rgba(61,251,160,.05), transparent 60%),
-    repeating-linear-gradient(118deg, rgba(229,196,106,.10) 0 1px, transparent 1px 68px),
-    repeating-linear-gradient(62deg, rgba(229,196,106,.05) 0 1px, transparent 1px 132px),
-    repeating-linear-gradient(90deg, rgba(61,251,160,.03) 0 1px, transparent 1px 160px),
-    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 55%, #03130a 100%);
+    radial-gradient(1000px 560px at 50% 26%, rgba(77,255,171,.11), transparent 62%),
+    radial-gradient(900px 720px at 88% 34%, rgba(12,110,64,.20), transparent 62%),
+    radial-gradient(820px 720px at 6% 74%, rgba(10,90,54,.15), transparent 62%),
+    linear-gradient(180deg, #000000 0%, #000503 9%, var(--deep-1) 28%, var(--deep-3) 58%, var(--deep-2) 80%, #000000 100%);
   background-attachment:fixed;
   -webkit-text-size-adjust:100%;
   overflow-x:hidden;
 }
 
-.wrap{max-width:880px;margin:0 auto;padding:0 16px 48px;}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 56px;}
 
 /* ================= HERO ================= */
-.hero{text-align:center;position:relative;}
-
-.banner{
-  position:relative;
-  width:100%;
-  line-height:0;
-}
+.banner{position:relative;width:100%;line-height:0;}
 .banner img{
-  width:100%;
-  height:auto;
-  display:block;
+  width:100%;height:auto;display:block;
   -webkit-mask-image:
-    linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,.45) 96%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 84%, rgba(0,0,0,.45) 95%, transparent 100%),
     linear-gradient(to left, transparent 0%, #000 7%, #000 93%, transparent 100%);
   -webkit-mask-composite:source-in;
           mask-image:
-    linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,.45) 96%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 84%, rgba(0,0,0,.45) 95%, transparent 100%),
     linear-gradient(to left, transparent 0%, #000 7%, #000 93%, transparent 100%);
           mask-composite:intersect;
 }
 .banner::after{
-  content:"";
-  position:absolute;inset:0;
+  content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(75% 95% at 50% 42%, transparent 45%, rgba(4,23,12,.42) 100%),
-    linear-gradient(to bottom, rgba(4,23,12,.12) 0%, transparent 30%, rgba(4,23,12,.35) 97%);
-  pointer-events:none;
+    radial-gradient(78% 96% at 50% 42%, transparent 48%, rgba(0,0,0,.55) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,.30) 0%, transparent 28%, rgba(1,16,10,.40) 98%);
 }
-.banner-glow{
-  position:relative;
-  height:1px;
-  margin:0 auto;
-  width:min(620px,86%);
-  background:linear-gradient(90deg,transparent,var(--gold-line),transparent);
-  box-shadow:0 0 22px rgba(229,196,106,.35);
+.neon-line{
+  height:1px;margin:-1px auto 0;
+  width:min(680px,88%);
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.40;
+  box-shadow:0 0 22px rgba(77,255,171,.45);
 }
+
+.hero{text-align:center;position:relative;}
 
 .board-logo{
   position:relative;
-  margin-top:-30px;
-  display:inline-grid;
-  place-items:center;
-  width:132px;height:132px;
+  margin-top:-26px;
+  display:inline-grid;place-items:center;
+  width:128px;height:128px;
   border-radius:50%;
-  background:radial-gradient(circle at 50% 35%, #0d3a1d 0%, #041a0d 75%);
-  border:1px solid var(--neon-line);
+  background:radial-gradient(circle at 50% 32%, #07331b 0%, #010d07 78%);
+  border:1px solid var(--line);
   box-shadow:
-    0 0 0 6px rgba(3,18,10,.85),
-    0 0 26px var(--neon-glow),
-    0 0 60px rgba(61,251,160,.12),
-    inset 0 0 22px rgba(61,251,160,.10);
+    0 0 0 7px rgba(0,0,0,.72),
+    0 0 30px var(--glow),
+    0 0 70px rgba(77,255,171,.10),
+    inset 0 0 26px rgba(77,255,171,.08);
 }
-.board-logo img{width:108px;height:108px;object-fit:contain;
-  filter:drop-shadow(0 0 10px rgba(61,251,160,.35));}
+.board-logo img{width:104px;height:104px;object-fit:contain;
+  filter:drop-shadow(0 0 12px rgba(77,255,171,.30));}
 
 .org{
-  margin:16px 0 0;
-  font-size:clamp(16px,4.2vw,23px);
-  font-weight:normal;
-  color:#c8f7dd;
-  text-shadow:0 0 14px rgba(61,251,160,.55), 0 0 34px rgba(61,251,160,.25);
+  margin:18px 0 0;
+  font-size:clamp(16px,4vw,22px);
+  font-weight:400;
+  letter-spacing:.3px;
+  color:var(--text-2);
+  text-shadow:0 0 16px rgba(77,255,171,.45);
 }
-
-.gold-rule{
-  width:min(320px,80%);
-  height:1px;
-  margin:14px auto;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  box-shadow:0 0 12px rgba(229,196,106,.5);
-  position:relative;
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:16px auto 0;width:min(340px,82%);
 }
-.gold-rule::after{
-  content:"";
-  position:absolute;
-  inset-inline-start:50%;
-  top:-3px;
-  width:7px;height:7px;
-  transform:translateX(50%) rotate(45deg);
-  background:var(--gold);
-  box-shadow:0 0 12px rgba(229,196,106,.8);
+.hero-divider span{
+  height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+}
+.hero-divider i{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 14px var(--neon),0 0 30px rgba(77,255,171,.5);
 }
 
 .form-title{
-  margin:6px 0 0;
-  font-size:clamp(23px,6.2vw,38px);
-  background:linear-gradient(180deg,#fff6d8 0%,var(--gold) 55%,var(--gold-2) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  filter:drop-shadow(0 0 16px rgba(229,196,106,.45));
+  margin:12px 0 0;
+  font-weight:900;
+  font-size:clamp(26px,6.6vw,42px);
+  line-height:1.35;
+  background:linear-gradient(180deg,#ffffff 0%,#d6ffe9 42%,var(--neon) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(77,255,171,.35));
 }
 .hero-sub{
-  margin:12px auto 0;
-  max-width:580px;
-  font-size:clamp(13px,3.4vw,16px);
+  margin:14px auto 0;
+  max-width:560px;
+  font-size:clamp(14px,3.6vw,17px);
   color:var(--muted);
+  line-height:1.9;
 }
 
 /* ================= CARDS ================= */
 .card{
   position:relative;
-  background:
-    linear-gradient(180deg, rgba(61,251,160,.05) 0%, transparent 28%),
-    var(--panel);
-  border:1px solid var(--neon-line);
+  margin-top:30px;
+  padding:26px 22px;
   border-radius:var(--radius);
-  padding:22px 18px;
-  margin-top:26px;
+  background:
+    linear-gradient(180deg, rgba(77,255,171,.045) 0%, transparent 22%),
+    var(--panel);
+  border:1px solid var(--line);
   box-shadow:
-    0 0 22px rgba(61,251,160,.10),
-    0 20px 46px rgba(0,0,0,.45),
-    inset 0 0 40px rgba(61,251,160,.035);
-  backdrop-filter:blur(2px);
+    0 0 26px rgba(77,255,171,.07),
+    0 24px 50px rgba(0,0,0,.55),
+    inset 0 0 50px rgba(77,255,171,.025);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
 }
 .card::before{
-  content:"";
-  position:absolute;
-  inset-inline:18%;
-  top:-1px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-line),transparent);
+  content:"";position:absolute;
+  inset-inline:22%;top:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.55),transparent);
+  box-shadow:0 0 12px rgba(77,255,171,.4);
 }
 
 .sec-head{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  padding-bottom:15px;
-  margin-bottom:4px;
-  border-bottom:1px solid rgba(61,251,160,.14);
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
 }
 .sec-num{
   flex:0 0 auto;
-  width:46px;height:46px;
-  border-radius:15px;
+  width:48px;height:48px;
+  border-radius:50%;
   display:grid;place-items:center;
-  font-size:21px;
-  color:#04190d;
-  background:linear-gradient(145deg,var(--neon) 0%,#14b86a 100%);
-  box-shadow:0 0 18px rgba(61,251,160,.45), inset 0 1px 0 rgba(255,255,255,.55);
+  font-size:22px;font-weight:700;
+  color:var(--neon);
+  background:radial-gradient(circle at 50% 30%, rgba(77,255,171,.14), rgba(0,0,0,.35));
+  border:1px solid rgba(77,255,171,.45);
+  box-shadow:0 0 18px rgba(77,255,171,.22), inset 0 0 16px rgba(77,255,171,.10);
+  text-shadow:0 0 12px rgba(77,255,171,.7);
 }
 .sec-title{
-  margin:0;
-  font-size:clamp(17px,4.4vw,22px);
-  font-weight:normal;
-  color:#b8f5d6;
-  text-shadow:0 0 12px rgba(61,251,160,.45);
+  margin:0;font-weight:700;
+  font-size:clamp(18px,4.6vw,24px);
+  color:#d5ffe9;
+  text-shadow:0 0 14px rgba(77,255,171,.40);
+  line-height:1.45;
 }
 .sec-title span{
-  display:block;
-  font-size:.74em;
-  color:var(--gold);
-  text-shadow:0 0 10px rgba(229,196,106,.35);
-}
-
-.field{margin-top:20px;}
-label{
-  display:block;
-  margin-bottom:9px;
-  font-size:clamp(14px,3.8vw,17px);
-  color:#a9f0cd;
-  text-shadow:0 0 10px rgba(61,251,160,.40);
-}
-label .req{color:var(--red);margin-inline-start:4px;text-shadow:0 0 10px rgba(255,107,129,.5);}
-label .hint{
-  display:block;
-  font-size:.8em;
+  display:block;font-weight:400;
+  font-size:.72em;
   color:var(--muted);
   text-shadow:none;
 }
 
-input,textarea{
-  font-family:inherit;
-  font-size:16px;
-  line-height:1.8;
-  width:100%;
-  padding:13px 15px;
-  color:var(--text);
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(61,251,160,.16);
-  border-radius:14px;
-  transition:border-color .2s, box-shadow .2s, background .2s;
+.field{margin-top:22px;}
+label{
+  display:block;margin-bottom:10px;
+  font-size:clamp(15px,3.9vw,18px);
+  font-weight:700;
+  color:#b9f6d9;
+  text-shadow:0 0 12px rgba(77,255,171,.35);
 }
-input::placeholder,textarea::placeholder{color:#6d9080;}
+label .req{color:var(--alert);margin-inline-start:5px;text-shadow:0 0 10px rgba(255,111,135,.45);}
+label .opt{
+  display:inline-block;
+  margin-inline-start:8px;
+  padding:1px 10px;
+  border-radius:999px;
+  font-size:.66em;font-weight:400;
+  color:var(--muted);
+  border:1px solid var(--line-soft);
+  text-shadow:none;
+  vertical-align:middle;
+}
+label .hint{
+  display:block;font-weight:400;
+  font-size:.8em;color:var(--muted);text-shadow:none;
+}
+
+input,textarea{
+  font-family:inherit;font-size:17px;line-height:1.8;
+  width:100%;padding:14px 16px;
+  color:var(--text);
+  background:rgba(0,0,0,.30);
+  border:1px solid rgba(77,255,171,.30);
+  border-radius:14px;
+  box-shadow:0 0 12px rgba(77,255,171,.06), inset 0 0 18px rgba(77,255,171,.03);
+  transition:border-color .22s, box-shadow .22s, background .22s;
+}
+input::placeholder,textarea::placeholder{color:#5f8873;}
 input:focus,textarea:focus{
   outline:none;
-  background:rgba(61,251,160,.05);
-  border-color:var(--neon-dim);
-  box-shadow:0 0 0 3px rgba(61,251,160,.10), 0 0 18px rgba(61,251,160,.25);
+  background:rgba(0,0,0,.18);
+  border-color:rgba(77,255,171,.75);
+  box-shadow:0 0 22px rgba(77,255,171,.28), inset 0 0 22px rgba(77,255,171,.06);
 }
-textarea{min-height:112px;resize:vertical;}
+textarea{min-height:118px;resize:vertical;}
 .invalid{
-  border-color:rgba(255,107,129,.7)!important;
-  box-shadow:0 0 0 3px rgba(255,107,129,.12), 0 0 18px rgba(255,107,129,.28)!important;
+  border-color:rgba(255,111,135,.75)!important;
+  box-shadow:0 0 22px rgba(255,111,135,.25)!important;
 }
 
 /* ================= QUOTE ================= */
 .quote{
-  position:relative;
-  margin-top:28px;
-  border-radius:var(--radius);
-  padding:26px 22px;
-  text-align:center;
-  overflow:hidden;
+  position:relative;margin-top:32px;
+  padding:30px 24px;text-align:center;
+  border-radius:var(--radius);overflow:hidden;
   background:
-    radial-gradient(120% 140% at 50% 0%, rgba(61,251,160,.10), transparent 60%),
-    var(--panel-2);
-  border:1px solid var(--gold-line);
-  box-shadow:0 0 26px rgba(229,196,106,.10), 0 18px 40px rgba(0,0,0,.45);
+    radial-gradient(130% 150% at 50% 0%, rgba(77,255,171,.10), transparent 62%),
+    rgba(2,14,8,.72);
+  border:1px solid var(--line);
+  box-shadow:0 0 30px rgba(77,255,171,.08), 0 22px 46px rgba(0,0,0,.5);
 }
 .quote::before,.quote::after{
-  content:"";
-  position:absolute;
-  inset-inline:15%;
-  height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.65;
+  content:"";position:absolute;inset-inline:18%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.5;
 }
 .quote::before{top:0;}
 .quote::after{bottom:0;}
-.quote p{margin:0;font-size:clamp(15px,4vw,19px);}
+.quote p{margin:0;}
 .quote .q-top{
-  color:var(--gold);
-  margin-bottom:10px!important;
-  text-shadow:0 0 14px rgba(229,196,106,.45);
+  font-size:clamp(14px,3.6vw,17px);
+  color:var(--muted);
+  letter-spacing:.4px;
+  margin-bottom:12px!important;
 }
 .quote .q-body{
-  color:#d9f7e6;
-  text-shadow:0 0 16px rgba(61,251,160,.35);
+  font-weight:700;
+  font-size:clamp(17px,4.4vw,23px);
+  line-height:1.75;
+  color:#e6fff2;
+  text-shadow:0 0 20px rgba(77,255,171,.45);
 }
 
 /* ================= ACTIONS ================= */
-.actions{margin-top:26px;display:grid;gap:13px;}
+.actions{margin-top:30px;display:grid;gap:14px;}
 button{
-  font-family:inherit;
-  font-size:clamp(16px,4.4vw,20px);
-  border:none;
-  border-radius:16px;
-  padding:15px 20px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  transition:transform .12s, box-shadow .2s, filter .2s;
+  font-family:inherit;font-weight:700;
+  font-size:clamp(17px,4.4vw,21px);
+  border:none;border-radius:16px;
+  padding:16px 22px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transition:transform .14s, box-shadow .22s, filter .22s, background .22s;
 }
 button:active{transform:translateY(2px);}
 
 .btn-send{
-  position:relative;
-  overflow:hidden;
-  color:#03180d;
+  position:relative;overflow:hidden;
+  color:#00190e;
   background:
-    linear-gradient(115deg, rgba(255,255,255,.16) 0%, transparent 42%),
-    repeating-linear-gradient(125deg, rgba(255,255,255,.07) 0 2px, transparent 2px 9px),
-    linear-gradient(160deg, #57ffb0 0%, #21d97f 45%, #0c9a56 100%);
+    linear-gradient(118deg, rgba(255,255,255,.18) 0%, transparent 46%),
+    linear-gradient(160deg, #7dffc4 0%, #2ae89a 46%, #0f9d63 100%);
   box-shadow:
-    0 0 26px rgba(61,251,160,.40),
-    0 14px 30px rgba(0,0,0,.45),
-    inset 0 1px 0 rgba(255,255,255,.55),
-    inset 0 -2px 0 rgba(0,0,0,.18);
+    0 0 30px rgba(77,255,171,.35),
+    0 16px 34px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.6),
+    inset 0 -2px 0 rgba(0,0,0,.16);
 }
-.btn-send:hover{filter:brightness(1.06);box-shadow:0 0 38px rgba(61,251,160,.55), 0 16px 34px rgba(0,0,0,.5);}
-.btn-send .wa-icon{width:38px;height:38px;flex:0 0 auto;
-  filter:drop-shadow(0 2px 5px rgba(0,0,0,.4)) drop-shadow(0 0 8px rgba(255,255,255,.35));}
+.btn-send:hover{filter:brightness(1.05);box-shadow:0 0 44px rgba(77,255,171,.5),0 18px 38px rgba(0,0,0,.55);}
+.btn-send .wa-icon{
+  width:38px;height:38px;flex:0 0 auto;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.4)) drop-shadow(0 0 9px rgba(255,255,255,.35));
+}
 
 .btn-copy{
-  color:#bff3d9;
-  background:rgba(61,251,160,.05);
-  border:1px solid var(--neon-line);
-  box-shadow:inset 0 0 18px rgba(61,251,160,.05);
+  color:#c9ffe6;
+  background:rgba(0,0,0,.3);
+  border:1px solid var(--line);
+  box-shadow:inset 0 0 20px rgba(77,255,171,.05);
 }
-.btn-copy:hover{background:rgba(61,251,160,.10);box-shadow:0 0 18px rgba(61,251,160,.18);}
+.btn-copy:hover{background:rgba(77,255,171,.07);box-shadow:0 0 22px rgba(77,255,171,.18);}
 
 .btn-clear{
-  color:var(--muted);
-  background:transparent;
-  font-size:clamp(13px,3.4vw,15px);
+  color:var(--muted);background:transparent;
+  font-weight:400;
+  font-size:clamp(14px,3.4vw,16px);
   padding:6px 12px;
-  text-decoration:underline;
-  text-underline-offset:5px;
+  text-decoration:underline;text-underline-offset:6px;
+  text-decoration-color:var(--line);
 }
-.btn-clear:hover{color:var(--red);}
+.btn-clear:hover{color:var(--alert);text-decoration-color:rgba(255,111,135,.5);}
 
 .note{
   text-align:center;
-  font-size:clamp(12px,3.2vw,14px);
-  color:var(--muted);
-  margin-top:4px;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--muted);margin-top:6px;
 }
 .toast{
-  position:fixed;
-  inset-inline:16px;
-  bottom:20px;
-  margin:0 auto;
-  max-width:420px;
-  background:rgba(6,30,16,.97);
-  border:1px solid var(--neon-line);
-  color:#d9f7e6;
-  text-align:center;
-  padding:13px 16px;
-  border-radius:14px;
-  box-shadow:0 0 26px rgba(61,251,160,.25), 0 14px 34px rgba(0,0,0,.6);
-  opacity:0;
-  transform:translateY(14px);
+  position:fixed;inset-inline:16px;bottom:22px;
+  margin:0 auto;max-width:430px;
+  background:rgba(1,16,10,.96);
+  border:1px solid var(--line);
+  color:#d9fdeb;text-align:center;
+  padding:14px 18px;border-radius:14px;
+  box-shadow:0 0 30px rgba(77,255,171,.22), 0 16px 38px rgba(0,0,0,.65);
+  opacity:0;transform:translateY(14px);
   transition:opacity .25s, transform .25s;
-  pointer-events:none;
-  z-index:50;
-  font-size:15px;
+  pointer-events:none;z-index:50;font-size:16px;
 }
 .toast.show{opacity:1;transform:translateY(0);}
 
 /* ================= FOOTER ================= */
-.footer{margin-top:38px;text-align:center;}
+.footer{margin-top:44px;text-align:center;}
 .footer .line{
-  width:180px;height:1px;margin:0 auto 18px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  box-shadow:0 0 12px rgba(229,196,106,.45);
+  width:200px;height:1px;margin:0 auto 20px;
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.45;
+  box-shadow:0 0 16px rgba(77,255,171,.45);
 }
 .dev-by{
-  direction:ltr;
-  font-family:'Segoe UI',Tahoma,sans-serif;
-  font-size:11px;
-  letter-spacing:4px;
-  text-transform:uppercase;
+  direction:ltr;margin:0 0 2px;
+  font-size:12px;font-weight:400;
+  letter-spacing:5px;text-transform:uppercase;
   color:var(--muted);
-  margin:0 0 4px;
 }
 .dev-name{
-  direction:ltr;
-  font-family:'Segoe UI',Tahoma,sans-serif;
-  font-size:clamp(19px,5vw,26px);
-  font-weight:700;
-  letter-spacing:3px;
-  margin:0;
-  background:linear-gradient(180deg,#fff9e3 0%,var(--gold) 50%,var(--gold-2) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  filter:drop-shadow(0 0 14px rgba(229,196,106,.55));
+  direction:ltr;margin:0;
+  font-size:clamp(22px,5.4vw,30px);
+  font-weight:900;letter-spacing:3px;
+  background:linear-gradient(180deg,#ffffff 0%,#c9ffe6 45%,var(--neon) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(77,255,171,.5));
 }
-.dev-dots{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-top:10px;
-}
+.dev-dots{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;}
 .dev-dots i{
   width:5px;height:5px;border-radius:50%;
-  background:var(--neon);
-  box-shadow:0 0 10px var(--neon);
-  opacity:.75;
+  background:var(--neon);box-shadow:0 0 12px var(--neon);opacity:.8;
 }
-.dev-dots b{
-  height:1px;width:46px;
-  background:linear-gradient(90deg,transparent,var(--neon-line),transparent);
+.dev-dots b{height:1px;width:54px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:none;}
+}
+.hero,.card,.quote,.actions,.footer{
+  animation:rise .7s cubic-bezier(.22,.8,.3,1) both;
+}
+.card:nth-of-type(1){animation-delay:.05s;}
+.card:nth-of-type(2){animation-delay:.10s;}
+.card:nth-of-type(3){animation-delay:.15s;}
+.quote{animation-delay:.18s;}
+.actions{animation-delay:.22s;}
+.footer{animation-delay:.26s;}
+@media (prefers-reduced-motion:reduce){
+  .hero,.card,.quote,.actions,.footer{animation:none;}
 }
 
 @media (max-width:520px){
+  body{font-size:17px;}
   .board-logo{width:104px;height:104px;margin-top:-6px;}
   .board-logo img{width:84px;height:84px;}
-  .card{padding:18px 15px;}
-  .sec-num{width:40px;height:40px;border-radius:13px;font-size:19px;}
+  .card{padding:20px 16px;border-radius:18px;}
+  .sec-num{width:42px;height:42px;font-size:20px;}
 }
 </style>
 </head>
 <body>
+
 <div class="banner">
   <img src="assets/img/banner.webp" alt="یەکێتیی نیشتمانیی کوردستان — مەکتەبی سکرتاریەتی سەرۆک مام جەلال — بۆردی وەرزش">
 </div>
-<div class="banner-glow"></div>
+<div class="neon-line"></div>
 
 <div class="wrap">
 
@@ -444,7 +429,7 @@ button:active{transform:translateY(2px);}
     </div>
 
     <h1 class="org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
-    <div class="gold-rule"></div>
+    <div class="hero-divider"><span></span><i></i><span></span></div>
     <p class="form-title">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
     <p class="hero-sub">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
   </header>
@@ -460,27 +445,27 @@ button:active{transform:translateY(2px);}
 
       <div class="field">
         <label for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
-        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە" required>
+        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە">
       </div>
 
       <div class="field">
         <label for="age">تەمەن <span class="req">*</span></label>
-        <input id="age" name="تەمەن" type="number" inputmode="numeric" min="1" max="120" placeholder="بۆ نموونە: ٢٥" required>
+        <input id="age" name="تەمەن" type="number" inputmode="numeric" min="1" max="120" placeholder="بۆ نموونە: ٢٥">
       </div>
 
       <div class="field">
         <label for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
-        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX" required>
+        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX">
       </div>
 
       <div class="field">
         <label for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
-        <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ..." required>
+        <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
       </div>
 
       <div class="field">
-        <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="req">*</span></label>
-        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن" required>
+        <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
+        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
       </div>
     </section>
 
@@ -493,32 +478,32 @@ button:active{transform:translateY(2px);}
 
       <div class="field">
         <label for="pname">ناوی پڕۆژە <span class="req">*</span></label>
-        <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە" required>
+        <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
       </div>
 
       <div class="field">
         <label for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
-        <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە" required></textarea>
+        <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
       </div>
 
       <div class="field">
         <label for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
-        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:150px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..." required></textarea>
+        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
       </div>
 
       <div class="field">
         <label for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
-        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە" required></textarea>
+        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
       </div>
 
       <div class="field">
         <label for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
-        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟" required></textarea>
+        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
       </div>
 
       <div class="field">
         <label for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
-        <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text" placeholder="بۆ نموونە: ٥,٠٠٠,٠٠٠ دینار" required>
+        <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text" placeholder="بۆ نموونە: ٥,٠٠٠,٠٠٠ دینار">
       </div>
     </section>
 
@@ -531,12 +516,12 @@ button:active{transform:translateY(2px);}
 
       <div class="field">
         <label for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
-        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:130px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە" required></textarea>
+        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
       </div>
 
       <div class="field">
         <label for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
-        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:130px" placeholder="چارەسەری کردەیی و پێشنیارەکانت" required></textarea>
+        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
       </div>
     </section>
 
@@ -552,12 +537,12 @@ button:active{transform:translateY(2px);}
             <linearGradient id="waPlate" x1="18%" y1="0%" x2="82%" y2="100%">
               <stop offset="0%" stop-color="#eafff4"/>
               <stop offset="45%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#bfe9d3"/>
+              <stop offset="100%" stop-color="#bff0d8"/>
             </linearGradient>
             <linearGradient id="waGlyph" x1="20%" y1="0%" x2="80%" y2="100%">
-              <stop offset="0%" stop-color="#2bff9e"/>
+              <stop offset="0%" stop-color="#4dffab"/>
               <stop offset="45%" stop-color="#12c96e"/>
-              <stop offset="100%" stop-color="#046b39"/>
+              <stop offset="100%" stop-color="#04502f"/>
             </linearGradient>
             <radialGradient id="waGloss" cx="34%" cy="22%" r="62%">
               <stop offset="0%" stop-color="#ffffff" stop-opacity=".85"/>
@@ -604,6 +589,7 @@ button:active{transform:translateY(2px);}
   var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
   var MAX_URL = 20000;                   // سنووری ئاسایی بەڕاوزەرەکان
   var STORAGE_KEY = "puk-sports-form-draft";
+  var OPTIONAL = ["place"];              // خانە ئارەزوومەندانەکان
 
   var form = document.getElementById("projectForm");
   var toastEl = document.getElementById("toast");
@@ -652,6 +638,7 @@ button:active{transform:translateY(2px);}
     var firstBad = null;
     allFields().forEach(function(id){
       var el = document.getElementById(id);
+      if(OPTIONAL.indexOf(id) !== -1) return;
       var empty = !(el.value || "").trim();
       el.classList.toggle("invalid", empty);
       if(empty && !firstBad) firstBad = el;
