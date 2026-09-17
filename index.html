@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</title>
+<meta name="description" content="فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی – بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان">
+<meta name="theme-color" content="#046a29">
+<link rel="icon" href="assets/img/sports-board-logo.png">
+<style>
+@font-face{
+  font-family:'Rabar';
+  src:url('assets/fonts/Rabar_008.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+  color-scheme:light;
+  --green-900:#03421a;
+  --green-800:#045124;
+  --green-700:#046a29;
+  --green-600:#0a7d32;
+  --green-500:#12a247;
+  --green-050:#eef7f0;
+  --gold:#d4a017;
+  --gold-soft:#f2c94c;
+  --red:#c8102e;
+  --wa:#25d366;
+  --wa-dark:#128c4a;
+  --ink:#16301f;
+  --ink-soft:#4a6152;
+  --line:#d9e6dc;
+  --white:#ffffff;
+  --page:#f1f6f2;
+  --shadow:0 10px 30px rgba(4,66,26,.10);
+  --radius:18px;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Rabar','Segoe UI',Tahoma,sans-serif;
+  background:
+    radial-gradient(900px 500px at 100% -10%, #e2f0e6 0%, transparent 60%),
+    radial-gradient(700px 400px at 0% 0%, #eaf5ec 0%, transparent 55%),
+    var(--page);
+  color:var(--ink);
+  line-height:1.9;
+  -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
+}
+
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 48px;}
+
+/* ---------- HEADER ---------- */
+.hero{
+  position:relative;
+  border-radius:26px;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--green-900) 0%,var(--green-700) 45%,var(--green-600) 100%);
+  box-shadow:0 18px 40px rgba(3,66,26,.28);
+  color:#fff;
+  text-align:center;
+  padding:26px 18px 30px;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(600px 300px at 50% -30%, rgba(242,201,76,.35), transparent 70%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px);
+  pointer-events:none;
+}
+.hero>*{position:relative;z-index:1;}
+
+.logos{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:nowrap;
+}
+.logos img{
+  width:96px;height:96px;
+  object-fit:contain;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+.logo-badge{
+  background:rgba(255,255,255,.96);
+  border-radius:50%;
+  padding:6px;
+  display:grid;place-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+.logo-badge img{width:84px;height:84px;}
+
+.portrait{
+  width:120px;height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:46% 22%;
+  border:4px solid var(--gold-soft);
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+  background:#0c3;
+}
+
+.org{
+  margin:16px 0 4px;
+  font-size:clamp(18px,4.4vw,26px);
+  font-weight:normal;
+  letter-spacing:.2px;
+  text-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.hero-rule{
+  width:min(280px,70%);
+  height:3px;
+  margin:10px auto;
+  border-radius:3px;
+  background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);
+}
+.form-title{
+  margin:6px 0 0;
+  font-size:clamp(22px,6vw,34px);
+  color:var(--gold-soft);
+  text-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+.hero-sub{
+  margin:10px auto 0;
+  max-width:560px;
+  font-size:clamp(13px,3.4vw,16px);
+  color:#dff0e3;
+}
+
+/* ---------- SECTIONS ---------- */
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px 18px;
+  margin-top:22px;
+}
+.sec-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:14px;
+  margin-bottom:6px;
+  border-bottom:2px dashed var(--line);
+}
+.sec-num{
+  flex:0 0 auto;
+  width:44px;height:44px;
+  border-radius:14px;
+  display:grid;place-items:center;
+  font-size:20px;
+  color:#fff;
+  background:linear-gradient(140deg,var(--green-700),var(--green-500));
+  box-shadow:0 6px 14px rgba(4,106,41,.35);
+}
+.sec-title{
+  margin:0;
+  font-size:clamp(17px,4.4vw,22px);
+  font-weight:normal;
+  color:var(--green-800);
+}
+.sec-title span{display:block;font-size:.72em;color:var(--ink-soft);}
+
+.field{margin-top:18px;}
+label{
+  display:block;
+  margin-bottom:8px;
+  font-size:clamp(14px,3.8vw,17px);
+  color:var(--green-800);
+}
+label .req{color:var(--red);margin-inline-start:4px;}
+label .hint{display:block;font-size:.8em;color:var(--ink-soft);}
+
+input,textarea{
+  font-family:inherit;
+  font-size:16px;
+  line-height:1.8;
+  width:100%;
+  padding:12px 14px;
+  color:var(--ink);
+  background:#fbfdfb;
+  border:1.5px solid var(--line);
+  border-radius:12px;
+  transition:border-color .18s, box-shadow .18s, background .18s;
+}
+input::placeholder,textarea::placeholder{color:#9db0a3;}
+input:focus,textarea:focus{
+  outline:none;
+  background:#fff;
+  border-color:var(--green-500);
+  box-shadow:0 0 0 4px rgba(18,162,71,.14);
+}
+textarea{min-height:110px;resize:vertical;}
+.invalid{border-color:var(--red)!important;box-shadow:0 0 0 4px rgba(200,16,46,.12)!important;}
+
+/* ---------- QUOTE ---------- */
+.quote{
+  margin-top:24px;
+  border-radius:var(--radius);
+  padding:22px 20px;
+  text-align:center;
+  color:#fff;
+  background:linear-gradient(135deg,var(--green-800),var(--green-600));
+  box-shadow:0 14px 30px rgba(3,66,26,.24);
+  position:relative;
+  overflow:hidden;
+}
+.quote::after{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(400px 200px at 50% 120%, rgba(242,201,76,.28), transparent 70%);
+}
+.quote p{position:relative;margin:0;font-size:clamp(15px,4vw,19px);}
+.quote .q-top{color:var(--gold-soft);margin-bottom:8px!important;}
+
+/* ---------- ACTIONS ---------- */
+.actions{margin-top:24px;display:grid;gap:12px;}
+button{
+  font-family:inherit;
+  font-size:clamp(16px,4.4vw,20px);
+  border:none;
+  border-radius:16px;
+  padding:16px 20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:transform .12s, box-shadow .18s, background .18s;
+}
+button:active{transform:translateY(2px);}
+.btn-send{
+  color:#fff;
+  background:linear-gradient(135deg,var(--wa-dark),var(--wa));
+  box-shadow:0 12px 26px rgba(18,140,74,.35);
+}
+.btn-send:hover{box-shadow:0 16px 32px rgba(18,140,74,.45);}
+.btn-send svg{width:26px;height:26px;fill:#fff;}
+.btn-copy{
+  color:var(--green-800);
+  background:#fff;
+  border:1.5px solid var(--green-600);
+}
+.btn-copy:hover{background:var(--green-050);}
+.btn-clear{
+  color:var(--ink-soft);
+  background:transparent;
+  font-size:clamp(13px,3.4vw,15px);
+  padding:6px 12px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.btn-clear:hover{color:var(--red);}
+.note{
+  text-align:center;
+  font-size:clamp(12px,3.2vw,14px);
+  color:var(--ink-soft);
+  margin-top:4px;
+}
+.toast{
+  position:fixed;
+  inset-inline:16px;
+  bottom:20px;
+  margin:0 auto;
+  max-width:420px;
+  background:var(--green-800);
+  color:#fff;
+  text-align:center;
+  padding:12px 16px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .25s, transform .25s;
+  pointer-events:none;
+  z-index:50;
+  font-size:15px;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ---------- FOOTER ---------- */
+.footer{
+  margin-top:30px;
+  text-align:center;
+  color:var(--ink-soft);
+}
+.footer .line{
+  width:120px;height:2px;margin:0 auto 14px;
+  background:linear-gradient(90deg,transparent,var(--green-500),transparent);
+  border-radius:2px;
+}
+.dev{
+  direction:ltr;
+  font-family:'Segoe UI',Tahoma,sans-serif;
+  font-size:13px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--green-700);
+}
+.dev b{font-weight:600;color:var(--green-800);}
+
+@media (max-width:520px){
+  .logos{gap:10px;}
+  .logos img{width:70px;height:70px;}
+  .logo-badge img{width:62px;height:62px;}
+  .portrait{width:92px;height:92px;}
+  .card{padding:18px 14px;}
+  .sec-num{width:38px;height:38px;border-radius:12px;font-size:18px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="logos">
+      <div class="logo-badge"><img src="assets/img/puk-logo.webp" alt="لۆگۆی یەکێتیی نیشتمانیی کوردستان"></div>
+      <img class="portrait" src="assets/img/mam-jalal.jpg" alt="مام جەلال">
+      <img src="assets/img/sports-board-logo.png" alt="لۆگۆی بۆردی وەرزشی">
+    </div>
+
+    <h1 class="org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <div class="hero-rule"></div>
+    <p class="form-title">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p class="hero-sub">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+  </header>
+
+  <form id="projectForm" novalidate>
+
+    <!-- بەشی یەکەم -->
+    <section class="card">
+      <div class="sec-head">
+        <div class="sec-num">١</div>
+        <h2 class="sec-title">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
+      </div>
+
+      <div class="field">
+        <label for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
+        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە" required>
+      </div>
+
+      <div class="field">
+        <label for="age">تەمەن <span class="req">*</span></label>
+        <input id="age" name="تەمەن" type="number" inputmode="numeric" min="1" max="120" placeholder="بۆ نموونە: ٢٥" required>
+      </div>
+
+      <div class="field">
+        <label for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
+        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX" required>
+      </div>
+
+      <div class="field">
+        <label for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
+        <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ..." required>
+      </div>
+
+      <div class="field">
+        <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="req">*</span></label>
+        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن" required>
+      </div>
+    </section>
+
+    <!-- بەشی دووەم -->
+    <section class="card">
+      <div class="sec-head">
+        <div class="sec-num">٢</div>
+        <h2 class="sec-title">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
+      </div>
+
+      <div class="field">
+        <label for="pname">ناوی پڕۆژە <span class="req">*</span></label>
+        <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە" required>
+      </div>
+
+      <div class="field">
+        <label for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
+        <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
+        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:150px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
+        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
+        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
+        <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text" placeholder="بۆ نموونە: ٥,٠٠٠,٠٠٠ دینار" required>
+      </div>
+    </section>
+
+    <!-- بەشی سێیەم -->
+    <section class="card">
+      <div class="sec-head">
+        <div class="sec-num">٣</div>
+        <h2 class="sec-title">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
+      </div>
+
+      <div class="field">
+        <label for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
+        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:130px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
+        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:130px" placeholder="چارەسەری کردەیی و پێشنیارەکانت" required></textarea>
+      </div>
+    </section>
+
+    <div class="quote">
+      <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+      <p>بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn-send">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2.01c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22.02l5.2-1.36a9.93 9.93 0 0 0 4.84 1.24h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04a9.88 9.88 0 0 0-7.05-2.89zm5.82 15.78a8.24 8.24 0 0 1-5.82 2.41h-.01c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.22.84.86-3.14-.2-.32a8.23 8.23 0 0 1-1.26-4.39c0-4.57 3.72-8.28 8.29-8.28 2.21 0 4.29.86 5.85 2.43a8.22 8.22 0 0 1 2.43 5.86c0 4.57-3.72 8.28-8.27 8.28z"/></svg>
+        ناردن بۆ وەتسئەپ
+      </button>
+      <button type="button" class="btn-copy" id="copyBtn">کۆپیکردنی زانیارییەکان</button>
+      <button type="button" class="btn-clear" id="clearBtn">سڕینەوەی فۆڕمەکە</button>
+      <p class="note">دوای کلیککردن، وەتسئەپ دەکرێتەوە و نامەکە ئامادە دەبێت — تەنها دوگمەی ناردن لێبدە.</p>
+    </div>
+  </form>
+
+  <footer class="footer">
+    <div class="line"></div>
+    <p class="dev">Developed by <b>SOLIN QARAXARMAN</b></p>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
+  var form = document.getElementById("projectForm");
+  var toastEl = document.getElementById("toast");
+  var STORAGE_KEY = "puk-sports-form-draft";
+  var toastTimer;
+
+  var sections = [
+    { title: "بەشی یەکەم: زانیارییە کەسی و پیشەییەکان", ids: ["fullname","age","phone","sport","place"] },
+    { title: "بەشی دووەم: وردەکاریی پڕۆژەکە", ids: ["pname","psummary","pdetails","pgoals","pbenefits","pbudget"] },
+    { title: "بەشی سێیەم: دیدگا و تێڕوانین بۆ کەرتی وەرزش", ids: ["problem","solution"] }
+  ];
+
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 3200);
+  }
+
+  function fieldLabel(el){
+    return el.getAttribute("name") || el.id;
+  }
+
+  function buildMessage(){
+    var lines = [];
+    lines.push("🏅 *فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی*");
+    lines.push("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان");
+    sections.forEach(function(sec){
+      lines.push("");
+      lines.push("━━━━━━━━━━━━━━");
+      lines.push("*" + sec.title + "*");
+      sec.ids.forEach(function(id){
+        var el = document.getElementById(id);
+        var val = (el.value || "").trim();
+        lines.push("• *" + fieldLabel(el) + ":* " + (val || "—"));
+      });
+    });
+    lines.push("");
+    lines.push("━━━━━━━━━━━━━━");
+    lines.push("_بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە._");
+    return lines.join("\n");
+  }
+
+  function validate(){
+    var firstBad = null;
+    sections.forEach(function(sec){
+      sec.ids.forEach(function(id){
+        var el = document.getElementById(id);
+        var empty = !(el.value || "").trim();
+        el.classList.toggle("invalid", empty);
+        if(empty && !firstBad) firstBad = el;
+      });
+    });
+    if(firstBad){
+      firstBad.scrollIntoView({behavior:"smooth", block:"center"});
+      firstBad.focus({preventScroll:true});
+      toast("تکایە هەموو خانە پێویستەکان پڕ بکەرەوە");
+      return false;
+    }
+    return true;
+  }
+
+  var MAX_URL = 20000; // سنووری ئاسایی بەڕاوزەرەکان
+
+  function copyText(text, onDone){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(onDone, function(){ legacyCopy(text, onDone); });
+    } else {
+      legacyCopy(text, onDone);
+    }
+  }
+
+  function legacyCopy(text, onDone){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly","");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch(err){ ok = false; }
+    document.body.removeChild(ta);
+    if(ok){ onDone(); } else { toast("نەتوانرا کۆپی بکرێت"); }
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!validate()) return;
+    saveDraft();
+
+    var msg = buildMessage();
+    var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+
+    if(url.length > MAX_URL){
+      // نامەکە زۆر درێژە بۆ لینک — کۆپی دەکرێت و وەتسئەپ دەکرێتەوە
+      copyText(msg, function(){
+        toast("نامەکە درێژە — کۆپی کرا، لە وەتسئەپ پەیستی بکە");
+      });
+      setTimeout(function(){
+        window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener");
+      }, 900);
+      return;
+    }
+
+    window.open(url, "_blank", "noopener");
+  });
+
+  document.getElementById("clearBtn").addEventListener("click", function(){
+    if(!confirm("دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟")) return;
+    allFields().forEach(function(id){
+      var el = document.getElementById(id);
+      el.value = "";
+      el.classList.remove("invalid");
+    });
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    window.scrollTo({top:0, behavior:"smooth"});
+    toast("فۆڕمەکە سڕایەوە");
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    copyText(buildMessage(), function(){ toast("زانیارییەکان کۆپی کران ✔"); });
+  });
+
+  // --- ڕەشنووس پاراستن (draft) ---
+  function allFields(){
+    var ids = [];
+    sections.forEach(function(s){ ids = ids.concat(s.ids); });
+    return ids;
+  }
+
+  function saveDraft(){
+    try{
+      var data = {};
+      allFields().forEach(function(id){ data[id] = document.getElementById(id).value; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }catch(e){ /* storage unavailable */ }
+  }
+
+  function loadDraft(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      allFields().forEach(function(id){
+        if(data && typeof data[id] === "string") document.getElementById(id).value = data[id];
+      });
+    }catch(e){ /* storage unavailable */ }
+  }
+
+  loadDraft();
+
+  allFields().forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener("input", function(){
+      el.classList.remove("invalid");
+      saveDraft();
+    });
+  });
+})();
+</script>
+</body>
+</html>
