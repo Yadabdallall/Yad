@@ -18,12 +18,18 @@
 ## پێکهاتەی فایلەکان
 
 ```
-index.html                         لاپەڕەی سەرەکی (HTML + CSS + JS)
-assets/fonts/Rabar_008.ttf         فۆنتەکە
-assets/img/puk-logo.webp           لۆگۆی یەکێتیی نیشتمانیی کوردستان
-assets/img/sports-board-logo.png   لۆگۆی بۆردی وەرزشی
-assets/img/mam-jalal.jpg           وێنەی مام جەلال
+index.html                          لاپەڕەی سەرەکی (HTML + CSS + JS)
+wlat-sports-form-standalone.html    وەشانی تاکە-فایل (وێنە و فۆنت لەناویدایە)
+assets/fonts/Rabar_008.woff2        فۆنتەکە (وەشانی وێب)
+assets/fonts/Rabar_008.ttf          فۆنتەکە (وەشانی بنەڕەت)
+assets/img/puk-logo.webp            لۆگۆی یەکێتیی نیشتمانیی کوردستان
+assets/img/sports-board-logo.png    لۆگۆی بۆردی وەرزشی
+assets/img/mam-jalal.jpg            وێنەی مام جەلال
 ```
+
+**تێبینی:** فایلی `wlat-sports-form-standalone.html` بە تەنها کاردەکات — هەموو وێنە و
+فۆنتەکان لە ناویدا هەڵگیراون، بۆیە دەتوانیت ڕاستەوخۆ بیکەیتەوە یان بۆ هەر شوێنێک بینێریت.
+بەڵام بۆ هۆستکردن باشترە `index.html` بەکاربێنیت (خێراترە).
 
 ## چۆن دایبنێم (hosting)
 
