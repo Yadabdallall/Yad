@@ -529,7 +529,7 @@ button:active{transform:translateY(2px);}
 }
 .js-reveal .reveal.words.is-in .word{opacity:1;transform:none;filter:none;}
 @media (prefers-reduced-motion:reduce){
-  .js-reveal .reveal.words .word{opacity:1;transform:none;filter:none;transition:none;}
+  .js-reveal .reveal.words .word{transform:translateY(10px);filter:none;}
 }
 
 /* ================= SECTION LEDs ================= */
@@ -596,7 +596,7 @@ button:active{transform:translateY(2px);}
 
 /* ================= SCROLL DRIFT ================= */
 .drift{will-change:transform;}
-@media (prefers-reduced-motion:reduce){ .drift{transform:none!important;} }
+
 
 /* ================= SCROLL REVEAL ================= */
 .js-reveal .reveal{
@@ -611,7 +611,8 @@ button:active{transform:translateY(2px);}
 .js-reveal .reveal.is-in{opacity:1;transform:none;filter:none;}
 .js-reveal .reveal.drift:not(.is-in){transform:translateY(46px) scale(.985)!important;}
 @media (prefers-reduced-motion:reduce){
-  .js-reveal .reveal{opacity:1;transform:none;filter:none;transition:none;}
+  .js-reveal .reveal{transform:translateY(14px);filter:none;}
+  .js-reveal .reveal.drift:not(.is-in){transform:translateY(14px)!important;}
 }
 
 @keyframes rise{
@@ -959,6 +960,53 @@ button:active{transform:translateY(2px);}
   /* ---------- دەرکەوتنی نەرمی ناوەڕۆک لە کاتی سکڕۆڵدا ---------- */
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- ناسینەوەی سکڕۆڵ لە هەموو بینەرێکدا ----------
+     هەندێک بینەری HTML (وەک پێشبینینی فایل لە iOS) ڕووداوی scroll نانێرن،
+     بۆیە جگە لە گوێگرتن، بە rAF شوێنی لاپەڕەکەش دەپێوین. */
+  var scrollCallbacks = [];
+  var lastPos = null;
+  var pending = false;
+
+  function pagePos(){
+    var el = document.documentElement;
+    return window.pageYOffset || el.scrollTop || document.body.scrollTop ||
+           -el.getBoundingClientRect().top || 0;
+  }
+
+  function runCallbacks(){
+    pending = false;
+    scrollCallbacks.forEach(function(fn){ fn(); });
+  }
+
+  function requestRun(){
+    if(!pending){
+      pending = true;
+      window.requestAnimationFrame(runCallbacks);
+    }
+  }
+
+  function watchPosition(){
+    var pos = pagePos();
+    if(pos !== lastPos){
+      lastPos = pos;
+      requestRun();
+    }
+    window.requestAnimationFrame(watchPosition);
+  }
+
+  function onEveryScroll(fn){
+    scrollCallbacks.push(fn);
+  }
+
+  window.addEventListener("scroll", requestRun, { passive: true });
+  window.addEventListener("resize", requestRun, { passive: true });
+  document.addEventListener("scroll", requestRun, { passive: true });
+  if(window.visualViewport){
+    window.visualViewport.addEventListener("scroll", requestRun, { passive: true });
+    window.visualViewport.addEventListener("resize", requestRun, { passive: true });
+  }
+  window.requestAnimationFrame(watchPosition);
+
   /* هەر دەقێکی ".words" دەکرێت بە وشەی جیاواز، بۆ ئەوەی یەک بە یەک بێن */
   function splitWords(el){
     var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
@@ -982,13 +1030,11 @@ button:active{transform:translateY(2px);}
     });
 
     [].forEach.call(el.querySelectorAll(".word"), function(w, i){
-      w.style.transitionDelay = Math.min(i * 0.055, 1.1) + "s";
+      w.style.transitionDelay = Math.min(i * (reduced ? 0.03 : 0.055), 1.1) + "s";
     });
   }
 
-  if(!reduced){
-    [].forEach.call(document.querySelectorAll(".words"), splitWords);
-  }
+  [].forEach.call(document.querySelectorAll(".words"), splitWords);
 
   if(!reduced && "IntersectionObserver" in window){
     document.documentElement.classList.add("js-reveal");
@@ -1006,13 +1052,13 @@ button:active{transform:translateY(2px);}
       io.observe(el);
     });
 
-    // تۆڕی ئاسایش: هیچ بەشێک بە شاراوەیی نامێنێتەوە
-    setTimeout(function(){
+    // پشکنینێکی زیادە لەگەڵ هەر جوڵەیەکی لاپەڕەکە
+    onEveryScroll(function(){
       [].forEach.call(document.querySelectorAll(".reveal:not(.is-in)"), function(el){
         var r = el.getBoundingClientRect();
-        if(r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
+        if(r.top < window.innerHeight * 0.94 && r.bottom > 0) el.classList.add("is-in");
       });
-    }, 1200);
+    });
   }
 
   /* ---------- لیدی بەشەکان: کام بەش لەبەردەستە ---------- */
@@ -1052,15 +1098,14 @@ button:active{transform:translateY(2px);}
       }
     }
 
-    window.addEventListener("scroll", markActive, { passive: true });
-    window.addEventListener("resize", markActive, { passive: true });
+    onEveryScroll(markActive);
     markActive();
   }
 
   /* ---------- جوڵەی نووسینەکان لەگەڵ سکڕۆڵدا ---------- */
   var drifters = [].slice.call(document.querySelectorAll(".drift"));
 
-  if(drifters.length && !reduced){
+  if(drifters.length){
     var ticking = false;
 
     // ‎-1 لە سەرەوەی دیمەن، 0 لە ناوەڕاست، 1 لە خوارەوە
@@ -1074,7 +1119,7 @@ button:active{transform:translateY(2px);}
       drifters.forEach(function(el){
         var rect = el.getBoundingClientRect();
         if(rect.bottom < -160 || rect.top > vh + 160) return;
-        var amount = parseFloat(el.getAttribute("data-drift")) || 12;
+        var amount = (parseFloat(el.getAttribute("data-drift")) || 12) * (reduced ? 0.4 : 1);
         el.style.transform = "translate3d(0," + (progressOf(rect, vh) * amount).toFixed(1) + "px,0)";
       });
 
@@ -1088,8 +1133,7 @@ button:active{transform:translateY(2px);}
       }
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    onEveryScroll(frame);
     frame();
   }
 })();
