@@ -466,7 +466,7 @@ button:active{transform:translateY(2px);}
   direction:ltr;margin:0;padding:6px 10px;
   border:none;background:none;cursor:pointer;
   font-family:inherit;
-  font-size:clamp(23px,5.8vw,40px);
+  font-size:clamp(26px,6.6vw,46px);
   font-weight:900;letter-spacing:3px;line-height:1.3;
   white-space:nowrap;
   background-image:linear-gradient(110deg,
@@ -665,6 +665,30 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   }
 }
 
+/* ================= هاتنی کارەبایی (نیۆن) ================= */
+.js-reveal .reveal.flicker{opacity:0;transform:none;filter:none;}
+.js-reveal .reveal.flicker.is-in{
+  opacity:1;
+  animation:neon-on 1.35s steps(1, end) both;
+}
+@keyframes neon-on{
+  0%   {opacity:0;   filter:brightness(.35) saturate(.6);}
+  6%   {opacity:1;   filter:brightness(1.85) saturate(1.3);}
+  10%  {opacity:.12; filter:brightness(.4);}
+  16%  {opacity:1;   filter:brightness(1.6);}
+  20%  {opacity:.28; filter:brightness(.5);}
+  27%  {opacity:1;   filter:brightness(1.75);}
+  33%  {opacity:.55; filter:brightness(.8);}
+  40%  {opacity:1;   filter:brightness(1.35);}
+  48%  {opacity:.75; filter:brightness(.95);}
+  56%  {opacity:1;   filter:brightness(1.5);}
+  70%  {opacity:1;   filter:brightness(1.12);}
+  100% {opacity:1;   filter:brightness(1);}
+}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal.flicker.is-in{animation:none;}
+}
+
 /* ================= LINE MASK REVEAL ================= */
 .js-reveal .reveal.lines{opacity:1;transform:none;filter:none;}
 .js-reveal .tline{
@@ -810,9 +834,9 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     </div>
     <p class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
 
-    <h1 class="org reveal words drift" data-drift="7">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <h1 class="org reveal flicker drift" data-drift="7">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
-    <p class="form-title reveal words drift" data-drift="9">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p class="form-title reveal flicker drift" data-drift="9">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
     <p class="tagline reveal lines drift" data-drift="9">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
 
     <div class="intro reveal drift" data-drift="11">
@@ -957,7 +981,6 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   </div>
   <div class="pd-meta">
     <span id="pdDate"></span>
-    <span id="pdName"></span>
   </div>
   <div id="pdBody"></div>
   <div class="pd-quote">
@@ -1127,12 +1150,41 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     var pages = [];
     var ctx, y;
 
+    function paintBackground(x){
+      var bg = x.createLinearGradient(0, 0, PAGE_W * 0.4, PAGE_H);
+      bg.addColorStop(0, "#f4fbf6");
+      bg.addColorStop(0.45, "#ffffff");
+      bg.addColorStop(1, "#eef8f1");
+      x.fillStyle = bg;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      // تیشکێکی نەرمی سەوز لە گۆشەکان
+      var glow = x.createRadialGradient(PAGE_W, 0, 40, PAGE_W, 0, PAGE_W * 0.9);
+      glow.addColorStop(0, "rgba(10,125,50,.12)");
+      glow.addColorStop(1, "rgba(10,125,50,0)");
+      x.fillStyle = glow;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      var glow2 = x.createRadialGradient(0, PAGE_H, 40, 0, PAGE_H, PAGE_W * 0.8);
+      glow2.addColorStop(0, "rgba(18,162,71,.10)");
+      glow2.addColorStop(1, "rgba(18,162,71,0)");
+      x.fillStyle = glow2;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      // شریتی سەوز لە خوارەوە
+      var strip = x.createLinearGradient(0, 0, PAGE_W, 0);
+      strip.addColorStop(0, "#0a7d32");
+      strip.addColorStop(0.5, "#17b355");
+      strip.addColorStop(1, "#0a7d32");
+      x.fillStyle = strip;
+      x.fillRect(0, PAGE_H - 14, PAGE_W, 14);
+    }
+
     function newPage(){
       var c = document.createElement("canvas");
       c.width = PAGE_W; c.height = PAGE_H;
       var x = c.getContext("2d");
-      x.fillStyle = "#ffffff";
-      x.fillRect(0, 0, PAGE_W, PAGE_H);
+      paintBackground(x);
       x.direction = "rtl";
       x.textAlign = "right";
       x.textBaseline = "alphabetic";
@@ -1157,45 +1209,75 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
     newPage();
 
-    /* ---- سەرپەڕە ---- */
+    /* ---- سەرپەڕە: شریتی سەوزی گرادیەنتدار ---- */
     var logoA = document.querySelector('.board-logo img');
     var logoB = document.querySelector('#printDoc .pd-head img:last-child');
-    var logoSize = 120;
+    var bandH = 232, logoSize = 128;
 
+    var band = ctx.createLinearGradient(0, 0, PAGE_W, bandH);
+    band.addColorStop(0, "#053f1a");
+    band.addColorStop(0.5, "#0a7d32");
+    band.addColorStop(1, "#12a247");
+    ctx.fillStyle = band;
+    ctx.fillRect(0, 0, PAGE_W, bandH);
+
+    // ڕووناکییەکی نەرم بەسەر شریتەکەدا
+    var sheen = ctx.createLinearGradient(0, 0, PAGE_W * 0.7, bandH);
+    sheen.addColorStop(0, "rgba(255,255,255,.16)");
+    sheen.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = sheen;
+    ctx.fillRect(0, 0, PAGE_W, bandH);
+
+    var logoY = (bandH - logoSize) / 2;
     if(withLogos){
       try{
-        if(logoA && logoA.complete) ctx.drawImage(logoA, right - logoSize, y, logoSize, logoSize);
-        if(logoB && logoB.complete) ctx.drawImage(logoB, MARGIN, y, logoSize, logoSize);
+        if(logoA && logoA.complete){
+          ctx.fillStyle = "rgba(255,255,255,.95)";
+          ctx.beginPath();
+          ctx.arc(right - logoSize / 2, logoY + logoSize / 2, logoSize / 2 + 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.drawImage(logoA, right - logoSize, logoY, logoSize, logoSize);
+        }
+        if(logoB && logoB.complete){
+          ctx.fillStyle = "rgba(255,255,255,.95)";
+          ctx.beginPath();
+          ctx.arc(MARGIN + logoSize / 2, logoY + logoSize / 2, logoSize / 2 + 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.drawImage(logoB, MARGIN, logoY, logoSize, logoSize);
+        }
       }catch(err){ /* وێنەکان بەردەست نین */ }
     }
 
+    // نووسینەکە نابێت بێتە سەر لۆگۆکان
+    var titleSpace = PAGE_W - (MARGIN + logoSize + 26) * 2;
+
+    function fitText(text, weight, startSize, minSize){
+      var size = startSize;
+      ctx.font = weight + " " + size + "px Zain, sans-serif";
+      while(size > minSize && ctx.measureText(text).width > titleSpace){
+        size -= 2;
+        ctx.font = weight + " " + size + "px Zain, sans-serif";
+      }
+      return size;
+    }
+
     ctx.textAlign = "center";
-    ctx.fillStyle = GREEN;
-    ctx.font = "700 40px Zain, sans-serif";
-    ctx.fillText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", PAGE_W / 2, y + 52);
-    ctx.fillStyle = "#444444";
-    ctx.font = "400 30px Zain, sans-serif";
-    ctx.fillText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", PAGE_W / 2, y + 100);
+    ctx.fillStyle = "#ffffff";
+    fitText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", "700", 42, 24);
+    ctx.fillText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", PAGE_W / 2, bandH / 2 - 4);
+    ctx.fillStyle = "rgba(233,255,240,.92)";
+    fitText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", "400", 30, 20);
+    ctx.fillText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", PAGE_W / 2, bandH / 2 + 44);
     ctx.textAlign = "right";
 
-    y += logoSize + 26;
-    ctx.strokeStyle = GREEN; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(MARGIN, y); ctx.lineTo(right, y); ctx.stroke();
-    y += 44;
+    y = bandH + 54;
 
-    /* ---- بەروار و ناو ---- */
+    /* ---- بەروار ---- */
     var d = new Date();
     var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
-    var name = (document.getElementById("fullname").value || "").trim();
-
     ctx.font = "400 24px Zain, sans-serif";
     ctx.fillStyle = GREY;
     ctx.fillText("بەروار: " + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()), right, y);
-    if(name){
-      ctx.textAlign = "left";
-      ctx.fillText("پێشکەشکار: " + name, MARGIN, y);
-      ctx.textAlign = "right";
-    }
     y += 46;
 
     /* ---- بەشەکان ---- */
@@ -1284,7 +1366,12 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
       x.font = "400 20px Zain, sans-serif";
       x.fillText("لاپەڕەی " + (i + 1) + " لە " + pages.length, right, PAGE_H - MARGIN);
       x.textAlign = "left"; x.direction = "ltr";
-      x.fillText("PUK SPORTS BOARD  ·  Developed by SOLIN QARAXARMAN", MARGIN, PAGE_H - MARGIN);
+      x.font = "400 19px Zain, sans-serif";
+      x.fillText("PUK SPORTS BOARD  ·  Developed by", MARGIN, PAGE_H - MARGIN);
+      var w = x.measureText("PUK SPORTS BOARD  ·  Developed by ").width;
+      x.fillStyle = "#0a7d32";
+      x.font = "700 24px Zain, sans-serif";
+      x.fillText("SOLIN QARAXARMAN", MARGIN + w, PAGE_H - MARGIN);
     });
 
     return pages;
@@ -1411,22 +1498,29 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
       sendBtn.disabled = false;
 
-      // لەسەر مۆبایل: پەنجەرەی ناردن دەکرێتەوە و وەتسئەپ هەڵدەبژێریت
+      // PDF ـەکە پاشەکەوت دەکرێت و ڕاستەوخۆ چاتی بۆردەکە دەکرێتەوە
+      function openChatWithFile(){
+        downloadBlob(blob, pdfFileName());
+        toast("PDF پاشەکەوت کرا — لە چاتەکەدا هاوپێچی بکە");
+        setTimeout(function(){
+          window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener");
+        }, 1100);
+      }
+
+      // ناردنی فایل تەنها لە ڕێگەی پەنجەرەی ناردنی ئامێرەکەوە دەکرێت
       if(file && navigator.canShare && navigator.canShare({ files: [file] })){
         navigator.share({
           files: [file],
           title: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی",
           text: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی — بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان"
-        }).catch(function(){ /* ڕەتکرایەوە */ });
+        }).catch(function(){
+          // ڕەتکرایەوە یان سەرنەکەوت: چاتی بۆردەکە دەکرێتەوە
+          openChatWithFile();
+        });
         return;
       }
 
-      // لەسەر کۆمپیوتەر: PDF دادەبەزێت و وەتسئەپ دەکرێتەوە بۆ هاوپێچکردنی
-      downloadBlob(blob, pdfFileName());
-      toast("PDF داگیرا — لە وەتسئەپ هاوپێچی بکە");
-      setTimeout(function(){
-        window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener");
-      }, 1200);
+      openChatWithFile();
     }, 60);
   }
 
@@ -1468,10 +1562,6 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
       body.appendChild(block);
     });
-
-    var name = (document.getElementById("fullname").value || "").trim();
-    var nameEl = document.getElementById("pdName");
-    if(nameEl) nameEl.textContent = name ? "پێشکەشکار: " + name : "";
 
     var dateEl = document.getElementById("pdDate");
     if(dateEl){
