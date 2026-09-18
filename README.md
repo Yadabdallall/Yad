@@ -24,7 +24,7 @@
 
 ```
 index.html                          لاپەڕەی سەرەکی (HTML + CSS + JS)
-wlat-sports-form-standalone.html    وەشانی تاکە-فایل (وێنە و فۆنت لەناویدایە)
+"PUK SPORTS BOARD - FORM.html"      وەشانی تاکە-فایل (وێنە و فۆنت لەناویدایە)
 build-standalone.py                 سکریپتی دروستکردنی وەشانی تاکە-فایل
 assets/fonts/zain-*.woff2           فۆنتی Zain (عەرەبی + لاتینی، ٣ قەبارە)
 assets/img/banner.webp              بانەری سەرەوە
@@ -33,7 +33,7 @@ assets/img/mam-2.webp               وێنەی دووەمی مام جەلال (p
 assets/img/sports-board-logo.png    لۆگۆی بۆردی وەرزشی
 ```
 
-**تێبینی:** فایلی `wlat-sports-form-standalone.html` بە تەنها کاردەکات — هەموو وێنە و
+**تێبینی:** فایلی `PUK SPORTS BOARD - FORM.html` بە تەنها کاردەکات — هەموو وێنە و
 فۆنتەکان لە ناویدا هەڵگیراون، بۆیە دەتوانیت ڕاستەوخۆ بیکەیتەوە یان بۆ هەر شوێنێک بینێریت.
 بەڵام بۆ هۆستکردن باشترە `index.html` بەکاربێنیت (خێراترە).
 

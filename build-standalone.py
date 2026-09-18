@@ -3,7 +3,7 @@
 import base64, io, os, re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ROOT, "wlat-sports-form-standalone.html")
+OUT = os.path.join(ROOT, "PUK SPORTS BOARD - FORM.html")
 MIME = {".woff2":"font/woff2", ".webp":"image/webp", ".png":"image/png",
         ".jpg":"image/jpeg", ".ttf":"font/ttf"}
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</title>
+<title>PUK SPORTS BOARD - FORM</title>
 <meta name="description" content="فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی – بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان">
 <meta name="theme-color" content="#01100a">
 <link rel="icon" href="assets/img/sports-board-logo.png">
@@ -165,7 +165,9 @@ body{
   padding:26px 22px;
   border-radius:var(--radius);
   background:
-    linear-gradient(145deg, rgba(255,255,255,.085) 0%, rgba(255,255,255,.02) 38%, rgba(77,255,171,.035) 100%);
+    radial-gradient(circle at 1px 1px, rgba(77,255,171,.085) 1px, transparent 1.6px) 0 0/24px 24px,
+    linear-gradient(145deg, rgba(255,255,255,.075) 0%, rgba(255,255,255,.015) 40%, rgba(77,255,171,.03) 100%),
+    rgba(0,11,6,.55);
   border:1px solid rgba(255,255,255,.10);
   box-shadow:
     0 0 0 1px rgba(77,255,171,.34),
@@ -215,7 +217,27 @@ body{
   text-shadow:none;
 }
 
-.field{margin-top:22px;}
+.field{margin-top:22px;position:relative;}
+.field + .field{margin-top:26px;padding-top:26px;}
+.field + .field::before{
+  content:"";
+  position:absolute;top:0;
+  inset-inline:4%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.34),transparent);
+  box-shadow:0 0 10px rgba(77,255,171,.30);
+}
+.field + .field::after{
+  content:"";
+  position:absolute;top:-2px;
+  inset-inline-start:50%;
+  width:5px;height:5px;
+  transform:translateX(50%);
+  border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 10px var(--neon),0 0 22px rgba(77,255,171,.7);
+  opacity:.75;
+}
 label{
   display:block;margin-bottom:10px;
   font-size:clamp(15px,3.9vw,18px);
@@ -503,51 +525,51 @@ button:active{transform:translateY(2px);}
       <img src="assets/img/sports-board-logo.png" alt="لۆگۆی بۆردی وەرزشی">
     </div>
 
-    <h1 class="org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <h1 class="org drift" data-drift="14">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
-    <p class="form-title">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
-    <p class="hero-sub">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+    <p class="form-title drift" data-drift="22">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p class="hero-sub drift" data-drift="10">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
   </header>
 
   <form id="projectForm" novalidate>
 
     <!-- بەشی یەکەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal drift" data-drift="18">
         <div class="sec-num">١</div>
         <h2 class="sec-title">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
         <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە">
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="age">تەمەن <span class="req">*</span></label>
         <input id="age" name="تەمەن" type="number" inputmode="numeric" min="1" max="120" placeholder="بۆ نموونە: ٢٥">
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
         <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX">
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
         <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
         <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
       </div>
     </section>
 
     <section class="showcase" aria-hidden="true">
-      <img class="showcase-img" style="object-position:50% 26%" src="assets/img/mam-1.webp" alt="" loading="lazy">
+      <img class="showcase-img" style="object-position:48% 30%" src="assets/img/mam-1.webp" alt="" loading="lazy">
       <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal drift" data-drift="26">
+      <div class="showcase-caption reveal drift" data-drift="42">
         <p>«سەفین لە بن دێت، یەکێتی لە بن نایەت»</p>
         <small>مام جەلال تاڵەبانی</small>
       </div>
@@ -555,46 +577,46 @@ button:active{transform:translateY(2px);}
 
     <!-- بەشی دووەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal drift" data-drift="18">
         <div class="sec-num">٢</div>
         <h2 class="sec-title">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="pname">ناوی پڕۆژە <span class="req">*</span></label>
         <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
         <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
         <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
         <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
         <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
         <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text" placeholder="بۆ نموونە: ٥,٠٠٠,٠٠٠ دینار">
       </div>
     </section>
 
     <section class="showcase" aria-hidden="true">
-      <img class="showcase-img" style="object-position:50% 16%" src="assets/img/mam-2.webp" alt="" loading="lazy">
+      <img class="showcase-img" style="object-position:50% 34%" src="assets/img/mam-2.webp" alt="" loading="lazy">
       <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal drift" data-drift="26">
+      <div class="showcase-caption reveal drift" data-drift="42">
         <p>ڕێبازی ئەو، ئیلهامی نەوەی ئەمڕۆیە</p>
         <small>بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</small>
       </div>
@@ -602,23 +624,23 @@ button:active{transform:translateY(2px);}
 
     <!-- بەشی سێیەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal drift" data-drift="18">
         <div class="sec-num">٣</div>
         <h2 class="sec-title">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
         <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
       </div>
 
-      <div class="field reveal">
+      <div class="field reveal drift" data-drift="7">
         <label for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
         <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
       </div>
     </section>
 
-    <div class="quote reveal drift" data-drift="12">
+    <div class="quote reveal drift" data-drift="22">
       <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
       <p class="q-body">بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     </div>
