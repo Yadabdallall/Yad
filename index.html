@@ -508,8 +508,16 @@ button:active{transform:translateY(2px);}
              opacity .5s ease,
              transform .5s cubic-bezier(.22,.8,.3,1);
 }
+.footer.is-in .dev-motto,
 .footer:hover .dev-motto,
 .footer.is-open .dev-motto{
+  max-height:90px;
+  opacity:1;
+  transform:translateY(10px);
+  animation:neon-pulse 2.4s ease-in-out .5s infinite;
+}
+/* بەبێ JavaScript ـیش دیارە */
+html:not(.js-reveal) .dev-motto{
   max-height:90px;
   opacity:1;
   transform:translateY(10px);
@@ -520,7 +528,10 @@ button:active{transform:translateY(2px);}
   50%{filter:brightness(1.22);}
 }
 @media (prefers-reduced-motion:reduce){
-  .footer:hover .dev-motto,.footer.is-open .dev-motto{animation:none;}
+  .footer.is-in .dev-motto,
+  .footer:hover .dev-motto,
+  .footer.is-open .dev-motto,
+  html:not(.js-reveal) .dev-motto{animation:none;}
 }
 .dev-dots{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;}
 .dev-dots i{
