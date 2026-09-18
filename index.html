@@ -47,7 +47,7 @@
   --alert:#ff6f87;
 
   --panel:rgba(4,22,13,.62);
-  --radius:22px;
+  --radius:30px;
 }
 
 *{box-sizing:border-box;}
@@ -125,7 +125,7 @@ body{
   font-weight:400;
   letter-spacing:.3px;
   color:var(--text-2);
-  text-shadow:0 0 16px rgba(77,255,171,.45);
+  text-shadow:0 0 14px rgba(77,255,171,.65), 0 0 34px rgba(77,255,171,.40);
 }
 .hero-divider{
   display:flex;align-items:center;justify-content:center;gap:12px;
@@ -148,7 +148,7 @@ body{
   line-height:1.35;
   background:linear-gradient(180deg,#ffffff 0%,#d6ffe9 42%,var(--neon) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 22px rgba(77,255,171,.35));
+  filter:drop-shadow(0 0 16px rgba(77,255,171,.55)) drop-shadow(0 0 44px rgba(77,255,171,.30));
 }
 .hero-sub{
   margin:14px auto 0;
@@ -168,11 +168,12 @@ body{
     linear-gradient(145deg, rgba(255,255,255,.085) 0%, rgba(255,255,255,.02) 38%, rgba(77,255,171,.035) 100%);
   border:1px solid rgba(255,255,255,.10);
   box-shadow:
-    0 0 0 1px var(--line),
-    0 0 30px rgba(77,255,171,.08),
+    0 0 0 1px rgba(77,255,171,.34),
+    0 0 26px rgba(77,255,171,.20),
+    0 0 60px rgba(77,255,171,.10),
     0 26px 60px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.16),
-    inset 0 -1px 0 rgba(0,0,0,.25);
+    inset 0 0 26px rgba(77,255,171,.06),
+    inset 0 1px 0 rgba(255,255,255,.18);
   backdrop-filter:blur(22px) saturate(135%);
   -webkit-backdrop-filter:blur(22px) saturate(135%);
 }
@@ -198,13 +199,13 @@ body{
   background:radial-gradient(circle at 50% 30%, rgba(77,255,171,.14), rgba(0,0,0,.35));
   border:1px solid rgba(77,255,171,.45);
   box-shadow:0 0 18px rgba(77,255,171,.22), inset 0 0 16px rgba(77,255,171,.10);
-  text-shadow:0 0 12px rgba(77,255,171,.7);
+  text-shadow:0 0 14px rgba(77,255,171,.85), 0 0 30px rgba(77,255,171,.45);
 }
 .sec-title{
   margin:0;font-weight:700;
   font-size:clamp(18px,4.6vw,24px);
   color:#d5ffe9;
-  text-shadow:0 0 14px rgba(77,255,171,.40);
+  text-shadow:0 0 14px rgba(77,255,171,.60), 0 0 32px rgba(77,255,171,.35);
   line-height:1.45;
 }
 .sec-title span{
@@ -220,7 +221,7 @@ label{
   font-size:clamp(15px,3.9vw,18px);
   font-weight:700;
   color:#b9f6d9;
-  text-shadow:0 0 12px rgba(77,255,171,.35);
+  text-shadow:0 0 12px rgba(77,255,171,.58), 0 0 28px rgba(77,255,171,.30);
 }
 label .req{color:var(--alert);margin-inline-start:5px;text-shadow:0 0 10px rgba(255,111,135,.45);}
 label .opt{
@@ -244,9 +245,9 @@ input,textarea{
   width:100%;padding:14px 16px;
   color:var(--text);
   background:rgba(255,255,255,.045);
-  border:1px solid rgba(77,255,171,.30);
-  border-radius:14px;
-  box-shadow:0 0 12px rgba(77,255,171,.06), inset 0 1px 0 rgba(255,255,255,.10);
+  border:1px solid rgba(77,255,171,.34);
+  border-radius:18px;
+  box-shadow:0 0 16px rgba(77,255,171,.14), inset 0 0 16px rgba(77,255,171,.05), inset 0 1px 0 rgba(255,255,255,.10);
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   transition:border-color .22s, box-shadow .22s, background .22s;
@@ -256,7 +257,7 @@ input:focus,textarea:focus{
   outline:none;
   background:rgba(255,255,255,.07);
   border-color:rgba(77,255,171,.75);
-  box-shadow:0 0 22px rgba(77,255,171,.28), inset 0 0 22px rgba(77,255,171,.06);
+  box-shadow:0 0 30px rgba(77,255,171,.40), inset 0 0 26px rgba(77,255,171,.10);
 }
 textarea{min-height:118px;resize:vertical;}
 .invalid{
@@ -274,10 +275,12 @@ textarea{min-height:118px;resize:vertical;}
     linear-gradient(145deg, rgba(255,255,255,.075) 0%, rgba(255,255,255,.015) 45%, rgba(77,255,171,.03) 100%);
   border:1px solid rgba(255,255,255,.10);
   box-shadow:
-    0 0 0 1px var(--line),
-    0 0 34px rgba(77,255,171,.10),
+    0 0 0 1px rgba(77,255,171,.38),
+    0 0 30px rgba(77,255,171,.22),
+    0 0 66px rgba(77,255,171,.10),
     0 24px 52px rgba(0,0,0,.5),
-    inset 0 1px 0 rgba(255,255,255,.16);
+    inset 0 0 26px rgba(77,255,171,.07),
+    inset 0 1px 0 rgba(255,255,255,.18);
   backdrop-filter:blur(22px) saturate(135%);
   -webkit-backdrop-filter:blur(22px) saturate(135%);
 }
@@ -300,7 +303,7 @@ textarea{min-height:118px;resize:vertical;}
   font-size:clamp(17px,4.4vw,23px);
   line-height:1.75;
   color:#e6fff2;
-  text-shadow:0 0 20px rgba(77,255,171,.45);
+  text-shadow:0 0 18px rgba(77,255,171,.60), 0 0 40px rgba(77,255,171,.32);
 }
 
 /* ================= ACTIONS ================= */
@@ -388,7 +391,7 @@ button:active{transform:translateY(2px);}
   font-weight:900;letter-spacing:3px;
   background:linear-gradient(180deg,#ffffff 0%,#c9ffe6 45%,var(--neon) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 18px rgba(77,255,171,.5));
+  filter:drop-shadow(0 0 16px rgba(77,255,171,.65)) drop-shadow(0 0 42px rgba(77,255,171,.35));
 }
 .dev-dots{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;}
 .dev-dots i{
@@ -408,8 +411,8 @@ button:active{transform:translateY(2px);}
   align-items:end;
   justify-items:center;
   isolation:isolate;
-  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
-          mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+          mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
 .showcase-img{
   position:absolute;
@@ -419,13 +422,13 @@ button:active{transform:translateY(2px);}
   width:100%;
   object-fit:cover;
   will-change:transform;
-  filter:grayscale(.12) contrast(1.06) brightness(.82);
+  filter:contrast(1.04) brightness(.86) saturate(.95);
 }
 .showcase-veil{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(76% 94% at 50% 42%, transparent 36%, rgba(0,0,0,.58) 100%),
-    linear-gradient(180deg, rgba(1,16,10,.40) 0%, rgba(0,0,0,.14) 40%, rgba(0,0,0,.62) 82%, rgba(1,16,10,.88) 100%);
+    radial-gradient(80% 96% at 50% 40%, transparent 46%, rgba(0,0,0,.42) 100%),
+    linear-gradient(180deg, rgba(1,16,10,.30) 0%, transparent 34%, rgba(0,0,0,.48) 80%, rgba(1,16,10,.72) 100%);
 }
 .showcase-caption{
   position:relative;z-index:3;
@@ -439,7 +442,7 @@ button:active{transform:translateY(2px);}
   font-size:clamp(18px,4.6vw,27px);
   line-height:1.6;
   color:#f0fff7;
-  text-shadow:0 2px 20px rgba(0,0,0,.85), 0 0 26px rgba(77,255,171,.35);
+  text-shadow:0 2px 20px rgba(0,0,0,.9), 0 0 22px rgba(77,255,171,.55), 0 0 48px rgba(77,255,171,.30);
 }
 .showcase-caption small{
   display:block;margin-top:10px;
@@ -448,6 +451,10 @@ button:active{transform:translateY(2px);}
   color:rgba(200,235,215,.78);
   text-shadow:0 2px 12px rgba(0,0,0,.8);
 }
+
+/* ================= SCROLL DRIFT ================= */
+.drift{will-change:transform;}
+@media (prefers-reduced-motion:reduce){ .drift{transform:none!important;} }
 
 /* ================= SCROLL REVEAL ================= */
 .js-reveal .reveal{
@@ -460,6 +467,7 @@ button:active{transform:translateY(2px);}
   will-change:opacity,transform;
 }
 .js-reveal .reveal.is-in{opacity:1;transform:none;filter:none;}
+.js-reveal .reveal.drift:not(.is-in){transform:translateY(34px)!important;}
 @media (prefers-reduced-motion:reduce){
   .js-reveal .reveal{opacity:1;transform:none;filter:none;transition:none;}
   .showcase-img{transform:none!important;}
@@ -505,7 +513,7 @@ button:active{transform:translateY(2px);}
 
     <!-- بەشی یەکەم -->
     <section class="card reveal">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal drift" data-drift="10">
         <div class="sec-num">١</div>
         <h2 class="sec-title">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
       </div>
@@ -539,7 +547,7 @@ button:active{transform:translateY(2px);}
     <section class="showcase" aria-hidden="true">
       <img class="showcase-img" style="object-position:50% 26%" src="assets/img/mam-1.webp" alt="" loading="lazy">
       <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal">
+      <div class="showcase-caption reveal drift" data-drift="26">
         <p>مام جەلال تاڵەبانی</p>
         <small>دامەزرێنەری یەکێتیی نیشتمانیی کوردستان</small>
       </div>
@@ -547,7 +555,7 @@ button:active{transform:translateY(2px);}
 
     <!-- بەشی دووەم -->
     <section class="card reveal">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal drift" data-drift="10">
         <div class="sec-num">٢</div>
         <h2 class="sec-title">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
       </div>
@@ -586,7 +594,7 @@ button:active{transform:translateY(2px);}
     <section class="showcase" aria-hidden="true">
       <img class="showcase-img" style="object-position:50% 16%" src="assets/img/mam-2.webp" alt="" loading="lazy">
       <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal">
+      <div class="showcase-caption reveal drift" data-drift="26">
         <p>ڕێبازی ئەو، ئیلهامی نەوەی ئەمڕۆیە</p>
         <small>بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</small>
       </div>
@@ -594,7 +602,7 @@ button:active{transform:translateY(2px);}
 
     <!-- بەشی سێیەم -->
     <section class="card reveal">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal drift" data-drift="10">
         <div class="sec-num">٣</div>
         <h2 class="sec-title">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
       </div>
@@ -610,7 +618,7 @@ button:active{transform:translateY(2px);}
       </div>
     </section>
 
-    <div class="quote reveal">
+    <div class="quote reveal drift" data-drift="12">
       <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
       <p class="q-body">بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     </div>
@@ -828,33 +836,46 @@ button:active{transform:translateY(2px);}
   /* ---------- پارالاکسی وێنەکان ---------- */
   var bands = [].slice.call(document.querySelectorAll(".showcase"));
 
-  if(bands.length && !reduced){
+  var drifters = [].slice.call(document.querySelectorAll(".drift"));
+
+  if((bands.length || drifters.length) && !reduced){
     var ticking = false;
 
-    function parallax(){
+    // ‎-1 لە سەرەوەی دیمەن، 0 لە ناوەڕاست، 1 لە خوارەوە
+    function progressOf(rect, vh){
+      return (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+    }
+
+    function frame(){
       var vh = window.innerHeight;
+
       bands.forEach(function(band){
         var rect = band.getBoundingClientRect();
         if(rect.bottom < -200 || rect.top > vh + 200) return;
         var img = band.querySelector(".showcase-img");
-        if(!img) return;
-        // ‎-1 لە سەرەوەی دیمەن بۆ 1 لە خوارەوە
-        var progress = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
-        img.style.transform = "translate3d(0," + (progress * 11).toFixed(2) + "%,0)";
+        if(img) img.style.transform = "translate3d(0," + (progressOf(rect, vh) * 11).toFixed(2) + "%,0)";
       });
+
+      drifters.forEach(function(el){
+        var rect = el.getBoundingClientRect();
+        if(rect.bottom < -160 || rect.top > vh + 160) return;
+        var amount = parseFloat(el.getAttribute("data-drift")) || 12;
+        el.style.transform = "translate3d(0," + (progressOf(rect, vh) * amount).toFixed(1) + "px,0)";
+      });
+
       ticking = false;
     }
 
     function onScroll(){
       if(!ticking){
         ticking = true;
-        window.requestAnimationFrame(parallax);
+        window.requestAnimationFrame(frame);
       }
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
-    parallax();
+    frame();
   }
 })();
 </script>
