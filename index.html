@@ -561,6 +561,26 @@ button:active{transform:translateY(2px);}
 }
 .dev-dots b{height:1px;width:54px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
 
+/* ================= LINE MASK REVEAL ================= */
+.js-reveal .reveal.lines{opacity:1;transform:none;filter:none;}
+.js-reveal .tline{
+  display:block;
+  overflow:hidden;
+  padding:0.16em 0.12em;
+  margin:-0.16em -0.12em;
+}
+.js-reveal .tline-in{
+  display:block;
+  transform:translateY(112%);
+  opacity:0;
+  transition:transform .95s cubic-bezier(.16,1,.3,1),
+             opacity .75s cubic-bezier(.16,1,.3,1);
+}
+.js-reveal .reveal.lines.is-in .tline-in{transform:translateY(0);opacity:1;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .tline-in{transform:translateY(40%);}
+}
+
 /* ================= WORD-BY-WORD MOTION ================= */
 .js-reveal .reveal.words{opacity:1;transform:none;filter:none;}
 .js-reveal .reveal.words .word{
@@ -693,14 +713,14 @@ button:active{transform:translateY(2px);}
     <h1 class="org reveal words drift" data-drift="26">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
     <p class="form-title reveal words drift" data-drift="46">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
-    <p class="tagline reveal words drift" data-drift="20">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
+    <p class="tagline reveal lines drift" data-drift="20">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
 
     <div class="intro reveal drift" data-drift="24">
-      <p class="reveal">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
-      <p class="reveal">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
+      <p class="reveal lines">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
+      <p class="reveal lines">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
     </div>
 
-    <p class="hero-sub reveal words drift" data-drift="12">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+    <p class="hero-sub reveal lines drift" data-drift="12">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
   </header>
 
   <form id="projectForm" novalidate>
@@ -798,7 +818,7 @@ button:active{transform:translateY(2px);}
 
     <div class="quote reveal drift" data-drift="46">
       <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
-      <p class="q-body reveal words">بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+      <p class="q-body reveal lines">بڕوای پتەومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     </div>
 
     <div class="actions reveal">
@@ -1090,6 +1110,86 @@ button:active{transform:translateY(2px);}
   }
   window.requestAnimationFrame(watchPosition);
 
+  /* دەقەکانی ".lines" دێڕ بە دێڕ لە پشت پەردەوە دێنە سەرەوە.
+     دێڕەکان دوای ڕێکخستنی لاپەڕەکە دەپێوێن، بۆیە لەگەڵ هەر قەبارەیەکی شاشە دەگونجێن. */
+  function splitLines(el){
+    if(!el.dataset.raw) el.dataset.raw = el.innerHTML;
+
+    // سەرەتا هەموو وشەکان جیا دەکرێنەوە بۆ پێوانەی شوێنیان
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var texts = [], t;
+    while((t = walker.nextNode())) if(t.nodeValue.trim()) texts.push(t);
+
+    texts.forEach(function(node){
+      var frag = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach(function(part){
+        if(!part) return;
+        if(/^\s+$/.test(part)){
+          frag.appendChild(document.createTextNode(" "));
+        } else {
+          var w = document.createElement("span");
+          w.className = "lw";
+          w.style.display = "inline-block";
+          w.textContent = part;
+          frag.appendChild(w);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+
+    // وشەکان بەپێی بەرزیی خۆیان دەکرێن بە دێڕ
+    var nodes = [].slice.call(el.childNodes);
+    var lines = [], currentTop = null, bucket = null;
+
+    nodes.forEach(function(node){
+      if(node.nodeType === 1 && node.classList.contains("lw")){
+        var top = node.offsetTop;
+        if(currentTop === null || Math.abs(top - currentTop) > 4){
+          currentTop = top;
+          bucket = [];
+          lines.push(bucket);
+        }
+        bucket.push(node);
+      } else if(bucket){
+        bucket.push(node);
+      }
+    });
+
+    if(!lines.length) return;
+
+    el.innerHTML = "";
+    lines.forEach(function(group, i){
+      var line = document.createElement("span");
+      line.className = "tline";
+      var inner = document.createElement("span");
+      inner.className = "tline-in";
+      inner.style.transitionDelay = Math.min(i * 0.09, 0.9) + "s";
+      group.forEach(function(node){
+        if(node.nodeType === 1 && node.classList.contains("lw")) node.style.display = "";
+        inner.appendChild(node);
+      });
+      line.appendChild(inner);
+      el.appendChild(line);
+    });
+  }
+
+  function buildLines(){
+    [].forEach.call(document.querySelectorAll(".lines"), function(el){
+      if(el.dataset.raw) el.innerHTML = el.dataset.raw;
+      splitLines(el);
+    });
+  }
+
+  var lineTimer;
+  window.addEventListener("resize", function(){
+    clearTimeout(lineTimer);
+    lineTimer = setTimeout(function(){
+      var openOnes = [].slice.call(document.querySelectorAll(".lines.is-in"));
+      buildLines();
+      openOnes.forEach(function(el){ el.classList.add("is-in"); });
+    }, 250);
+  });
+
   /* هەر دەقێکی ".words" دەکرێت بە وشەی جیاواز، بۆ ئەوەی یەک بە یەک بێن */
   function splitWords(el){
     var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
@@ -1118,6 +1218,14 @@ button:active{transform:translateY(2px);}
   }
 
   [].forEach.call(document.querySelectorAll(".words"), splitWords);
+
+  // دێڕەکان دوای بارکردنی فۆنتەکە دەپێوین، نەک پێشی —
+  // بەبێ ئەوە شکاندنی دێڕەکان دەگۆڕێت و دەق تێکدەچێت
+  if(document.fonts && document.fonts.ready && document.fonts.ready.then){
+    document.fonts.ready.then(buildLines);
+  } else {
+    buildLines();
+  }
 
   if(!reduced && "IntersectionObserver" in window){
     document.documentElement.classList.add("js-reveal");
