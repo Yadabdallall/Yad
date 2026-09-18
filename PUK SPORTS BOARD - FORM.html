@@ -792,22 +792,19 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 }
 
 /* ================= SCROLL DRIFT ================= */
-.drift{will-change:transform;}
 
 
 /* ================= SCROLL REVEAL ================= */
 .js-reveal .reveal{
   opacity:0;
-  transform:translateY(20px);
-  transition:opacity .85s cubic-bezier(.25,.6,.3,1),
-             transform .85s cubic-bezier(.25,.6,.3,1);
-  will-change:opacity,transform;
+  transform:translateY(28px);
+  transition:opacity .85s cubic-bezier(.22,.7,.28,1),
+             transform .85s cubic-bezier(.22,.7,.28,1);
+  will-change:opacity, transform;
 }
 .js-reveal .reveal.is-in{opacity:1;transform:none;filter:none;}
-.js-reveal .reveal.drift:not(.is-in){transform:translateY(20px)!important;}
 @media (prefers-reduced-motion:reduce){
   .js-reveal .reveal{transform:translateY(10px);}
-  .js-reveal .reveal.drift:not(.is-in){transform:translateY(10px)!important;}
 }
 
 @keyframes rise{
@@ -842,49 +839,49 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     </div>
     <p class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
 
-    <h1 class="org reveal drift" data-drift="5">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <h1 class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
-    <p class="form-title reveal drift" data-drift="6">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
-    <p class="tagline reveal lines drift" data-drift="6">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
+    <p class="form-title reveal">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p class="tagline reveal lines">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
 
-    <div class="intro reveal drift" data-drift="5">
+    <div class="intro reveal">
       <p class="reveal lines">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
       <p class="reveal lines">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
     </div>
 
-    <p class="hero-sub reveal lines drift" data-drift="5">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+    <p class="hero-sub reveal lines">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
   </header>
 
   <form id="projectForm" novalidate>
 
     <!-- بەشی یەکەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal">
         <div class="sec-num">١</div>
         <h2 class="sec-title reveal words">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
         <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە">
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="age">تەمەن <span class="req">*</span></label>
         <input id="age" name="تەمەن" type="text" inputmode="numeric" placeholder="بۆ نموونە ٢٧ ساڵ">
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
         <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX">
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
         <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
         <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
       </div>
@@ -893,37 +890,37 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
     <!-- بەشی دووەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal">
         <div class="sec-num">٢</div>
         <h2 class="sec-title reveal words">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="pname">ناوی پڕۆژە <span class="req">*</span></label>
         <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
         <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
         <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
         <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
         <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
         <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text">
       </div>
@@ -932,23 +929,23 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
     <!-- بەشی سێیەم -->
     <section class="card reveal">
-      <div class="sec-head reveal drift" data-drift="10">
+      <div class="sec-head reveal">
         <div class="sec-num">٣</div>
         <h2 class="sec-title reveal words">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
         <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
       </div>
 
-      <div class="field reveal drift" data-drift="5">
+      <div class="field reveal">
         <label for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
         <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
       </div>
     </section>
 
-    <div class="quote reveal drift" data-drift="6">
+    <div class="quote reveal">
       <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
       <p class="q-body reveal lines">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     </div>
@@ -1942,52 +1939,6 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     markActive();
   }
 
-  /* ---------- جوڵەی نووسینەکان لەگەڵ سکڕۆڵدا ---------- */
-  var drifters = [].slice.call(document.querySelectorAll(".drift"));
-
-  if(drifters.length){
-    var looping = false;
-
-    // ‎-1 لە سەرەوەی دیمەن، 0 لە ناوەڕاست، 1 لە خوارەوە
-    function progressOf(top, height, vh){
-      return (top + height / 2 - vh / 2) / (vh / 2 + height / 2);
-    }
-
-    function loop(){
-      var vh = window.innerHeight;
-
-      drifters.forEach(function(el){
-        var current = parseFloat(el.getAttribute("data-drift-y")) || 0;
-        var rect = el.getBoundingClientRect();
-
-        // شوێنی ڕاستەقینە: ئەو بڕەی جوڵێنراوە لێی دەکەینەوە
-        var top = rect.top - current;
-        if(top + rect.height < -200 || top > vh + 200) return;
-
-        var amount = (parseFloat(el.getAttribute("data-drift")) || 8) * (reduced ? 0.45 : 1);
-
-        // هەمان وردی بۆ پاشەکەوتکردن و بۆ جوڵاندن، دەنا پێوانەکە
-        // بە بڕێکی زۆر بچووک هەڵە دەبێت و هەرگیز ناوەستێت
-        var next = Math.round(progressOf(top, rect.height, vh) * amount * 100) / 100;
-        if(Math.abs(next - current) < 0.05) return;
-
-        el.setAttribute("data-drift-y", String(next));
-        el.style.transform = "translate3d(0," + next + "px,0)";
-      });
-
-      looping = false;
-    }
-
-    function startLoop(){
-      if(!looping){
-        looping = true;
-        window.requestAnimationFrame(loop);
-      }
-    }
-
-    onEveryScroll(startLoop);
-    startLoop();
-  }
 })();
 </script>
 </body>
