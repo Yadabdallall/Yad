@@ -165,9 +165,8 @@ body{
   padding:26px 22px;
   border-radius:var(--radius);
   background:
-    radial-gradient(circle at 1px 1px, rgba(77,255,171,.085) 1px, transparent 1.6px) 0 0/24px 24px,
-    linear-gradient(145deg, rgba(255,255,255,.075) 0%, rgba(255,255,255,.015) 40%, rgba(77,255,171,.03) 100%),
-    rgba(0,11,6,.55);
+    radial-gradient(circle at 1px 1px, rgba(77,255,171,.035) 1px, transparent 1.6px) 0 0/26px 26px,
+    linear-gradient(145deg, rgba(255,255,255,.085) 0%, rgba(255,255,255,.02) 38%, rgba(77,255,171,.035) 100%);
   border:1px solid rgba(255,255,255,.10);
   box-shadow:
     0 0 0 1px rgba(77,255,171,.34),
@@ -224,8 +223,8 @@ body{
   position:absolute;top:0;
   inset-inline:4%;
   height:1px;
-  background:linear-gradient(90deg,transparent,rgba(77,255,171,.34),transparent);
-  box-shadow:0 0 10px rgba(77,255,171,.30);
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.22),transparent);
+  box-shadow:0 0 8px rgba(77,255,171,.18);
 }
 .field + .field::after{
   content:"";
@@ -235,8 +234,8 @@ body{
   transform:translateX(50%);
   border-radius:50%;
   background:var(--neon);
-  box-shadow:0 0 10px var(--neon),0 0 22px rgba(77,255,171,.7);
-  opacity:.75;
+  box-shadow:0 0 8px var(--neon),0 0 18px rgba(77,255,171,.5);
+  opacity:.5;
 }
 label{
   display:block;margin-bottom:10px;
@@ -422,58 +421,6 @@ button:active{transform:translateY(2px);}
 }
 .dev-dots b{height:1px;width:54px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
 
-/* ================= PARALLAX PHOTO BANDS ================= */
-.showcase{
-  position:relative;
-  width:100vw;
-  margin-inline:calc(50% - 50vw);
-  height:clamp(300px,52vh,460px);
-  overflow:hidden;
-  display:grid;
-  align-items:end;
-  justify-items:center;
-  isolation:isolate;
-  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
-          mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-.showcase-img{
-  position:absolute;
-  inset-inline:0;
-  top:-18%;
-  height:136%;
-  width:100%;
-  object-fit:cover;
-  will-change:transform;
-  filter:contrast(1.04) brightness(.86) saturate(.95);
-}
-.showcase-veil{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    radial-gradient(82% 98% at 50% 38%, transparent 42%, rgba(0,0,0,.50) 100%),
-    linear-gradient(180deg, rgba(1,16,10,.34) 0%, rgba(0,0,0,.10) 32%, rgba(0,0,0,.62) 74%, rgba(1,16,10,.86) 100%);
-}
-.showcase-caption{
-  position:relative;z-index:3;
-  text-align:center;
-  padding:0 26px 34px;
-  max-width:660px;
-}
-.showcase-caption p{
-  margin:0;
-  font-weight:700;
-  font-size:clamp(18px,4.6vw,27px);
-  line-height:1.6;
-  color:#f0fff7;
-  text-shadow:0 2px 20px rgba(0,0,0,.9), 0 0 22px rgba(77,255,171,.55), 0 0 48px rgba(77,255,171,.30);
-}
-.showcase-caption small{
-  display:block;margin-top:10px;
-  font-weight:400;
-  font-size:clamp(13px,3.4vw,16px);
-  color:rgba(200,235,215,.78);
-  text-shadow:0 2px 12px rgba(0,0,0,.8);
-}
-
 /* ================= SCROLL DRIFT ================= */
 .drift{will-change:transform;}
 @media (prefers-reduced-motion:reduce){ .drift{transform:none!important;} }
@@ -492,7 +439,6 @@ button:active{transform:translateY(2px);}
 .js-reveal .reveal.drift:not(.is-in){transform:translateY(34px)!important;}
 @media (prefers-reduced-motion:reduce){
   .js-reveal .reveal{opacity:1;transform:none;filter:none;transition:none;}
-  .showcase-img{transform:none!important;}
 }
 
 @keyframes rise{
@@ -566,14 +512,6 @@ button:active{transform:translateY(2px);}
       </div>
     </section>
 
-    <section class="showcase" aria-hidden="true">
-      <img class="showcase-img" style="object-position:48% 30%" src="assets/img/mam-1.webp" alt="" loading="lazy">
-      <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal drift" data-drift="42">
-        <p>«سەفین لە بن دێت، یەکێتی لە بن نایەت»</p>
-        <small>مام جەلال تاڵەبانی</small>
-      </div>
-    </section>
 
     <!-- بەشی دووەم -->
     <section class="card reveal">
@@ -613,14 +551,6 @@ button:active{transform:translateY(2px);}
       </div>
     </section>
 
-    <section class="showcase" aria-hidden="true">
-      <img class="showcase-img" style="object-position:50% 34%" src="assets/img/mam-2.webp" alt="" loading="lazy">
-      <div class="showcase-veil"></div>
-      <div class="showcase-caption reveal drift" data-drift="42">
-        <p>ڕێبازی ئەو، ئیلهامی نەوەی ئەمڕۆیە</p>
-        <small>بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</small>
-      </div>
-    </section>
 
     <!-- بەشی سێیەم -->
     <section class="card reveal">
@@ -855,12 +785,10 @@ button:active{transform:translateY(2px);}
     }, 1200);
   }
 
-  /* ---------- پارالاکسی وێنەکان ---------- */
-  var bands = [].slice.call(document.querySelectorAll(".showcase"));
-
+  /* ---------- جوڵەی نووسینەکان لەگەڵ سکڕۆڵدا ---------- */
   var drifters = [].slice.call(document.querySelectorAll(".drift"));
 
-  if((bands.length || drifters.length) && !reduced){
+  if(drifters.length && !reduced){
     var ticking = false;
 
     // ‎-1 لە سەرەوەی دیمەن، 0 لە ناوەڕاست، 1 لە خوارەوە
@@ -870,13 +798,6 @@ button:active{transform:translateY(2px);}
 
     function frame(){
       var vh = window.innerHeight;
-
-      bands.forEach(function(band){
-        var rect = band.getBoundingClientRect();
-        if(rect.bottom < -200 || rect.top > vh + 200) return;
-        var img = band.querySelector(".showcase-img");
-        if(img) img.style.transform = "translate3d(0," + (progressOf(rect, vh) * 11).toFixed(2) + "%,0)";
-      });
 
       drifters.forEach(function(el){
         var rect = el.getBoundingClientRect();
