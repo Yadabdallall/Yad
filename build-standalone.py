@@ -9,6 +9,9 @@ MIME = {".woff2":"font/woff2", ".webp":"image/webp", ".png":"image/png",
 
 html = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 
+# تاگی preload لە وەشانی تاکە-فایلدا پێویست نییە و دووبارە وێنەکە هەڵدەگرێت
+html = re.sub(r'\s*<link rel="preload"[^>]*>', "", html)
+
 for path in sorted(set(re.findall(r"assets/[\w./-]+", html)), key=len, reverse=True):
     full = os.path.join(ROOT, path)
     if not os.path.exists(full):
