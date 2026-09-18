@@ -144,7 +144,9 @@ body{
     0 0 30px var(--neon),
     0 0 58px rgba(77,255,171,.6);
 }
-.logo-note.is-open{max-height:70px;opacity:1;transform:translateY(10px);}
+.logo-note.is-open,
+.board-logo:hover + .logo-note,
+.board-logo:focus + .logo-note{max-height:70px;opacity:1;transform:translateY(10px);}
 
 .neon-line{
   height:1px;margin:-1px auto 0;
@@ -560,6 +562,39 @@ button:active{transform:translateY(2px);}
   background:var(--neon);box-shadow:0 0 12px var(--neon);opacity:.8;
 }
 .dev-dots b{height:1px;width:54px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+/* ============ جوڵە بەبێ JavaScript ============
+   هەندێک بینەری فایل (وەک پێشبینینی iOS) JavaScript ناخەنە کار،
+   بۆیە هەمان دەرکەوتن بە CSS ـی تەنها ئامادە کراوە. */
+@keyframes tx-rise{
+  from{opacity:0;transform:translateY(38px);}
+  to{opacity:1;transform:none;}
+}
+html:not(.js-reveal) .reveal{
+  animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) both;
+}
+html:not(.js-reveal) .card .field:nth-of-type(2){animation-delay:.08s;}
+html:not(.js-reveal) .card .field:nth-of-type(3){animation-delay:.16s;}
+html:not(.js-reveal) .card .field:nth-of-type(4){animation-delay:.24s;}
+html:not(.js-reveal) .card .field:nth-of-type(5){animation-delay:.32s;}
+html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
+
+/* لە وێبگەڕە نوێیەکاندا ڕاستەوخۆ بە سکڕۆڵەوە دەبەسترێتەوە */
+@supports (animation-timeline:view()){
+  html:not(.js-reveal) .reveal{
+    animation:tx-rise linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 88%;
+    animation-delay:0s;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html:not(.js-reveal) .reveal{animation-duration:.6s;}
+  @keyframes tx-rise{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
+  }
+}
 
 /* ================= LINE MASK REVEAL ================= */
 .js-reveal .reveal.lines{opacity:1;transform:none;filter:none;}
