@@ -1006,6 +1006,11 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   "use strict";
 
   var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
+
+  /* ئەگەر Worker ـی بەرزکردنەوە دابنرێت (بڕوانە پەڕگەی worker/README.md)،
+     PDF ـەکە بەرز دەکرێتەوە و لینکەکەی لەناو نامەی وەتسئەپدا دەنێردرێت،
+     بۆ ئەوەی کەسەکە تەنها Send لێبدات. بەتاڵ بێت، شێوازی ئاسایی کاردەکات. */
+  var UPLOAD_ENDPOINT = "";
   var MAX_URL = 20000;                   // سنووری ئاسایی بەڕاوزەرەکان
   var STORAGE_KEY = "puk-sports-form-draft";
   var OPTIONAL = ["place"];              // خانە ئارەزوومەندانەکان
@@ -1498,13 +1503,51 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 
       sendBtn.disabled = false;
 
-      // PDF ـەکە پاشەکەوت دەکرێت و ڕاستەوخۆ چاتی بۆردەکە دەکرێتەوە
+      // PDF پاشەکەوت دەکرێت و چاتی بۆردەکە بە نامەی ئامادەکراوەوە دەکرێتەوە،
+      // بۆ ئەوەی زانیارییەکان بە هەر حاڵێک بگەن
       function openChatWithFile(){
         downloadBlob(blob, pdfFileName());
-        toast("PDF پاشەکەوت کرا — لە چاتەکەدا هاوپێچی بکە");
+        toast("PDF پاشەکەوت کرا — نامەکە ئامادەیە، بینێرە");
+
+        var msg = buildMessage();
+        var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+        if(url.length > MAX_URL) url = "https://wa.me/" + WHATSAPP_NUMBER;
+
         setTimeout(function(){
-          window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener");
+          window.open(url, "_blank", "noopener");
         }, 1100);
+      }
+
+      // ئەگەر Worker دانرابێت: بەرزکردنەوە و ناردنی لینکەکە ڕاستەوخۆ بۆ ژمارەی بۆرد
+      if(UPLOAD_ENDPOINT){
+        sendBtn.disabled = true;
+        toast("PDF دەنێردرێت…");
+
+        fetch(UPLOAD_ENDPOINT.replace(/\/+$/, "") + "/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/pdf" },
+          body: blob
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+          if(!data || !data.url) throw new Error("no url");
+          sendBtn.disabled = false;
+
+          var msg = buildMessage() + "\n\n📄 فایلی PDF:\n" + data.url;
+          var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+
+          if(url.length > MAX_URL){
+            msg = "🏅 فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی\nبۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان\n\n📄 " + data.url;
+            url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+          }
+
+          window.open(url, "_blank", "noopener");
+        })
+        .catch(function(){
+          sendBtn.disabled = false;
+          openChatWithFile();
+        });
+        return;
       }
 
       // ناردنی فایل تەنها لە ڕێگەی پەنجەرەی ناردنی ئامێرەکەوە دەکرێت
