@@ -110,13 +110,15 @@ body{
   max-height:0;
   opacity:0;
   overflow:hidden;
-  transform:translateY(-8px);
+  transform:translateY(-6px) scale(.96);
+  letter-spacing:7px;
   font-weight:700;
   font-size:clamp(14px,3.8vw,18px);
   color:#eafff5;
-  transition:max-height .5s cubic-bezier(.22,.8,.3,1),
-             opacity .5s ease,
-             transform .5s cubic-bezier(.22,.8,.3,1);
+  transition:max-height 1s cubic-bezier(.22,.7,.28,1),
+             opacity 1.25s cubic-bezier(.22,.7,.28,1),
+             transform 1.25s cubic-bezier(.22,.7,.28,1),
+             letter-spacing 1.45s cubic-bezier(.16,.8,.24,1);
   text-shadow:
     0 0 6px #ffffff,
     0 0 14px var(--neon),
@@ -125,7 +127,12 @@ body{
 }
 .logo-note.is-open,
 .board-logo:hover + .logo-note,
-.board-logo:focus-visible + .logo-note{max-height:70px;opacity:1;transform:translateY(10px);}
+.board-logo:focus-visible + .logo-note{
+  max-height:70px;
+  opacity:1;
+  transform:translateY(10px) scale(1);
+  letter-spacing:1.5px;
+}
 
 .neon-line{
   height:1px;margin:-1px auto 0;
@@ -1939,48 +1946,65 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   var drifters = [].slice.call(document.querySelectorAll(".drift"));
 
   if(drifters.length){
-    var ticking = false;
+    var EASE = 0.09;          // چەندە بە نەرمی بەرەو شوێنی خۆی دەچێت
+    var REST = 0.30;          // لەم بڕەوە بە وەستاو دادەنرێت
+    var looping = false;
 
     // ‎-1 لە سەرەوەی دیمەن، 0 لە ناوەڕاست، 1 لە خوارەوە
-    function progressOf(rect, vh){
-      return (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+    function progressOf(top, height, vh){
+      return (top + height / 2 - vh / 2) / (vh / 2 + height / 2);
     }
 
-    function frame(){
+    // جوڵەکە بە نەرمی بەرەو ئامانجەکەی دەچێت و بە هێمنی دەوەستێت،
+    // لە جیاتی ئەوەی هەر فرەیمێک بازبدات
+    function loop(){
       var vh = window.innerHeight;
+      var moving = false;
 
       drifters.forEach(function(el){
+        var current = parseFloat(el.getAttribute("data-drift-y")) || 0;
         var rect = el.getBoundingClientRect();
-        if(rect.bottom < -160 || rect.top > vh + 160) return;
 
-        // ئەو بڕەی پێشتر جوڵێنراوە لێی دەکەینەوە، بۆ ئەوەی پێوانەکە
-        // کاریگەری لە خۆی نەبێت و دوای وەستانی سکڕۆڵ نەجوڵێت
-        var applied = parseFloat(el.getAttribute("data-drift-y")) || 0;
-        var base = { top: rect.top - applied, height: rect.height };
-        base.bottom = base.top + base.height;
+        // شوێنی ڕاستەقینە: ئەو بڕەی جوڵێنراوە لێی دەکەینەوە
+        var top = rect.top - current;
+        if(top + rect.height < -200 || top > vh + 200) return;
 
-        var amount = (parseFloat(el.getAttribute("data-drift")) || 8) * (reduced ? 0.4 : 1);
-        var shift = progressOf(base, vh) * amount;
+        var amount = (parseFloat(el.getAttribute("data-drift")) || 8) * (reduced ? 0.45 : 1);
+        var target = progressOf(top, rect.height, vh) * amount;
+        var next;
 
-        // گۆڕانکاریی زۆر بچووک پشتگوێ دەخرێت
-        if(Math.abs(shift - applied) < 0.25) return;
+        if(Math.abs(target - current) <= REST){
+          next = target;
+        } else {
+          next = current + (target - current) * EASE;
+          moving = true;
+        }
 
-        el.setAttribute("data-drift-y", shift.toFixed(2));
-        el.style.transform = "translate3d(0," + shift.toFixed(2) + "px,0)";
+        // هەمان وردی بۆ پاشەکەوتکردن و بۆ جوڵاندن، دەنا پێوانەکە
+        // بە بڕێکی زۆر بچووک هەڵە دەبێت و هەرگیز ناوەستێت
+        next = Math.round(next * 100) / 100;
+        if(Math.abs(next - current) < 0.05) return;
+
+        el.setAttribute("data-drift-y", String(next));
+        el.style.transform = "translate3d(0," + next + "px,0)";
       });
 
-      ticking = false;
-    }
-
-    function onScroll(){
-      if(!ticking){
-        ticking = true;
-        window.requestAnimationFrame(frame);
+      if(moving){
+        window.requestAnimationFrame(loop);
+      } else {
+        looping = false;
       }
     }
 
-    onEveryScroll(frame);
-    frame();
+    function startLoop(){
+      if(!looping){
+        looping = true;
+        window.requestAnimationFrame(loop);
+      }
+    }
+
+    onEveryScroll(startLoop);
+    startLoop();
   }
 })();
 </script>
