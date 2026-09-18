@@ -1013,6 +1013,7 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   var UPLOAD_ENDPOINT = "";
   var MAX_URL = 20000;                   // سنووری ئاسایی بەڕاوزەرەکان
   var STORAGE_KEY = "puk-sports-form-draft";
+  var SHORT_MESSAGE = "فۆڕمی بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان";
   var OPTIONAL = ["place"];              // خانە ئارەزوومەندانەکان
 
   var form = document.getElementById("projectForm");
@@ -1507,14 +1508,11 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
       // بۆ ئەوەی زانیارییەکان بە هەر حاڵێک بگەن
       function openChatWithFile(){
         downloadBlob(blob, pdfFileName());
-        toast("PDF پاشەکەوت کرا — نامەکە ئامادەیە، بینێرە");
-
-        var msg = buildMessage();
-        var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-        if(url.length > MAX_URL) url = "https://wa.me/" + WHATSAPP_NUMBER;
+        toast("PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە");
 
         setTimeout(function(){
-          window.open(url, "_blank", "noopener");
+          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(SHORT_MESSAGE),
+                      "_blank", "noopener");
         }, 1100);
       }
 
@@ -1533,15 +1531,9 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
           if(!data || !data.url) throw new Error("no url");
           sendBtn.disabled = false;
 
-          var msg = buildMessage() + "\n\n📄 فایلی PDF:\n" + data.url;
-          var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-
-          if(url.length > MAX_URL){
-            msg = "🏅 فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی\nبۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان\n\n📄 " + data.url;
-            url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-          }
-
-          window.open(url, "_blank", "noopener");
+          var msg = SHORT_MESSAGE + "\n\n📄 " + data.url;
+          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg),
+                      "_blank", "noopener");
         })
         .catch(function(){
           sendBtn.disabled = false;
@@ -1554,8 +1546,8 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
       if(file && navigator.canShare && navigator.canShare({ files: [file] })){
         navigator.share({
           files: [file],
-          title: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی",
-          text: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی — بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان"
+          title: SHORT_MESSAGE,
+          text: SHORT_MESSAGE
         }).catch(function(){
           // ڕەتکرایەوە یان سەرنەکەوت: چاتی بۆردەکە دەکرێتەوە
           openChatWithFile();
