@@ -1,0 +1,7 @@
+build/_pdf/
+build/_lo/
+build/toc_pages.json
+build/toc_entries.json
+build/fit.json
+__pycache__/
+*.pyc
