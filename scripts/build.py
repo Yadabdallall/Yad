@@ -47,8 +47,9 @@ TEXT_WIDTH_CM = 11.2
 
 # پێوەری ڕێکخستنی درێژی کتێبەکە — بۆ گەیشتن بە ژمارەیەکی دیاریکراوی لاپەڕە
 BODY_AFTER = float(os.environ.get("BOOK_BODY_AFTER", "5.0"))
-BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.39"))
+BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.38"))
 BODY_SIZE = float(os.environ.get("BOOK_BODY_SIZE", "11.0"))
+HEAD_GAP = float(os.environ.get("BOOK_HEAD_GAP", "0.55"))  # ڕێژەی بۆشایی سەردێڕەکان
 
 
 # ═══════════════════════════════════════════════════ ڕێکخستنی لاپەڕە
@@ -191,19 +192,19 @@ class Builder:
         return self
 
     def h1(self, text):
-        p = self._para(align="right", before=22, after=2, line=1.2)
+        p = self._para(align="right", before=22 * HEAD_GAP, after=2, line=1.2)
         style_run(p.add_run(text), size=16.5, bold=True, color=GREEN_DARK,
                   font=FONT_DISPLAY)
         keep_with_next(p)
         keep_lines(p)
         self._register(1, text, p)
-        rule = self._para(align="right", before=0, after=12, line=1)
+        rule = self._para(align="right", before=0, after=12 * HEAD_GAP, line=1)
         style_run(rule.add_run("▬▬▬▬"), size=7, color=GOLD, font=FONT_DISPLAY)
         keep_with_next(rule)
         return self
 
     def h2(self, text):
-        p = self._para(align="right", before=16, after=6, line=1.25)
+        p = self._para(align="right", before=16 * HEAD_GAP, after=6 * HEAD_GAP, line=1.25)
         style_run(p.add_run(text), size=13.5, bold=True, color=GREEN_MID,
                   font=FONT_DISPLAY)
         keep_with_next(p)
@@ -212,7 +213,7 @@ class Builder:
         return self
 
     def h3(self, text):
-        p = self._para(align="right", before=12, after=4, line=1.25)
+        p = self._para(align="right", before=12 * HEAD_GAP, after=4 * HEAD_GAP, line=1.25)
         style_run(p.add_run(text), size=12, bold=True, color=GREEN_SOFT,
                   font=FONT_BODY)
         keep_with_next(p)

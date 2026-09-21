@@ -24,7 +24,7 @@ BOOK_TOKENS=0 python3 scripts/build.py
 ## پێکهاتەی پڕۆژەکە
 
 ```
-book/src/       دەقی کتێبەکە — ١٢ فایلی .md بە ڕیزبەندی
+book/src/       دەقی کتێبەکە — ١٥ فایلی .md بە ڕیزبەندی
 book/images/    وێنەکان (٥ دانراوە، ٢٣ ماوە — بڕوانە book/WENAKAN.md)
 scripts/
   docxkit.py    کیتی OOXML بۆ ڕاست-بۆ-چەپ، ڕەنگ و چوارچێوە
@@ -98,7 +98,8 @@ python3 scripts/fit.py 206
 ```
 
 ئەمە بۆشاییی نێوان دێڕەکان بە وردی ڕێک دەخات تا کتێبەکە ڕێک دەکەوێتە
-سەر ٢٠٦ لاپەڕە. بەهای ئێستا: `BOOK_BODY_SIZE=11.0`، `BOOK_BODY_LINE=1.39`، `BOOK_BODY_AFTER=5.0`.
+سەر ٢٠٦ لاپەڕە. بەهای ئێستا: `BOOK_BODY_SIZE=11.0`، `BOOK_BODY_LINE=1.38`،
+`BOOK_BODY_AFTER=5.0`، `BOOK_HEAD_GAP=0.55`.
 
 ئەگەر بتەوێت کتێبەکە درێژتر بێت لە ٢٠٦ لاپەڕە، تەنها ژمارەکە بگۆڕە:
 `python3 scripts/fit.py 240`.
