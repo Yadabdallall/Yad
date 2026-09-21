@@ -46,7 +46,7 @@ TEXT_WIDTH_CM = 11.2
 
 # پێوەری ڕێکخستنی درێژی کتێبەکە — بۆ گەیشتن بە ژمارەیەکی دیاریکراوی لاپەڕە
 BODY_AFTER = float(os.environ.get("BOOK_BODY_AFTER", "7.0"))
-BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.42"))
+BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.59"))
 
 
 # ═══════════════════════════════════════════════════ ڕێکخستنی لاپەڕە
@@ -242,13 +242,16 @@ class Builder:
                   color=GREEN_DARKEST, font=FONT_BODY)
         shade(p, GREEN_TINT)
         borders(p, right=(18, GREEN_MID), space=8)
+        keep_lines(p)
         if attrib:
+            keep_with_next(p)      # ناوی خاوەنی وتە لە وتەکەی جیا نابێتەوە
             a = self._para(align="left", before=0, after=12, line=1.2,
                      indent_r=0.55, indent_l=0.55)
             style_run(a.add_run("— " + attrib), size=9.5, bold=True,
                       color=GREEN_SOFT, font=FONT_DISPLAY)
             shade(a, GREEN_TINT)
             borders(a, right=(18, GREEN_MID), space=8)
+            keep_lines(a)
         return self
 
     def box(self, title, lines):
@@ -273,6 +276,34 @@ class Builder:
                 keep_with_next(q)
         return self
 
+    def sources(self, items, title="سەرچاوەکانی ئەم بەشە"):
+        """بڵۆکی سەرچاوەکان لە کۆتایی هەر بەشێکدا."""
+        h = self._para(align="right", before=14, after=3, line=1.2,
+                       indent_r=0.3, indent_l=0.3)
+        style_run(h.add_run("▪ " + title), size=9.5, bold=True,
+                  color=GREEN_DARKEST, font=FONT_DISPLAY)
+        shade(h, "F4F8F5")
+        borders(h, top=(6, GREEN_SOFT), right=(6, GREEN_SOFT),
+                left=(6, GREEN_SOFT), space=7)
+        keep_with_next(h)
+        keep_lines(h)
+
+        for i, it in enumerate(items):
+            last = (i == len(items) - 1)
+            q = self._para(align="both", before=0, after=6 if last else 2,
+                           line=1.3, indent_r=0.75, indent_l=0.3)
+            q.paragraph_format.first_line_indent = Cm(-0.42)
+            style_run(q.add_run(f"{ar(i + 1)}. "), size=8.5, bold=True,
+                      color=GREEN_SOFT, font=FONT_DISPLAY)
+            style_run(q.add_run(it), size=8.5, color=INK_SOFT, font=FONT_BODY)
+            shade(q, "F4F8F5")
+            borders(q, right=(6, GREEN_SOFT), left=(6, GREEN_SOFT),
+                    bottom=(6, GREEN_SOFT) if last else None, space=7)
+            if not last:
+                keep_with_next(q)
+            keep_lines(q)
+        return self
+
     def bullets(self, items, numbered=False):
         for i, it in enumerate(items, 1):
             marker = f"{ar(i)}. " if numbered else "▪  "
@@ -290,6 +321,10 @@ class Builder:
         return self
 
     def sig(self, text):
+        # واژۆ نابێت بە تەنها لە سەری پەڕەیەکدا بمێنێتەوە
+        prev = self.doc.paragraphs[-1] if self.doc.paragraphs else None
+        if prev is not None:
+            keep_with_next(prev)
         p = self._para(align="left", before=10, after=14, line=1.3)
         style_run(p.add_run(text), size=10.5, bold=True, color=GREEN_SOFT,
                   font=FONT_DISPLAY)
@@ -497,6 +532,15 @@ def parse(builder, text):
                     body.append(lines[i].strip())
                 i += 1
             builder.box(rest, body)
+        elif tag == "SRC":
+            items = []
+            i += 1
+            while i < len(lines) and not lines[i].strip().startswith("@ENDSRC"):
+                if lines[i].strip():
+                    items.append(re.sub(r"^[-•\d.\s]*", "", lines[i].strip()))
+                i += 1
+            if items:
+                builder.sources(items, rest or "سەرچاوەکانی ئەم بەشە")
         elif tag in ("LIST", "NUM"):
             items = []
             i += 1
@@ -683,6 +727,7 @@ def build(toc_pages=None, toc_slots=4, out_name="serok_komari_yariga.docx"):
     set_bidi(toc_anchor_para)
 
     b = Builder(doc, toc_pages=toc_pages, toc_slots=toc_slots)
+    b.pending_break = True          # ناوەڕۆک لە پەڕەیەکی نوێوە دەست پێدەکات
     for f in source_files():
         with open(f, encoding="utf-8") as fh:
             parse(b, fh.read())
@@ -700,15 +745,7 @@ def build(toc_pages=None, toc_slots=4, out_name="serok_komari_yariga.docx"):
     for off, el in enumerate(x for x in toc_body if not x.tag.endswith("sectPr")):
         parent.insert(idx + off, el)
 
-    # پەڕەبڕ دوای پێڕست
-    br = OxmlElement("w:p")
-    pPr = OxmlElement("w:pPr")
-    pPr.append(_el("w:bidi"))
-    br.append(pPr)
-    r = OxmlElement("w:r")
-    r.append(_el("w:br", type="page"))
-    br.append(r)
-    parent.insert(idx + off + 1, br)
+    parent.remove(anchor_el)        # بڕگەی بەتاڵی جێگرەوە لادەبرێت
 
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, out_name)

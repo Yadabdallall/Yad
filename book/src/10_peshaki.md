@@ -159,6 +159,12 @@
 
 @IMG 06_abdulkarim_qasim_players.jpg | عەبدولکەریم قاسم لە کاتی بەسەرکردنەوەی یاریزانانی یانەی فڕۆکەوانی (قوەی جەوییە) — وەرچەرخان لە وەرزشی ئەرستۆکراسیی پاشایەتییەوە بۆ وەرزشی جەماوەریی کۆماری. | ئەرشیفی نیشتمانیی عێراق
 
+@SRC
+کتێب — Joseph S. Nye Jr.، «Soft Power: The Means to Success in World Politics»، PublicAffairs، نیویۆرک ٢٠٠٤.
+کتێب — Jean-Jacques Rousseau، «Du contrat social»، ١٧٦٢.
+شیکردنەوەی چەمکی «شادەمار» و بەکارهێنانی بۆ وەرزش، لێکدانەوەی نووسەرە و لە هیچ سەرچاوەیەکەوە وەرنەگیراوە.
+@ENDSRC
+
 @PB
 
 @H1 نەرمە هێز و شکۆی نیشتمانی: وەرزش وەک باڵوێزێکی بێدەنگ
@@ -205,6 +211,11 @@
 
 @IMG 02_asia_cup_2007_younis.jpg | داستانی ٢٠٠٧: یونس مەحمود جامی ئاسیا بەرز دەکاتەوە لە جاکارتا، ٢٩ی تەممووزی ٢٠٠٧. | وێنەگری ئاژانسی هەواڵی
 
+@SRC
+کتێب — Joseph S. Nye Jr.، «Soft Power: The Means to Success in World Politics»، PublicAffairs، نیویۆرک ٢٠٠٤.
+کتێب — James Montague، «When Friday Comes: Football in the War Zone»، Mainstream Publishing، ئێدنبەرا ٢٠٠٨ (ISBN 9781845963699).
+@ENDSRC
+
 @PB
 
 @H1 کورتەیەک لەسەر مێژووی وەرزش لە عێراق
@@ -236,3 +247,11 @@
 @ENDTABLE
 
 @QUOTE لە ٤٠ ساڵدا، عێراق دوو جار چووە مۆندیال: ١٩٨٦ و ٢٠٢٦. لە نێوان ئەم دوو ڕێکەوتەدا، هەموو مێژووی ئازار و هیوای ئەم وڵاتە هەڵگیراوە. | بۆچوونی نووسەر
+
+
+@SRC
+کتێب — Charles Tripp، «A History of Iraq»، چاپی سێیەم، Cambridge University Press، کەیمبریج ٢٠٠٧.
+کتێب — Phebe Marr، «The Modern History of Iraq»، چاپی سێیەم، Westview Press، بۆڵدەر ٢٠١٢.
+کتێب — Simon Freeman، «Baghdad FC: Iraq's Football Story»، John Murray، لەندەن ٢٠٠٥ (ISBN 9780719567940).
+تێبینی — ئەم بەشە هەروەها پشت بە زانیاریی باوی ناو بواری وەرزشی عێراق دەبەستێت کە لە سەرچاوەیەکی یەکەم‌دەستی چاپکراودا پشتڕاست نەکراوەتەوە لە کاتی نووسینی ئەم کتێبەدا. ئەو خاڵانە لە دەقەکەدا بە «بەپێی سەرچاوەکان» یان «گێڕانەوەکان» نیشان کراون.
+@ENDSRC

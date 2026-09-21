@@ -22,9 +22,13 @@ GOLD          = "9A7B2F"
 INK           = "1A1A1A"
 INK_SOFT      = "4A5A50"
 
-FONT_BODY    = "Noto Naskh Arabic"
-FONT_DISPLAY = "Noto Kufi Arabic"
-FONT_LATIN   = "Georgia"
+# فۆنت — بە BOOK_FONT دەگۆڕدرێت، بۆ نموونە:
+#   BOOK_FONT="Noto Naskh Arabic" python3 scripts/build.py
+import os as _os
+_F = _os.environ.get("BOOK_FONT", "Times New Roman")
+FONT_BODY    = _F
+FONT_DISPLAY = _F
+FONT_LATIN   = _F
 
 # ------------------------------------------- ڕیزبەندیی فەرمیی ECMA-376
 PPR_ORDER = [
