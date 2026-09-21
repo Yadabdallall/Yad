@@ -144,8 +144,8 @@
 | Kanan Makiya, «Republic of Fear» | Univ. of California Press، ١٩٨٩ | شێوازی دەسەڵات، بەشی دووەم |
 | Con Coughlin, «Saddam: The Secret Life» | Macmillan، لەندەن ٢٠٠٢ | کەسایەتیی عودە، بەشی دووەم |
 | James Montague, «When Friday Comes» | Mainstream، ئێدنبەرا ٢٠٠٨ | وەرزش و سیاسەت لە ڕۆژهەڵاتی ناوەڕاست |
-| Joseph S. Nye, «Soft Power» | PublicAffairs، نیویۆرک ٢٠٠٤ | چەمکی نەرمە هێز، پێشەکی و بەشی پێنجەم |
-| Amy C. Edmondson, «The Fearless Organization» | Wiley، هۆبۆکن ٢٠١٩ | ئاسایشی دەروونی، بەشی پێنجەم |
+| Joseph S. Nye, «Soft Power» | PublicAffairs، نیویۆرک ٢٠٠٤ | چەمکی نەرمە هێز، پێشەکی و بەشی سێیەم |
+| Amy C. Edmondson, «The Fearless Organization» | Wiley، هۆبۆکن ٢٠١٩ | ئاسایشی دەروونی، بەشی سێیەم |
 | J.-J. Rousseau, «Du contrat social» | ١٧٦٢ | گرێبەستی کۆمەڵایەتی، پێشەکی |
 | جەلال تاڵەبانی، «كردستان والحركة القومية الكردية» | دار الطليعة، بەیرووت ١٩٧١ | ژیاننامە، بەشی سێیەم |
 @ENDTABLE
