@@ -31,6 +31,7 @@ from docxkit import (  # noqa: E402
     para, style_run, set_bidi, shade, borders, page_break, spacer,
     add_field, bookmark, section_rtl, set_page_number_format,
     keep_with_next, keep_lines, tabstop_right, ar, _el, page_break_before,
+    add_hyperlink,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,21 +41,22 @@ OUT = os.path.join(ROOT, "build")
 
 TITLE = "سەرۆک کۆماری یاریگا"
 SUBTITLE = "مێژووی سیاسیی وەرزش لە عێراق — لە سێبەری ستەمکارییەوە بۆ چەترە گەورەکەی مام جەلال"
-AUTHOR = "سۆلینی قەرەغەرمان"
+AUTHOR = "سۆلینی قەرەخەرمان"
 
 TEXT_WIDTH_CM = 11.2
 
 # پێوەری ڕێکخستنی درێژی کتێبەکە — بۆ گەیشتن بە ژمارەیەکی دیاریکراوی لاپەڕە
-BODY_AFTER = float(os.environ.get("BOOK_BODY_AFTER", "7.0"))
-BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.59"))
+BODY_AFTER = float(os.environ.get("BOOK_BODY_AFTER", "5.0"))
+BODY_LINE = float(os.environ.get("BOOK_BODY_LINE", "1.39"))
+BODY_SIZE = float(os.environ.get("BOOK_BODY_SIZE", "11.0"))
 
 
 # ═══════════════════════════════════════════════════ ڕێکخستنی لاپەڕە
 def setup_section(sec, *, header=True, footer=True, mirror=True):
     sec.page_width = Cm(14.8)
     sec.page_height = Cm(21.0)
-    sec.top_margin = Cm(1.9)
-    sec.bottom_margin = Cm(1.9)
+    sec.top_margin = Cm(1.7)
+    sec.bottom_margin = Cm(1.7)
     sec.left_margin = Cm(1.6)
     sec.right_margin = Cm(2.0)
     section_rtl(sec)
@@ -219,7 +221,7 @@ class Builder:
 
     # --------------------------------------------------------- دەقەکان
     def body(self, text):
-        self._para(text, align="both", size=11.5, color=INK,
+        self._para(text, align="both", size=BODY_SIZE, color=INK,
              before=0, after=BODY_AFTER, line=BODY_LINE, indent_first=0.5)
         return self
 
@@ -289,7 +291,16 @@ class Builder:
         keep_lines(h)
 
         for i, it in enumerate(items):
-            last = (i == len(items) - 1)
+            last_item = (i == len(items) - 1)
+
+            # بەستەر لە دەقەکە جیا دەکرێتەوە و لە دێڕێکی تایبەتدا دادەنرێت
+            url = None
+            m = re.search(r"(https?://\S+)", it)
+            if m:
+                url = m.group(1).rstrip(".،")
+                it = it[:m.start()].rstrip(" —«»,،")
+
+            last = last_item and not url
             q = self._para(align="both", before=0, after=6 if last else 2,
                            line=1.3, indent_r=0.75, indent_l=0.3)
             q.paragraph_format.first_line_indent = Cm(-0.42)
@@ -299,9 +310,24 @@ class Builder:
             shade(q, "F4F8F5")
             borders(q, right=(6, GREEN_SOFT), left=(6, GREEN_SOFT),
                     bottom=(6, GREEN_SOFT) if last else None, space=7)
+            keep_lines(q)
             if not last:
                 keep_with_next(q)
-            keep_lines(q)
+
+            if url:
+                u = self._para(align="left", before=0,
+                               after=6 if last_item else 3,
+                               line=1.15, indent_r=1.1, indent_l=0.3)
+                style_run(u.add_run("↗ "), size=7.5, color=GREEN_SOFT,
+                          font=FONT_DISPLAY)
+                add_hyperlink(u, url, size=7.5, color="1F5C3A")
+                shade(u, "F4F8F5")
+                borders(u, right=(6, GREEN_SOFT), left=(6, GREEN_SOFT),
+                        bottom=(6, GREEN_SOFT) if last_item else None,
+                        space=7)
+                keep_lines(u)
+                if not last_item:
+                    keep_with_next(u)
         return self
 
     def bullets(self, items, numbered=False):
@@ -332,9 +358,12 @@ class Builder:
 
     # ---------------------------------------------------------- خشتەکان
     def table(self, caption, rows):
+        """خشتەیەکی سادە و ڕوون: سەرێکی سەوزی تۆخ، هێڵی ئاسۆیی نەرم،
+        بێ هێڵی ستوونی، و بۆشاییەکی ئاسوودە لە ناو خانەکاندا."""
         if caption:
-            c = self._para(align="right", before=14, after=4, line=1.2)
-            style_run(c.add_run(caption), size=11, bold=True,
+            c = self._para(align="right", before=16, after=5, line=1.2)
+            style_run(c.add_run("◆  "), size=8, color=GOLD, font=FONT_DISPLAY)
+            style_run(c.add_run(caption), size=10.5, bold=True,
                       color=GREEN_DARKEST, font=FONT_DISPLAY)
             keep_with_next(c)
 
@@ -351,55 +380,76 @@ class Builder:
         ordered(tblPr, _el("w:bidiVisual"), TBLPR_ORDER)
         ordered(tblPr, _el("w:tblW", w=str(int(Cm(TEXT_WIDTH_CM).twips)),
                            type="dxa"), TBLPR_ORDER)
+
+        # تەنها هێڵی ئاسۆیی — هیچ هێڵێکی ستوونی نییە
         bd = OxmlElement("w:tblBorders")
-        for side in ("top", "left", "bottom", "right", "insideH", "insideV"):
-            ordered(bd, _el("w:" + side, val="single", sz="4",
-                            space="0", color="B9CFC0"), BORDER_ORDER)
+        ordered(bd, _el("w:top", val="single", sz="12", space="0",
+                        color=GREEN_DARK), BORDER_ORDER)
+        ordered(bd, _el("w:bottom", val="single", sz="12", space="0",
+                        color=GREEN_DARK), BORDER_ORDER)
+        ordered(bd, _el("w:insideH", val="single", sz="2", space="0",
+                        color="C8DACE"), BORDER_ORDER)
+        ordered(bd, _el("w:left", val="nil"), BORDER_ORDER)
+        ordered(bd, _el("w:right", val="nil"), BORDER_ORDER)
+        ordered(bd, _el("w:insideV", val="nil"), BORDER_ORDER)
         ordered(tblPr, bd, TBLPR_ORDER)
+
+        # بۆشایی لە ناو خانەکاندا
+        mar = OxmlElement("w:tblCellMar")
+        for side, w in (("top", 60), ("bottom", 60),
+                        ("left", 110), ("right", 110)):
+            mar.append(_el("w:" + side, w=str(w), type="dxa"))
+        ordered(tblPr, mar, TBLPR_ORDER)
 
         widths = [TEXT_WIDTH_CM / ncols] * ncols
         if ncols == 2:
-            widths = [TEXT_WIDTH_CM * 0.30, TEXT_WIDTH_CM * 0.70]
+            widths = [TEXT_WIDTH_CM * 0.32, TEXT_WIDTH_CM * 0.68]
         elif ncols == 3:
-            widths = [TEXT_WIDTH_CM * 0.22, TEXT_WIDTH_CM * 0.30,
-                      TEXT_WIDTH_CM * 0.48]
+            widths = [TEXT_WIDTH_CM * 0.26, TEXT_WIDTH_CM * 0.32,
+                      TEXT_WIDTH_CM * 0.42]
 
         for ri, row in enumerate(rows):
             trow = t.add_row()
-            # ڕیزێک نابێت بە دوو پەڕەدا دابەش بێت، و سەری خشتە دووبارە بێتەوە
             trPr = trow._tr.get_or_add_trPr()
             trPr.append(_el("w:cantSplit"))
             if ri == 0:
                 trPr.append(_el("w:tblHeader"))
             cells = trow.cells
+
             for ci, val in enumerate(row):
                 cell = cells[ci]
                 cell.width = Cm(widths[ci])
-                ordered(cell._tc.get_or_add_tcPr(),
-                        _el("w:vAlign", val="center"), TCPR_ORDER)
+                tcPr = cell._tc.get_or_add_tcPr()
+                ordered(tcPr, _el("w:vAlign", val="center"), TCPR_ORDER)
+
                 p = cell.paragraphs[0]
                 set_bidi(p)
-                p.alignment = (WD_ALIGN_PARAGRAPH.CENTER if ri == 0 or ci == 0
+                p.alignment = (WD_ALIGN_PARAGRAPH.CENTER if ri == 0
                                else WD_ALIGN_PARAGRAPH.RIGHT)
                 pf = p.paragraph_format
-                pf.space_before = Pt(3)
-                pf.space_after = Pt(3)
-                pf.line_spacing = 1.25
-                style_run(p.add_run(val), size=9.5,
-                          bold=(ri == 0),
-                          color="FFFFFF" if ri == 0 else INK,
-                          font=FONT_DISPLAY if ri == 0 else FONT_BODY)
-                fill = GREEN_DARK if ri == 0 else (
-                    "F3F8F4" if ri % 2 == 0 else None)
-                if fill:
-                    ordered(cell._tc.get_or_add_tcPr(),
-                            _el("w:shd", val="clear", color="auto",
-                                fill=fill), TCPR_ORDER)
-        self._spacer(10)
+                pf.space_before = Pt(1)
+                pf.space_after = Pt(1)
+                pf.line_spacing = 1.3
+
+                if ri == 0:
+                    style_run(p.add_run(val), size=9.5, bold=True,
+                              color="FFFFFF", font=FONT_DISPLAY)
+                    ordered(tcPr, _el("w:shd", val="clear", color="auto",
+                                      fill=GREEN_DARK), TCPR_ORDER)
+                else:
+                    # ستوونی یەکەم وەک کلیل — تۆختر و بە ڕەنگی سەوز
+                    first = (ci == 0)
+                    style_run(p.add_run(val), size=9.5, bold=first,
+                              color=GREEN_DARKEST if first else INK,
+                              font=FONT_BODY)
+                    if ri % 2 == 0:
+                        ordered(tcPr, _el("w:shd", val="clear", color="auto",
+                                          fill="F5F9F6"), TCPR_ORDER)
+        self._spacer(12)
         return self
 
     # ------------------------------------------------------------ وێنە
-    def image(self, filename, caption, credit=""):
+    def image(self, filename, caption, credit="", link=""):
         path = os.path.join(IMG, filename) if filename else None
         have = path and os.path.exists(path)
 
@@ -454,10 +504,24 @@ class Builder:
         if credit:
             style_run(cap.add_run("  \u2066(" + credit + ")\u2069"), size=8,
                       color="7C8C82", font=FONT_BODY, rtl=False)
-        borders(cap, bottom=(4, GREEN_TINT_2), space=6)
+        if link:
+            cap.paragraph_format.space_after = Pt(2)
+            ln = self._para(align="center", before=0, after=14, line=1.15,
+                            indent_r=0.4, indent_l=0.4)
+            style_run(ln.add_run("بۆ دۆزینەوەی وێنەکە: "), size=7.5,
+                      color=GREEN_SOFT, font=FONT_DISPLAY)
+            add_hyperlink(ln, link, size=7.5, color="1F5C3A")
+            borders(ln, bottom=(4, GREEN_TINT_2), space=6)
+        else:
+            borders(cap, bottom=(4, GREEN_TINT_2), space=6)
         return self
 
     def pb(self):
+        # بۆشاییەکی هەڵواسراو پێش پەڕەبڕ، پەڕەیەکی بەتاڵ دروست دەکات
+        paras = self.doc.paragraphs
+        if paras and not paras[-1].text.strip():
+            el = paras[-1]._p
+            el.getparent().remove(el)
         self.pending_break = True
         return self
 
@@ -523,7 +587,8 @@ def parse(builder, text):
         elif tag == "IMG":
             bits = [x.strip() for x in rest.split("|")]
             builder.image(bits[0], bits[1] if len(bits) > 1 else "",
-                          bits[2] if len(bits) > 2 else "")
+                          bits[2] if len(bits) > 2 else "",
+                          bits[3] if len(bits) > 3 else "")
         elif tag == "BOX":
             body = []
             i += 1
@@ -663,6 +728,8 @@ def toc(doc, builder, entries, pages, slots):
     style_run(p.add_run("▬▬▬▬▬▬"), size=8, color=GOLD, font=FONT_DISPLAY)
 
     for level, title, anchor in entries:
+        if level >= 2:          # پێڕستێکی کورت — تەنها بەش و بابەتەکان
+            continue
         pg = pages.get(anchor)
         label = ar(pg) if pg else "…"
 

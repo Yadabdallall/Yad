@@ -61,6 +61,7 @@
 
 لە شارە ڕزگارکراوەکاندا، یەکێک لە یەکەمین نیشانەکانی گەڕانەوەی ژیانی ئاسایی، گەڕانەوەی یاری بوو بۆ گۆڕەپانەکان. ئەمە تەنها یاری نەبوو — ئەمە پەیامێک بوو بۆ منداڵانی ئەو شارانە کە ماوەیەکی دوورودرێژ هیچ شتێکی ئاساییان نەبینیبوو.
 
+
 @SRC
 کتێب — Charles Tripp، «A History of Iraq»، چاپی سێیەم، Cambridge University Press، کەیمبریج ٢٠٠٧.
 ڕۆژنامە — ڕاپۆرتەکانی هەڵبژاردنی دکتۆر فوئاد مەعسوم وەک سەرۆکی کۆمار، تەممووزی ٢٠١٤.
@@ -94,6 +95,7 @@
 
 @QUOTE هەر یارییەکی نێودەوڵەتی کە لەسەر خاکی عێراق ئەنجام بدرێت، بەڵگەیەکە کە بەهای سیاسیی لە دەیان لێدوانی فەرمی زیاترە. چونکە لێرەدا، جیهان تەنها گوێی لێناگرێت — دێت و دەیبینێت. | بۆچوونی نووسەر
 
+
 @SRC
 کتێب — Joseph S. Nye Jr.، «Soft Power: The Means to Success in World Politics»، PublicAffairs، نیویۆرک ٢٠٠٤.
 ڕۆژنامە — ڕاپۆرتەکانی لابردنی قەدەغەی یارییە نێودەوڵەتییەکان لەسەر یاریگاکانی عێراق، ٢٠١٨–٢٠٢١.
@@ -125,14 +127,15 @@
 
 @QUOTE یاریگایەک کە بۆ خۆشی دروست کراوە، ئەگەر بۆ دەرگاکانی نەپلانڕێژرابێت، دەتوانێت ببێتە شوێنی مەرگ. ئەمە دەرسێکە کە نرخەکەی زۆر گران بوو. | بۆچوونی نووسەر
 
-@IMG 26_gulf_cup_basra_2023.jpg | عێراق نازناوی جامی کەنداوی ٢٥ بەرز دەکاتەوە، بەسرە، کانوونی دووەمی ٢٠٢٣. | ئەرشیفی میدیایی
+@IMG 26_gulf_cup_basra_2023.jpg | عێراق نازناوی جامی کەنداوی ٢٥ بەرز دەکاتەوە، بەسرە، کانوونی دووەمی ٢٠٢٣. | ئەرشیفی میدیایی | https://www.newarab.com/news/iraq-wins-25th-gulf-cup-defeating-oman-3-2
+
 
 @SRC
-ڕۆژنامە — «Who is Abdul Latif Rashid, the New President of Iraq?»، Asharq Al-Awsat (چاپی ئینگلیزی)، تشرینی یەکەمی ٢٠٢٢ — بۆ دەستبەکاربوونی لە ١٧ی تشرینی یەکەمی ٢٠٢٢.
-ڕۆژنامە — «Iraq wins the 25th Gulf Cup, defeating Oman 3-2»، The New Arab، ١٩ی کانوونی دووەمی ٢٠٢٣.
-ڕۆژنامە — «Iraq wins 'Arabian Gulf' Cup championship defeating Oman in Basra»، Al-Monitor، کانوونی دووەمی ٢٠٢٣ — بۆ ئەوەی ئەمە چوارەمین نازناوی عێراق بوو و یەکەمینیان لە ١٩٨٨ەوە.
-ڕۆژنامە — «Iraq are Gulf Cup champions»، Times of Oman، کانوونی دووەمی ٢٠٢٣.
-ڕۆژنامە — «Basra Gulf Cup stampede as fans gather for final»، The National، ١٩ی کانوونی دووەمی ٢٠٢٣ — بۆ ڕووداوی قەرەباڵغی پێش یاریی کۆتایی.
+ڕۆژنامە — «Who is Abdul Latif Rashid, the New President of Iraq?»، Asharq Al-Awsat (چاپی ئینگلیزی)، تشرینی یەکەمی ٢٠٢٢ — بۆ دەستبەکاربوونی لە ١٧ی تشرینی یەکەمی ٢٠٢٢. https://english.aawsat.com/home/article/3930581/who-abdul-latif-rashid-new-president-iraq
+ڕۆژنامە — «Iraq wins the 25th Gulf Cup, defeating Oman 3-2»، The New Arab، ١٩ی کانوونی دووەمی ٢٠٢٣. https://www.newarab.com/news/iraq-wins-25th-gulf-cup-defeating-oman-3-2
+ڕۆژنامە — «Iraq wins 'Arabian Gulf' Cup championship defeating Oman in Basra»، Al-Monitor، کانوونی دووەمی ٢٠٢٣ — بۆ ئەوەی ئەمە چوارەمین نازناوی عێراق بوو و یەکەمینیان لە ١٩٨٨ەوە. https://www.al-monitor.com/originals/2023/01/iraq-wins-arabian-gulf-cup-championship-defeating-oman-basra
+ڕۆژنامە — «Iraq are Gulf Cup champions»، Times of Oman، کانوونی دووەمی ٢٠٢٣. https://timesofoman.com/article/125745-iraq-are-gulf-cup-champions
+ڕۆژنامە — «Basra Gulf Cup stampede as fans gather for final»، The National، ١٩ی کانوونی دووەمی ٢٠٢٣ — بۆ ڕووداوی قەرەباڵغی پێش یاریی کۆتایی. https://www.thenationalnews.com/mena/iraq/2023/01/19/basra-gulf-cup-stampede-kills-at-least-one-as-fans-gather-for-final/
 @ENDSRC
 
 @PB
@@ -201,15 +204,16 @@
 
 @QUOTE نەخێر. لە چل ساڵدا، عێراق دوو گۆڵی لە مۆندیالدا تۆمار کردووە. ئەمە ژمارەیەکی بچووکە. بەڵام ئەو چل ساڵە لە ناوەڕاستدا، جەنگ و گەمارۆ و ئەشکەنجە و هەڵاتن و تیرۆری تێدا بوو. ئەوەی ئەم وڵاتە گەڕایەوە بۆ ئەو مەیدانە، خۆی سەرکەوتنە. ئەنجامەکان لە دواتردا دێن. | بۆچوونی نووسەر
 
-@IMG 27_iraq_world_cup_2026.jpg | هەڵبژاردەی عێراق لە مۆندیالی ٢٠٢٦ — گەڕانەوە دوای چل ساڵ. | ئەرشیفی فیفا
+@IMG 27_iraq_world_cup_2026.jpg | هەڵبژاردەی عێراق لە مۆندیالی ٢٠٢٦ — گەڕانەوە دوای چل ساڵ. | ئەرشیفی فیفا | https://www.fifa.com/en/match-centre/match/17/285023/289273/400021488
+
 
 @SRC
-ڕۆژنامە — «Iraq Qualifies for Intercontinental World Cup Playoff After Dramatic Win Against United Arab Emirates»، beIN SPORTS، ١٨ی تشرینی دووەمی ٢٠٢٥ — بۆ یاریی دوو ئایابی بەرامبەر ئیمارات (یاریی یەکەم لە ئەبووزەبی، یاریی دووەم لە بەسرە، بردنەوەی ٢–١ و کۆی گشتیی ٣–٢).
-ڕۆژنامە — «Iraq 2-1 Bolivia»، ESPN، ٣١ی ئازاری ٢٠٢٦ — بۆ ئەنجامی یاریی نێوان-کیشوەری و ناوی تۆمارکەرانی گۆڵەکان: عەلی ئەلمەهداوی (خولەکی ١٨)، مۆئیسێس پانیاگوا (٣٨، بۆلیڤیا)، ئەیمەن حوسێن (٥٣).
-ڕۆژنامە — «Iraq defeat Bolivia 2-1 to qualify for World Cup 2026»، الجزیرة (چاپی ئینگلیزی)، ١ی نیسانی ٢٠٢٦.
-ڕۆژنامە — «Iraq qualify for first World Cup in 40 years»، Malay Mail، ١ی نیسانی ٢٠٢٦ — بۆ ئەوەی عێراق ٤٨ەمین و دوایین وڵات بوو کە بلیتەکەی بەدەستهێنا.
-ڕۆژنامە — «Iraq qualifies for 2026 World Cup, ending 40-year wait»، Gulf News، نیسانی ٢٠٢٦.
-ڕۆژنامە — ڕاپۆرتەکانی یاریی عێراق و نەرویج (١–٤)، ١٦ی حوزەیرانی ٢٠٢٦، و دەرچوونی عێراق لە قۆناغی کۆمەڵەکانی کۆمەڵەی I (فەرەنسا، نەرویج، سەنیگال).
+ڕۆژنامە — «Iraq Qualifies for Intercontinental World Cup Playoff After Dramatic Win Against United Arab Emirates»، beIN SPORTS، ١٨ی تشرینی دووەمی ٢٠٢٥ — بۆ یاریی دوو ئایابی بەرامبەر ئیمارات (یاریی یەکەم لە ئەبووزەبی، یاریی دووەم لە بەسرە، بردنەوەی ٢–١ و کۆی گشتیی ٣–٢). https://www.beinsports.com/en-us/soccer/afc-world-cup-qualifiers/articles/iraq-qualifies-for-intercontinental-world-cup-playoff-after-dramatic-win-against-united-arab-emirates-2025-11-18
+ڕۆژنامە — «Iraq 2-1 Bolivia»، ESPN، ٣١ی ئازاری ٢٠٢٦ — بۆ ئەنجامی یاریی نێوان-کیشوەری و ناوی تۆمارکەرانی گۆڵەکان: عەلی ئەلمەهداوی (خولەکی ١٨)، مۆئیسێس پانیاگوا (٣٨، بۆلیڤیا)، ئەیمەن حوسێن (٥٣). https://www.espn.com/soccer/match/_/gameId/761390/bolivia-iraq
+ڕۆژنامە — «Iraq defeat Bolivia 2-1 to qualify for World Cup 2026»، الجزیرة (چاپی ئینگلیزی)، ١ی نیسانی ٢٠٢٦. https://www.aljazeera.com/sports/2026/4/1/iraq-defeat-bolivia-2-1-to-qualify-for-world-cup-2026
+ڕۆژنامە — «Iraq qualify for first World Cup in 40 years»، Malay Mail، ١ی نیسانی ٢٠٢٦ — بۆ ئەوەی عێراق ٤٨ەمین و دوایین وڵات بوو کە بلیتەکەی بەدەستهێنا. https://www.malaymail.com/news/sports/2026/04/01/iraq-qualify-for-first-world-cup-in-40-years-clinch-tournaments-final-spot-with-2-1-win-over-bolivia/214650
+ڕۆژنامە — «Iraq qualifies for 2026 World Cup, ending 40-year wait»، Gulf News، نیسانی ٢٠٢٦. https://gulfnews.com/sport/football/iraq-qualifies-for-2026-world-cup-ending-40-year-wait-1.500492875
+ڕۆژنامە — ڕاپۆرتەکانی یاریی عێراق و نەرویج (١–٤)، ١٦ی حوزەیرانی ٢٠٢٦، و دەرچوونی عێراق لە قۆناغی کۆمەڵەکانی کۆمەڵەی I (فەرەنسا، نەرویج، سەنیگال). https://www.fifa.com/en/match-centre/match/17/285023/289273/400021488
 تێبینی — سەرچاوەکان لەسەر شاری ئەنجامدانی یاریی بۆلیڤیا یەکناگرنەوە. بۆیە لە دەقەکەدا ناوی شارەکە دیاری نەکراوە.
 @ENDSRC
 
@@ -242,10 +246,11 @@
 
 لە ناوەڕاستی ئەم دوو ناوەدا، عێراق گەڕایەوە بۆ مۆندیال.
 
+
 @SRC
-ڕۆژنامە — «PUK's Nizar Amedi Elected President of Iraq After Securing Parliamentary Majority»، Kurdistan24، ١١ی نیسانی ٢٠٢٦.
-ڕۆژنامە — «Iraqi parliament elects Nizar Amidi as country's new president»، Daily Sabah، ١١ی نیسانی ٢٠٢٦ — بۆ ئەنجامی دەنگدانەکە (٢٢٧ دەنگ لە خولی دووەمدا).
-ڕۆژنامە — «Nizar Amedi elected as Iraqi president»، The New Region، نیسانی ٢٠٢٦ — بۆ ژیاننامە: لەدایکبوون ٨ی شوباتی ١٩٦٨ لە ئامێدی، دەرچووی زانکۆی مووسڵ ١٩٩٣، وەزیری ژینگە ٢٠٢٢–٢٠٢٤، و بەڕێوەبەری دیوانی چوار سەرۆکی کۆمار لە نێوان ٢٠٠٨ و ٢٠٢٢.
+ڕۆژنامە — «PUK's Nizar Amedi Elected President of Iraq After Securing Parliamentary Majority»، Kurdistan24، ١١ی نیسانی ٢٠٢٦. https://www.kurdistan24.net/en/story/907256
+ڕۆژنامە — «Iraqi parliament elects Nizar Amidi as country's new president»، Daily Sabah، ١١ی نیسانی ٢٠٢٦ — بۆ ئەنجامی دەنگدانەکە (٢٢٧ دەنگ لە خولی دووەمدا). https://www.dailysabah.com/world/mid-east/iraqi-parliament-elects-nizar-amidi-as-countrys-new-president
+ڕۆژنامە — «Nizar Amedi elected as Iraqi president»، The New Region، نیسانی ٢٠٢٦ — بۆ ژیاننامە: لەدایکبوون ٨ی شوباتی ١٩٦٨ لە ئامێدی، دەرچووی زانکۆی مووسڵ ١٩٩٣، وەزیری ژینگە ٢٠٢٢–٢٠٢٤، و بەڕێوەبەری دیوانی چوار سەرۆکی کۆمار لە نێوان ٢٠٠٨ و ٢٠٢٢. https://thenewregion.com/posts/5086
 @ENDSRC
 
 @PB
@@ -274,7 +279,7 @@
 
 ئەمە بەم مانایە نایەت کە کەسایەتی گرنگ نییە. بەڵکو بەم مانایە دێت کە ئەو دەستکەوتانەی لە ٢٠٢٣ و ٢٠٢٦دا هاتن، بەرهەمی بیست ساڵ کارن — نەک بەرهەمی یەک قۆناغ.
 
-@QUOTE گەیشتن بە مۆندیالی ٢٠٢٦، دەستکەوتی یەک سەرۆک نییە. ئەمە کۆی ئەو هەموو ساتانەیە کە تێیدا کەسێک بڕیاری دا وەرزشوانی عێراقی وازی لێ نەهێنێت. مام جەلال یەکەم کەس بوو کە دوای ٢٠٠٣ ئەم بڕیارەی دا. ئەوانی تر درێژەیان پێدا. | سۆلینی قەرەغەرمان
+@QUOTE گەیشتن بە مۆندیالی ٢٠٢٦، دەستکەوتی یەک سەرۆک نییە. ئەمە کۆی ئەو هەموو ساتانەیە کە تێیدا کەسێک بڕیاری دا وەرزشوانی عێراقی وازی لێ نەهێنێت. مام جەلال یەکەم کەس بوو کە دوای ٢٠٠٣ ئەم بڕیارەی دا. ئەوانی تر درێژەیان پێدا. | سۆلینی قەرەخەرمان
 
 @H2 ئەنجامگیری: چرایەک کە نەکوژایەوە
 
@@ -282,4 +287,4 @@
 
 گەیشتن بە مۆندیالی ٢٠٢٦، نەک تەنها وەک دەستکەوتێکی وەرزشی، بەڵکو وەک سەرکەوتنی دیدگایەکی سیاسی دەمێنێتەوە کە باوەڕی وایە وەرزش دەتوانێت عێراق بە جیهان بناسێنێتەوە.
 
-@SIG سۆلینی قەرەغەرمان
+@SIG سۆلینی قەرەخەرمان

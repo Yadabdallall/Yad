@@ -271,6 +271,35 @@ def add_field(paragraph, instr, *, size=10, color=GREEN_DARK,
     return paragraph
 
 
+def add_hyperlink(paragraph, url, text=None, *, size=8, color="1155CC"):
+    """بەستەرێکی کلیک‌کراو زیاد دەکات کە لە Word ـدا کار دەکات."""
+    from docx.opc.constants import RELATIONSHIP_TYPE as RT
+    part = paragraph.part
+    r_id = part.relate_to(url, RT.HYPERLINK, is_external=True)
+
+    link = OxmlElement("w:hyperlink")
+    link.set(qn("r:id"), r_id)
+
+    run = OxmlElement("w:r")
+    rPr = OxmlElement("w:rPr")
+    ordered(rPr, _el("w:rFonts", cs=FONT_BODY, ascii=FONT_LATIN,
+                     hAnsi=FONT_LATIN), RPR_ORDER)
+    ordered(rPr, _el("w:color", val=color), RPR_ORDER)
+    ordered(rPr, _el("w:sz", val=int(size * 2)), RPR_ORDER)
+    ordered(rPr, _el("w:szCs", val=int(size * 2)), RPR_ORDER)
+    ordered(rPr, _el("w:u", val="single", color=color), RPR_ORDER)
+    run.append(rPr)
+
+    t = OxmlElement("w:t")
+    t.set(qn("xml:space"), "preserve")
+    t.text = "\u2066" + (text or url) + "\u2069"   # جیاکردنەوەی ئاراستە
+    run.append(t)
+
+    link.append(run)
+    paragraph._p.append(link)
+    return paragraph
+
+
 def bookmark(paragraph, name, bid):
     paragraph._p.insert(0, _el("w:bookmarkStart", id=bid, name=name))
     paragraph._p.append(_el("w:bookmarkEnd", id=bid))

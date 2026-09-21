@@ -22,7 +22,8 @@ B = {
  "marr":   "کتێب — Phebe Marr، «The Modern History of Iraq»، چاپی سێیەم، "
            "Westview Press، بۆڵدەر ٢٠١٢.",
  "freeman":"کتێب — Simon Freeman، «Baghdad FC: Iraq's Football Story»، "
-           "John Murray، لەندەن ٢٠٠٥ (ISBN 9780719567940).",
+           "John Murray، لەندەن ٢٠٠٥ (ISBN 9780719567940). "
+           "https://archive.org/details/baghdadfciraqsfo0000free",
  "montague":"کتێب — James Montague، «When Friday Comes: Football in the "
            "War Zone»، Mainstream Publishing، ئێدنبەرا ٢٠٠٨ "
            "(ISBN 9781845963699).",
@@ -174,11 +175,14 @@ SOURCES = {
    "ڕۆژنامە — «جلال الطالباني.. أول رئيس كردي للعراق»، الجزیرة نت "
    "(مەوسووعە)، ٤ی کانوونی یەکەمی ٢٠١٤ — بۆ ڕێکەوتی لەدایکبوون "
    "(١٢ی تشرینی دووەمی ١٩٣٣، گوندی کەلکان) و ماوەی سەرۆکایەتی "
-   "(٧ی نیسانی ٢٠٠٥ – ٢٤ی تەممووزی ٢٠١٤).",
+   "(٧ی نیسانی ٢٠٠٥ – ٢٤ی تەممووزی ٢٠١٤). "
+   "https://www.aljazeera.net/encyclopedia/2014/12/4/%D8%AC%D9%84%D8%A7%D9%84-%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%D8%A7%D9%86%D9%8A",
    "ڕۆژنامە — «مام جلال.. من النضال الكردي إلى رئاسة العراق»، العربیة، "
-   "٣ی تشرینی یەکەمی ٢٠١٧.",
+   "٣ی تشرینی یەکەمی ٢٠١٧. "
+   "https://www.alarabiya.net/arab-and-world/iraq/2017/10/03",
    "ڕۆژنامە — «وفاة رئيس العراق الأسبق جلال طالباني»، عنب بلدي، "
-   "٣ی تشرینی یەکەمی ٢٠١٧ — بۆ کۆچی دوایی لە بێرلین.",
+   "٣ی تشرینی یەکەمی ٢٠١٧ — بۆ کۆچی دوایی لە بێرلین. "
+   "https://www.enabbaladi.net/176234/",
    B["talabani"],
  ],
  "@H1 دیدگای فەلسەفی: وەرزش وەک ئامرازی ئاشتی": [
@@ -190,11 +194,13 @@ SOURCES = {
  "@H1 داستانی ٢٠٠٧: کاتێک یاریگا بوو بە وڵات": [
    "ڕۆژنامە — «فوز المنتخب العراقي يؤلف بين المتناقضات السياسية»، "
    "الجزیرة نت، ٣٠ی تەممووزی ٢٠٠٧ — بۆ دەنگدانەوەی سیاسی و "
-   "کۆمەڵایەتیی بردنەوەکە.",
+   "کۆمەڵایەتیی بردنەوەکە. "
+   "https://www.aljazeera.net/news/2007/7/30/%D9%81%D9%88%D8%B2-%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AE%D8%A8-%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A-%D9%8A%D8%A4%D9%84%D9%81-%D8%A8%D9%8A%D9%86",
    "ڕۆژنامە — «جوائز الاتحاد الآسيوي الخاصة بكأس أمم آسيا ٢٠٠٧»، "
    "كووورة، تەممووزی ٢٠٠٧ — بۆ بڕی پاداشتی سەرۆکایەتیی کۆمار: "
    "دە هەزار دۆلار بۆ هەر یاریزانێک و بیست هەزار دۆلار بۆ "
-   "کاپتن یونس مەحمود.",
+   "کاپتن یونس مەحمود. "
+   "https://www.kooora.com/?n=25092",
    "ڕۆژنامە — ڕاپۆرتەکانی یاریی کۆتایی (عێراق ١–٠ سعودیە، جاکارتا، "
    "٢٩ی تەممووزی ٢٠٠٧) لە ڕۆژنامە عەرەبی و نێودەوڵەتییەکاندا — "
    "بۆ گۆڵی یونس مەحمود لە خولەکی ٧١.",
@@ -248,51 +254,65 @@ SOURCES = {
  "@H1 سێیەم: قۆناغی لەتیف ڕەشید (٢٠٢٢–٢٠٢٦) — ساڵانی گەورەترین دەستکەوت": [
    "ڕۆژنامە — «Who is Abdul Latif Rashid, the New President of Iraq?»، "
    "Asharq Al-Awsat (چاپی ئینگلیزی)، تشرینی یەکەمی ٢٠٢٢ — بۆ "
-   "دەستبەکاربوونی لە ١٧ی تشرینی یەکەمی ٢٠٢٢.",
+   "دەستبەکاربوونی لە ١٧ی تشرینی یەکەمی ٢٠٢٢. "
+   "https://english.aawsat.com/home/article/3930581/who-abdul-latif-rashid-new-president-iraq",
    "ڕۆژنامە — «Iraq wins the 25th Gulf Cup, defeating Oman 3-2»، "
-   "The New Arab، ١٩ی کانوونی دووەمی ٢٠٢٣.",
+   "The New Arab، ١٩ی کانوونی دووەمی ٢٠٢٣. "
+   "https://www.newarab.com/news/iraq-wins-25th-gulf-cup-defeating-oman-3-2",
    "ڕۆژنامە — «Iraq wins 'Arabian Gulf' Cup championship defeating "
    "Oman in Basra»، Al-Monitor، کانوونی دووەمی ٢٠٢٣ — بۆ ئەوەی "
-   "ئەمە چوارەمین نازناوی عێراق بوو و یەکەمینیان لە ١٩٨٨ەوە.",
+   "ئەمە چوارەمین نازناوی عێراق بوو و یەکەمینیان لە ١٩٨٨ەوە. "
+   "https://www.al-monitor.com/originals/2023/01/iraq-wins-arabian-gulf-cup-championship-defeating-oman-basra",
    "ڕۆژنامە — «Iraq are Gulf Cup champions»، Times of Oman، "
-   "کانوونی دووەمی ٢٠٢٣.",
+   "کانوونی دووەمی ٢٠٢٣. "
+   "https://timesofoman.com/article/125745-iraq-are-gulf-cup-champions",
    "ڕۆژنامە — «Basra Gulf Cup stampede as fans gather for final»، "
    "The National، ١٩ی کانوونی دووەمی ٢٠٢٣ — بۆ ڕووداوی قەرەباڵغی "
-   "پێش یاریی کۆتایی.",
+   "پێش یاریی کۆتایی. "
+   "https://www.thenationalnews.com/mena/iraq/2023/01/19/basra-gulf-cup-stampede-kills-at-least-one-as-fans-gather-for-final/",
  ],
  "@H1 گەشتی مۆندیال: چیرۆکێک کە چل ساڵی خایاند": [
    "ڕۆژنامە — «Iraq Qualifies for Intercontinental World Cup Playoff "
    "After Dramatic Win Against United Arab Emirates»، beIN SPORTS، "
    "١٨ی تشرینی دووەمی ٢٠٢٥ — بۆ یاریی دوو ئایابی بەرامبەر ئیمارات "
    "(یاریی یەکەم لە ئەبووزەبی، یاریی دووەم لە بەسرە، بردنەوەی ٢–١ "
-   "و کۆی گشتیی ٣–٢).",
+   "و کۆی گشتیی ٣–٢). "
+   "https://www.beinsports.com/en-us/soccer/afc-world-cup-qualifiers/articles/iraq-qualifies-for-intercontinental-world-cup-playoff-after-dramatic-win-against-united-arab-emirates-2025-11-18",
    "ڕۆژنامە — «Iraq 2-1 Bolivia»، ESPN، ٣١ی ئازاری ٢٠٢٦ — بۆ "
    "ئەنجامی یاریی نێوان-کیشوەری و ناوی تۆمارکەرانی گۆڵەکان: "
    "عەلی ئەلمەهداوی (خولەکی ١٨)، مۆئیسێس پانیاگوا (٣٨، بۆلیڤیا)، "
-   "ئەیمەن حوسێن (٥٣).",
+   "ئەیمەن حوسێن (٥٣). "
+   "https://www.espn.com/soccer/match/_/gameId/761390/bolivia-iraq",
    "ڕۆژنامە — «Iraq defeat Bolivia 2-1 to qualify for World Cup 2026»، "
-   "الجزیرة (چاپی ئینگلیزی)، ١ی نیسانی ٢٠٢٦.",
+   "الجزیرة (چاپی ئینگلیزی)، ١ی نیسانی ٢٠٢٦. "
+   "https://www.aljazeera.com/sports/2026/4/1/iraq-defeat-bolivia-2-1-to-qualify-for-world-cup-2026",
    "ڕۆژنامە — «Iraq qualify for first World Cup in 40 years»، "
    "Malay Mail، ١ی نیسانی ٢٠٢٦ — بۆ ئەوەی عێراق ٤٨ەمین و دوایین "
-   "وڵات بوو کە بلیتەکەی بەدەستهێنا.",
+   "وڵات بوو کە بلیتەکەی بەدەستهێنا. "
+   "https://www.malaymail.com/news/sports/2026/04/01/iraq-qualify-for-first-world-cup-in-40-years-clinch-tournaments-final-spot-with-2-1-win-over-bolivia/214650",
    "ڕۆژنامە — «Iraq qualifies for 2026 World Cup, ending 40-year wait»، "
-   "Gulf News، نیسانی ٢٠٢٦.",
+   "Gulf News، نیسانی ٢٠٢٦. "
+   "https://gulfnews.com/sport/football/iraq-qualifies-for-2026-world-cup-ending-40-year-wait-1.500492875",
    "ڕۆژنامە — ڕاپۆرتەکانی یاریی عێراق و نەرویج (١–٤)، ١٦ی حوزەیرانی "
    "٢٠٢٦، و دەرچوونی عێراق لە قۆناغی کۆمەڵەکانی کۆمەڵەی I "
-   "(فەرەنسا، نەرویج، سەنیگال).",
+   "(فەرەنسا، نەرویج، سەنیگال). "
+   "https://www.fifa.com/en/match-centre/match/17/285023/289273/400021488",
    "تێبینی — سەرچاوەکان لەسەر شاری ئەنجامدانی یاریی بۆلیڤیا "
    "یەکناگرنەوە. بۆیە لە دەقەکەدا ناوی شارەکە دیاری نەکراوە.",
  ],
  "@H1 چوارەم: قۆناغی نزار ئەمێدی (٢٠٢٦ – ) — کۆتاییی بازنەکە": [
    "ڕۆژنامە — «PUK's Nizar Amedi Elected President of Iraq After "
-   "Securing Parliamentary Majority»، Kurdistan24، ١١ی نیسانی ٢٠٢٦.",
+   "Securing Parliamentary Majority»، Kurdistan24، ١١ی نیسانی ٢٠٢٦. "
+   "https://www.kurdistan24.net/en/story/907256",
    "ڕۆژنامە — «Iraqi parliament elects Nizar Amidi as country's new "
    "president»، Daily Sabah، ١١ی نیسانی ٢٠٢٦ — بۆ ئەنجامی "
-   "دەنگدانەکە (٢٢٧ دەنگ لە خولی دووەمدا).",
+   "دەنگدانەکە (٢٢٧ دەنگ لە خولی دووەمدا). "
+   "https://www.dailysabah.com/world/mid-east/iraqi-parliament-elects-nizar-amidi-as-countrys-new-president",
    "ڕۆژنامە — «Nizar Amedi elected as Iraqi president»، The New Region، "
    "نیسانی ٢٠٢٦ — بۆ ژیاننامە: لەدایکبوون ٨ی شوباتی ١٩٦٨ لە ئامێدی، "
    "دەرچووی زانکۆی مووسڵ ١٩٩٣، وەزیری ژینگە ٢٠٢٢–٢٠٢٤، و "
-   "بەڕێوەبەری دیوانی چوار سەرۆکی کۆمار لە نێوان ٢٠٠٨ و ٢٠٢٢.",
+   "بەڕێوەبەری دیوانی چوار سەرۆکی کۆمار لە نێوان ٢٠٠٨ و ٢٠٢٢. "
+   "https://thenewregion.com/posts/5086",
  ],
 },
 
