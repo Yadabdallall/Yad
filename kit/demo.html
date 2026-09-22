@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نموونەی جوڵە و ڕەنگەکان</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/motion.css">
+<style>
+  /* تەنها بۆ ئەم پەڕەی نموونە */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:8px;}
+  .sw{border-radius:14px;padding:14px 12px;border:1px solid var(--line);font-size:13px;line-height:1.6;}
+  .sw b{display:block;font-size:12px;opacity:.7;direction:ltr;}
+  .demo-note{color:var(--muted);font-size:15px;margin-top:-6px;}
+</style>
+</head>
+<body>
+
+<nav class="stepper" id="stepper" aria-label="بەشەکان">
+  <button class="step" type="button" aria-current="false"><i></i><span>جوڵەی دەق</span></button>
+  <button class="step" type="button" aria-current="false"><i></i><span>ڕەنگەکان</span></button>
+  <button class="step" type="button" aria-current="false"><i></i><span>پارچەکان</span></button>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1 class="reveal words">جوڵە و ڕەنگ و فۆنتی فۆڕمەکە</h1>
+    <p class="reveal lines demo-note">ئەم پەڕەیە هەموو ئەو جوڵانە نیشان دەدات کە لە فۆڕمی بۆردی وەرزشدا بەکارهاتوون. سکڕۆڵ بکە بۆ خوارەوە تا هەریەکەیان ببینیت.</p>
+  </header>
+
+  <section class="card reveal">
+    <div class="sec-head reveal">
+      <div class="sec-num">١</div>
+      <h2 class="sec-title reveal words">جوڵەی دەق</h2>
+    </div>
+
+    <p class="reveal lines">ئەم پەرەگرافە بە <strong>دێڕ بە دێڕ</strong> دێت — هەر دێڕێک لە پشت پەردەیەکەوە بەرز دەبێتەوە. دێڕەکان دوای بارکردنی فۆنتەکە دەپێورێن، بۆیە لەگەڵ هەموو قەبارەیەکی شاشەدا ڕێک دەبن.</p>
+
+    <p class="reveal lines">جوڵەکە تەنها <strong>یەک جار</strong> ڕوودەدات؛ دوای ئەوەی هاتە سەرەوە، لە شوێنی خۆی دەوەستێت و لەگەڵ سکڕۆڵدا نالەقێت.</p>
+
+    <div class="field reveal">
+      <label>خانەیەکی نموونە</label>
+      <input type="text" placeholder="لێرە بنووسە">
+    </div>
+    <div class="field reveal">
+      <label>ناوەڕۆکی درێژ</label>
+      <textarea rows="3" placeholder="چەند دێڕێک..."></textarea>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <div class="sec-head reveal">
+      <div class="sec-num">٢</div>
+      <h2 class="sec-title reveal words">ڕەنگەکان</h2>
+    </div>
+    <p class="reveal lines">هەموو ڕەنگەکان لە <code>css/tokens.css</code>ەوە دێن. گۆڕینی یەک دێڕ لەوێ ڕوخساری هەموو لاپەڕەکە دەگۆڕێت.</p>
+
+    <div class="swatches">
+      <div class="sw" style="background:#000000">ڕەشی بنەڕەت<b>--black #000000</b></div>
+      <div class="sw" style="background:#01100a">قووڵی ١<b>--deep-1 #01100a</b></div>
+      <div class="sw" style="background:#031a0f">قووڵی ٢<b>--deep-2 #031a0f</b></div>
+      <div class="sw" style="background:#052414">قووڵی ٣<b>--deep-3 #052414</b></div>
+      <div class="sw" style="background:#0a3d24;color:#4dffab">نیۆن<b>--neon #4dffab</b></div>
+      <div class="sw" style="background:#0a3d24;color:#22e894">نیۆنی ٢<b>--neon-2 #22e894</b></div>
+      <div class="sw" style="background:#0a2a1a;color:#eafff4">دەق<b>--text #eafff4</b></div>
+      <div class="sw" style="background:#0a2a1a;color:#7fa992">کز<b>--muted #7fa992</b></div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <div class="sec-head reveal">
+      <div class="sec-num">٣</div>
+      <h2 class="sec-title reveal words">پارچەکان</h2>
+    </div>
+    <p class="reveal lines">دوگمە، خانە و پێپەڕ — هەمان ستایلی فۆڕمەکە.</p>
+
+    <div class="actions reveal">
+      <button class="btn" type="button">دوگمەی سەرەکی</button>
+      <button class="btn btn-2" type="button">دوگمەی دووەم</button>
+    </div>
+
+    <blockquote class="quote reveal lines">وەرزش لای من ژیانە — نموونەی بلۆکی ووتە.</blockquote>
+  </section>
+
+</div>
+
+<footer class="footer reveal">
+  <span class="dev-by">DEVELOPED BY</span>
+  <button type="button" class="dev-name" id="devName" aria-expanded="false">SOLIN OTHMAN</button>
+  <p class="dev-motto" id="devMotto" aria-hidden="true">وەرزش ژیانمە</p>
+  <div class="dev-dots"><b></b><i></i><b></b></div>
+</footer>
+
+<script src="js/motion.js"></script>
+</body>
+</html>

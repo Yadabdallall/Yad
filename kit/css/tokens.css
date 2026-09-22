@@ -1,0 +1,47 @@
+/* ڕەنگ و بنەمای لاپەڕەکە — گۆڕینی ئەم بەشە ڕوخساری هەموو شتێک دەگۆڕێت */
+html{background-color:#04170c;}
+
+:root{
+  color-scheme:dark;
+  --black:#000000;
+  --deep-1:#01100a;
+  --deep-2:#031a0f;
+  --deep-3:#052414;
+
+  --neon:#4dffab;
+  --neon-2:#22e894;
+  --line:rgba(77,255,171,.20);
+  --line-soft:rgba(77,255,171,.11);
+  --glow:rgba(77,255,171,.16);
+
+  --text:#eafff4;
+  --text-2:#c6e8d6;
+  --muted:#7fa992;
+  --alert:#ff6f87;
+
+  --panel:rgba(4,22,13,.62);
+  --radius:30px;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Zain','Segoe UI',Tahoma,sans-serif;
+  font-weight:400;
+  font-size:18px;
+  color:var(--text);
+  line-height:1.85;
+  background-color:var(--black);
+  background-image:
+    radial-gradient(1000px 560px at 50% 26%, rgba(77,255,171,.11), transparent 62%),
+    radial-gradient(900px 720px at 88% 34%, rgba(12,110,64,.20), transparent 62%),
+    radial-gradient(820px 720px at 6% 74%, rgba(10,90,54,.15), transparent 62%),
+    linear-gradient(180deg, #000000 0%, #000503 9%, var(--deep-1) 28%, var(--deep-3) 58%, var(--deep-2) 80%, #000000 100%);
+  background-attachment:fixed;
+  -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
+}
+/* clip نەک hidden: ڕێگری لە دروستبوونی سکڕۆڵێکی جیاواز بۆ body */
+@supports (overflow-x:clip){ body{overflow-x:clip;} }
+
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 56px;}

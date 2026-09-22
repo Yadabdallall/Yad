@@ -1,0 +1,108 @@
+/* هەموو جوڵەکانی لاپەڕەکە.
+   پێویستی بە motion.js هەیە بۆ .lines و .words و .reveal —
+   بەبێ JavaScript ـیش کار دەکات (بەشی «جوڵە بەبێ JavaScript»). */
+
+
+/* ================= کردنەوەی نەرمی لاپەڕەکە ================= */
+@keyframes page-in{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:none;}
+}
+.banner,.wrap{animation:page-in .7s cubic-bezier(.25,.6,.3,1) both;}
+.wrap{animation-delay:.08s;}
+@media (prefers-reduced-motion:reduce){
+  .banner,.wrap{animation:none;}
+}
+
+
+/* ============ جوڵە بەبێ JavaScript ============
+   هەندێک بینەری فایل (وەک پێشبینینی iOS) JavaScript ناخەنە کار،
+   بۆیە هەمان دەرکەوتن بە CSS ـی تەنها ئامادە کراوە. */
+@keyframes tx-rise{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:none;}
+}
+html:not(.js-reveal) .reveal{
+  animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) both;
+}
+html:not(.js-reveal) .card .field:nth-of-type(2){animation-delay:.08s;}
+html:not(.js-reveal) .card .field:nth-of-type(3){animation-delay:.16s;}
+html:not(.js-reveal) .card .field:nth-of-type(4){animation-delay:.24s;}
+html:not(.js-reveal) .card .field:nth-of-type(5){animation-delay:.32s;}
+html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
+
+/* لە وێبگەڕە نوێیەکاندا ڕاستەوخۆ بە سکڕۆڵەوە دەبەسترێتەوە */
+@supports (animation-timeline:view()){
+  html:not(.js-reveal) .reveal{
+    animation:tx-rise linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 88%;
+    animation-delay:0s;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html:not(.js-reveal) .reveal{animation-duration:.6s;}
+  @keyframes tx-rise{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
+  }
+}
+
+/* ================= LINE MASK REVEAL ================= */
+.js-reveal .reveal.lines{opacity:1;transform:none;filter:none;}
+.js-reveal .tline{
+  display:block;
+  overflow:hidden;
+  padding:0.16em 0.12em;
+  margin:-0.16em -0.12em;
+}
+.js-reveal .tline-in{
+  display:block;
+  transform:translateY(102%);
+  opacity:0;
+  transition:transform .8s cubic-bezier(.25,.6,.3,1),
+             opacity .6s cubic-bezier(.25,.6,.3,1);
+}
+.js-reveal .reveal.lines.is-in .tline-in{transform:translateY(0);opacity:1;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .tline-in{transform:translateY(40%);}
+}
+
+/* ================= WORD-BY-WORD MOTION ================= */
+.js-reveal .reveal.words{opacity:1;transform:none;filter:none;}
+.js-reveal .reveal.words .word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(11px);
+  transition:opacity .62s cubic-bezier(.25,.6,.3,1),
+             transform .62s cubic-bezier(.25,.6,.3,1);
+}
+.js-reveal .reveal.words.is-in .word{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal.words .word{transform:translateY(8px);}
+}
+
+
+/* ================= SCROLL DRIFT ================= */
+
+
+/* ================= SCROLL REVEAL ================= */
+.js-reveal .reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .85s cubic-bezier(.22,.7,.28,1),
+             transform .85s cubic-bezier(.22,.7,.28,1);
+  will-change:opacity, transform;
+}
+.js-reveal .reveal.is-in{opacity:1;transform:none;filter:none;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal{transform:translateY(10px);}
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:none;}
+}
+.hero{animation:rise .8s cubic-bezier(.22,.8,.3,1) both;}
+@media (prefers-reduced-motion:reduce){ .hero{animation:none;} }
+
