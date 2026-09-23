@@ -15,6 +15,13 @@ def font_uri(m):
 
 html = re.sub(r"url\('(assets/fonts/[^']+\.woff2)'\)", font_uri, html)
 
+def img_uri(m):
+    path = m.group(1)
+    mime = "image/jpeg" if path.endswith((".jpg", ".jpeg")) else "image/png" if path.endswith(".png") else "image/webp"
+    return 'src="data:' + mime + ';base64,' + base64.b64encode((here / path).read_bytes()).decode() + '"'
+
+html = re.sub(r'src="(assets/img/[^"]+)"', img_uri, html)
+
 tag = '<script src="assets/js/jspdf.umd.min.js" defer></script>'
 assert tag in html
 js = (here / "assets/js/jspdf.umd.min.js").read_text(encoding="utf-8")
