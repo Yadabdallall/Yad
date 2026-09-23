@@ -434,6 +434,12 @@ html:not(.js-reveal) .reveal{animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) bo
 #adm .aloading{display:grid;place-items:center;gap:14px;padding:80px 0;color:var(--muted)}
 #adm .aloading .alg{width:90px;height:90px;margin:0}
 #adm .aloading .alg img{inset:8px;width:74px;height:74px}
+#adm .autostat{display:flex;align-items:center;gap:10px;margin:0 0 16px;padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.7}
+#adm .autostat i{flex:0 0 auto;width:10px;height:10px;border-radius:50%}
+#adm .autostat.on{border:1px solid rgba(77,255,171,.5);background:rgba(77,255,171,.08);color:#d2ffe9}
+#adm .autostat.on i{background:#4dffab;box-shadow:0 0 10px #4dffab,0 0 22px rgba(77,255,171,.6)}
+#adm .autostat.off{border:1px solid rgba(240,138,108,.45);background:rgba(240,138,108,.07);color:#f5c9bb}
+#adm .autostat.off i{background:#f08a6c}
 #adm .aimport{text-align:center}
 #adm .aimport .imp-btn{position:relative;overflow:hidden;max-width:360px;margin:4px auto 0}
 #adm .aimport .imp-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
@@ -709,12 +715,13 @@ html:not(.js-reveal) .reveal{animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) bo
         <button class="abtn" type="button" id="aLogout">چوونەدەرەوە</button>
       </div>
     </header>
+    <p class="autostat" id="aAuto" hidden></p>
     <div class="acard aimport" id="aImport" hidden>
-      <h2>زیادکردنی فۆڕمەکان لە PDF</h2>
-      <p class="sub">ئەو PDFـانەی لە واتسئاپ گەیشتوون پاشەکەوتیان بکە (Save to Files)، پاشان لێرە هەڵیانبژێرە — دەتوانیت چەندانێک پێکەوە هەڵبژێریت. هەر PDFێک تەنها یەک جار هەژمار دەکرێت، و ئامارەکان لەسەر ئەم ئامێرە دەمێننەوە.</p>
+      <h2>زیادکردنی فۆڕم لە PDF</h2>
+      <p class="sub">بۆ ئەو فۆڕمانەی بە خۆکاری نەگەیشتوون: PDFـەکان لە واتسئاپ پاشەکەوت بکە (Save to Files) و لێرە هەڵیانبژێرە — دەتوانیت چەندانێک پێکەوە هەڵبژێریت. هەر PDFێک تەنها یەک جار هەژمار دەکرێت، و ئامارەکان لەسەر ئەم ئامێرە دەمێننەوە.</p>
       <label class="abtn abtn-gold imp-btn"><input type="file" id="aPdfs" accept="application/pdf,.pdf" multiple> ＋ هەڵبژاردنی PDF</label>
       <p class="imp-msg" id="aImpMsg" role="status"></p>
-      <button class="lnk" type="button" id="aClear">سڕینەوەی هەموو زانیارییەکان لەم ئامێرە</button>
+      <button class="lnk" type="button" id="aClear">سڕینەوەی ئەو PDFـانەی لێرە زیاد کراون</button>
     </div>
       <details class="setup acard" id="aSetup" hidden>
         <summary>یان: کۆکردنەوەی خۆکار بە Google Sheet (ئارەزوومەندانە)</summary>
@@ -979,6 +986,8 @@ document.getElementById("favicon").href = LOGO;
 /* ============================ ڕێکخستنەکان ============================ */
 // لینکی Web Appی Google Apps Script (لە ڕێنماییەکەدا ڕوونکراوەتەوە)
 const SCRIPT_URL = "";
+// کۆکردنەوەی خۆکاری فۆڕمەکان (_worker.js لەسەر Cloudflare). ئەگەر Worker ـێکی سەربەخۆ بەکاربهێنرێت، لینکەکەی لێرە دابنێ.
+const API_BASE = /^https?:$/.test(location.protocol) ? "/api" : "";
 // ژمارەی واتسئاپی بۆرد (+964 771 236 4141)
 const BOARD_WHATSAPP = "9647712364141";
 // نرخی دۆلار بە دینار — تەنها بۆ کۆکردنەوەی تێچووەکان لە ئاماردا
@@ -1346,6 +1355,18 @@ async function buildPdf(secs){
   return pdf.output("blob");
 }
 
+/* ---------- تۆمارکردنی خۆکار بۆ ئامار — ئەگەر شکستی هێنا، ناردن هەر بەردەوام دەبێت ---------- */
+async function record(){
+  if (!API_BASE) return false;
+  try{
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 8000);
+    const r = await fetch(API_BASE + "/submit", {method:"POST", headers:{"content-type":"application/json"},
+      body: JSON.stringify({data: rawData(), hp: val("website")}), signal: ctl.signal, keepalive: true});
+    clearTimeout(tm);
+    return r.ok;
+  }catch(e){ return false; }
+}
+
 /* ---------- Upload to the board (private) ---------- */
 const toB64 = b => new Promise((res,rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(",")[1]); r.onerror = rej; r.readAsDataURL(b); });
 async function upload(){
@@ -1373,7 +1394,7 @@ async function send(){
       sent = {text: fullText(), summary: summaryText(), video: videoFile};
     }
     step(2);
-    if (!uploaded){ const res = await upload(); uploaded = true; waSent = !!res.whatsapp; }
+    if (!uploaded){ const [res] = await Promise.all([upload(), record()]); uploaded = true; waSent = !!res.whatsapp; }
     step(3);
     $("#mRef").textContent = refCode;
     $("#waOk").hidden = !waSent;
@@ -1482,7 +1503,7 @@ const A = (() => {
   const fmt = n => ku(Math.round(n).toLocaleString("en-US"));
   const MONTHS = ["کانوونی دووەم","شوبات","ئازار","نیسان","ئایار","حوزەیران","تەمموز","ئاب","ئەیلوول","تشرینی یەکەم","تشرینی دووەم","کانوونی یەکەم"];
   const KEY_STORE = "sb-admin-key";
-  let ALL = [], period = "all", cityF = "", query = "", shown = 25, local = false, loaded = false, cityMetric = "count";
+  let ALL = [], period = "all", cityF = "", query = "", shown = 25, local = false, loaded = false, cityMetric = "count", adminKey = "", auto = null;
   // تەنها hash ـی کۆدەکە لێرەدایە، نەک خودی کۆدەکە
   const ADMIN_HASH = "244022060493ff3467dfe5248b844a2094b1a13c83482e4eba8c977a8d11310d";
   function sha256(str){
@@ -1534,13 +1555,14 @@ const A = (() => {
     if (!k){ $("#aErr").textContent = "کۆدی ئیدارە بنووسە."; return; }
     if (!SCRIPT_URL){
       if (sha256(k) !== ADMIN_HASH){ $("#aErr").textContent = "کۆدەکە هەڵەیە."; return; }
-      $("#aErr").textContent = ""; local = true; ALL = loadLocal(); enter(); return;
+      $("#aErr").textContent = ""; local = true; adminKey = k;
+      await refreshAll(); return;
     }
     $("#aErr").textContent = "";
     if (await load(k)) storeKey(k, $("#aRemember").checked);
   });
   $("#aLogout").addEventListener("click", () => { forgetKey(); loaded = false; local = false; ALL = []; $("#aKey").value = ""; showLogin(""); });
-  $("#aRefresh").addEventListener("click", () => local ? (ALL = loadLocal(), render()) : load(storedKey()));
+  $("#aRefresh").addEventListener("click", () => local ? refreshAll() : load(storedKey()));
   $("#aCopy").addEventListener("click", async () => {
     const code = $("#serverCode").textContent.trim();
     try{ await navigator.clipboard.writeText(code); $("#aCopy").textContent = "کۆپی کرا ✓"; }
@@ -1564,9 +1586,32 @@ const A = (() => {
       enter(); return true;
     }catch(err){ showLogin("پەیوەندی بە سێرڤەرەوە نەکرا. ئینتەرنێت بپشکنە."); return false; }
   }
+  /* فۆڕمە خۆکارەکان لە سێرڤەرەوە + ئەو PDFـانەی بە دەست زیاد کراون، هەر فۆڕمێک یەک جار */
+  async function fetchServer(){
+    if (!API_BASE) return null;
+    try{
+      const r = await fetch(API_BASE + "/stats?_=" + Date.now(), {headers:{"x-admin-key": adminKey}});
+      const j = await r.json();
+      return j.ok ? j.rows || [] : null;
+    }catch(e){ return null; }
+  }
+  async function refreshAll(){
+    $("#aLogin").hidden = true; $("#aDash").hidden = false;
+    const srv = await fetchServer();
+    auto = srv !== null;
+    const seen = new Set(), rows = [];
+    [...(srv || []), ...loadLocal()].forEach(r => { if (r && r.ref && !seen.has(r.ref)){ seen.add(r.ref); rows.push(r); } });
+    ALL = rows; enter();
+  }
   function enter(){
     loaded = true;
-    $("#aLogin").hidden = true; $("#aDash").hidden = false; $("#aImport").hidden = !local; $("#aSetup").hidden = !local;
+    $("#aLogin").hidden = true; $("#aDash").hidden = false; $("#aImport").hidden = !local; $("#aSetup").hidden = true;
+    const st = $("#aAuto");
+    st.hidden = !local;
+    st.className = "autostat " + (auto ? "on" : "off");
+    st.innerHTML = auto
+      ? "<i></i>کۆکردنەوەی خۆکار چالاکە — هەر فۆڕمێک بنێردرێت خۆی لێرە هەژمار دەکرێت."
+      : "<i></i>کۆکردنەوەی خۆکار هێشتا چالاک نەکراوە — تا ئەو کاتە PDFـەکان لە خوارەوە زیاد بکە.";
     const now = new Date();
     $("#aUpdated").textContent = "نوێکراوەتەوە: " + ku(pad(now.getHours()) + ":" + pad(now.getMinutes()));
     const cities = [...new Set(ALL.map(r => r.city).filter(Boolean))].sort((a,b) => a.localeCompare(b,"ckb"));
@@ -1731,17 +1776,17 @@ const A = (() => {
         rows.push(r); refs.add(r.ref); added++;
       }catch(err){ bad++; }
     }
-    saveLocal(rows); ALL = rows;
+    saveLocal(rows);
     const parts = [];
     if (added) parts.push(ku(added) + " فۆڕم زیاد کرا");
     if (dup) parts.push(ku(dup) + " پێشتر هەبوو");
     if (bad) parts.push(ku(bad) + " PDF ـی ئەم پۆرتاڵە نییە");
     $("#aImpMsg").textContent = parts.join(" · ");
-    enter();
+    await refreshAll();
   });
   $("#aClear").addEventListener("click", () => {
-    if (!confirm("هەموو فۆڕمە زیادکراوەکان لەم ئامێرە بسڕدرێنەوە؟")) return;
-    saveLocal([]); ALL = []; $("#aImpMsg").textContent = "هەموو زانیارییەکان سڕانەوە."; enter();
+    if (!confirm("ئەو فۆڕمانەی بە PDF لەم ئامێرە زیاد کراون بسڕدرێنەوە؟")) return;
+    saveLocal([]); $("#aImpMsg").textContent = "PDFـە زیادکراوەکان سڕانەوە."; refreshAll();
   });
   return {open};
 })();
