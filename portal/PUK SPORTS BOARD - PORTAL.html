@@ -434,6 +434,11 @@ html:not(.js-reveal) .reveal{animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) bo
 #adm .aloading{display:grid;place-items:center;gap:14px;padding:80px 0;color:var(--muted)}
 #adm .aloading .alg{width:90px;height:90px;margin:0}
 #adm .aloading .alg img{inset:8px;width:74px;height:74px}
+#adm .aimport{text-align:center}
+#adm .aimport .imp-btn{position:relative;overflow:hidden;max-width:360px;margin:4px auto 0}
+#adm .aimport .imp-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+#adm .imp-msg{min-height:1.6em;margin:12px 0 4px;color:var(--gold-light);font-size:14px}
+#adm .aimport .lnk{color:var(--muted);font-size:13px}
 #adm .banner{border:1px solid var(--gold);border-radius:14px;padding:10px 14px;margin:0 0 18px;color:var(--gold-light);background:rgba(77,255,171,.08);font-size:14px}
 </style>
 </head>
@@ -704,9 +709,15 @@ html:not(.js-reveal) .reveal{animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) bo
         <button class="abtn" type="button" id="aLogout">چوونەدەرەوە</button>
       </div>
     </header>
-    <div id="aDemoBanner" class="banner" hidden>هێشتا پەیوەندی بە Google Sheet ـەوە نییە، بۆیە ئەمە <b>نموونەیە بە زانیاریی خەیاڵی</b>. بۆ ئەوەی فۆڕمە ڕاستەقینەکان لێرە دەرکەون، ڕێنمایی خوارەوە یەکجار جێبەجێ بکە.</div>
+    <div class="acard aimport" id="aImport" hidden>
+      <h2>زیادکردنی فۆڕمەکان لە PDF</h2>
+      <p class="sub">ئەو PDFـانەی لە واتسئاپ گەیشتوون پاشەکەوتیان بکە (Save to Files)، پاشان لێرە هەڵیانبژێرە — دەتوانیت چەندانێک پێکەوە هەڵبژێریت. هەر PDFێک تەنها یەک جار هەژمار دەکرێت، و ئامارەکان لەسەر ئەم ئامێرە دەمێننەوە.</p>
+      <label class="abtn abtn-gold imp-btn"><input type="file" id="aPdfs" accept="application/pdf,.pdf" multiple> ＋ هەڵبژاردنی PDF</label>
+      <p class="imp-msg" id="aImpMsg" role="status"></p>
+      <button class="lnk" type="button" id="aClear">سڕینەوەی هەموو زانیارییەکان لەم ئامێرە</button>
+    </div>
       <details class="setup acard" id="aSetup" hidden>
-        <summary>ڕێنمایی دامەزراندن (یەکجار)</summary>
+        <summary>یان: کۆکردنەوەی خۆکار بە Google Sheet (ئارەزوومەندانە)</summary>
         <ol>
           <li>بە ئەکاونتی Googleی بۆرد، Google Sheetێکی نوێ دروست بکە.</li>
           <li>لە شیتەکەدا: <code>Extensions → Apps Script</code>. کۆدە کۆنەکە بسڕەوە.</li>
@@ -767,7 +778,7 @@ const IDX = COLS.reduce(function (o, c, i) { o[c[0]] = i; return o; }, {});
 const NUMERIC = ['nAll', 'nWomen', 'nYouth', 'cost', 'photos'];
 
 /* ---------- یەکەمجار ڕابکە ---------- */
-const ADMIN_HASH = 'cba0536481d686a0cc2af52481f7b2bc8ba297c3233a06920eaa5c0256f077a4';
+const ADMIN_HASH = '244022060493ff3467dfe5248b844a2094b1a13c83482e4eba8c977a8d11310d';
 function isAdmin_(key) {
   const d = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, String(key || ''), Utilities.Charset.UTF_8);
   return d.map(function (b) { return ('0' + (b & 255).toString(16)).slice(-2); }).join('') === ADMIN_HASH;
@@ -1326,6 +1337,10 @@ async function buildPdf(secs){
   });
 
   const pdf = new window.jspdf.jsPDF({unit:"mm", format:"a4", compress:true});
+  // وەڵامەکان بە شاراوەیی لەناو PDFەکەدا دەمێننەوە، بۆ ئەوەی ئیدارە ئامار لە خودی PDFەکانی واتسئاپ وەربگرێت
+  const embed = Object.assign(rawData(), {t: new Date().toISOString()});
+  pdf.setProperties({title: FORM_TITLE, subject: refCode, author: val("repName"), creator: "PUK SPORTS BOARD",
+    keywords: "PUKSB1:" + btoa(unescape(encodeURIComponent(JSON.stringify(embed)))) + ":PUKSB1"});
   pages.forEach((p,i) => { if (i) pdf.addPage(); pdf.addImage(p.toDataURL("image/jpeg", 0.8), "JPEG", 0, 0, 210, 297, undefined, "FAST"); });
   host.remove();
   return pdf.output("blob");
@@ -1467,9 +1482,9 @@ const A = (() => {
   const fmt = n => ku(Math.round(n).toLocaleString("en-US"));
   const MONTHS = ["کانوونی دووەم","شوبات","ئازار","نیسان","ئایار","حوزەیران","تەمموز","ئاب","ئەیلوول","تشرینی یەکەم","تشرینی دووەم","کانوونی یەکەم"];
   const KEY_STORE = "sb-admin-key";
-  let ALL = [], period = "all", cityF = "", query = "", shown = 25, demo = false, loaded = false, cityMetric = "count";
+  let ALL = [], period = "all", cityF = "", query = "", shown = 25, local = false, loaded = false, cityMetric = "count";
   // تەنها hash ـی کۆدەکە لێرەدایە، نەک خودی کۆدەکە
-  const ADMIN_HASH = "cba0536481d686a0cc2af52481f7b2bc8ba297c3233a06920eaa5c0256f077a4";
+  const ADMIN_HASH = "244022060493ff3467dfe5248b844a2094b1a13c83482e4eba8c977a8d11310d";
   function sha256(str){
     const b = unescape(encodeURIComponent(str)), K = [], H = [], w = [];
     const rr = (n,x) => (x >>> n) | (x << (32 - n));
@@ -1519,13 +1534,13 @@ const A = (() => {
     if (!k){ $("#aErr").textContent = "کۆدی ئیدارە بنووسە."; return; }
     if (!SCRIPT_URL){
       if (sha256(k) !== ADMIN_HASH){ $("#aErr").textContent = "کۆدەکە هەڵەیە."; return; }
-      $("#aErr").textContent = ""; demo = true; ALL = demoRows(); enter(); return;
+      $("#aErr").textContent = ""; local = true; ALL = loadLocal(); enter(); return;
     }
     $("#aErr").textContent = "";
     if (await load(k)) storeKey(k, $("#aRemember").checked);
   });
-  $("#aLogout").addEventListener("click", () => { forgetKey(); loaded = false; demo = false; ALL = []; $("#aKey").value = ""; showLogin(""); });
-  $("#aRefresh").addEventListener("click", () => demo ? render() : load(storedKey()));
+  $("#aLogout").addEventListener("click", () => { forgetKey(); loaded = false; local = false; ALL = []; $("#aKey").value = ""; showLogin(""); });
+  $("#aRefresh").addEventListener("click", () => local ? (ALL = loadLocal(), render()) : load(storedKey()));
   $("#aCopy").addEventListener("click", async () => {
     const code = $("#serverCode").textContent.trim();
     try{ await navigator.clipboard.writeText(code); $("#aCopy").textContent = "کۆپی کرا ✓"; }
@@ -1544,14 +1559,14 @@ const A = (() => {
       const r = await fetch(SCRIPT_URL + "?action=stats&key=" + encodeURIComponent(k) + "&_=" + Date.now());
       const j = await r.json();
       if (!j.ok){ forgetKey(); showLogin(j.error === "auth" ? "کۆدەکە هەڵەیە." : "هەڵەیەک لە سێرڤەر ڕوویدا."); return false; }
-      ALL = j.rows || []; demo = false;
+      ALL = j.rows || []; local = false;
       if (j.sheetUrl){ $("#aSheet").href = j.sheetUrl; $("#aSheet").hidden = false; }
       enter(); return true;
     }catch(err){ showLogin("پەیوەندی بە سێرڤەرەوە نەکرا. ئینتەرنێت بپشکنە."); return false; }
   }
   function enter(){
     loaded = true;
-    $("#aLogin").hidden = true; $("#aDash").hidden = false; $("#aDemoBanner").hidden = !demo; $("#aSetup").hidden = !demo;
+    $("#aLogin").hidden = true; $("#aDash").hidden = false; $("#aImport").hidden = !local; $("#aSetup").hidden = !local;
     const now = new Date();
     $("#aUpdated").textContent = "نوێکراوەتەوە: " + ku(pad(now.getHours()) + ":" + pad(now.getMinutes()));
     const cities = [...new Set(ALL.map(r => r.city).filter(Boolean))].sort((a,b) => a.localeCompare(b,"ckb"));
@@ -1607,7 +1622,7 @@ const A = (() => {
     html.push(`<div class="kpis">${kpis.map(([c,v,l,txt],i) => `<div class="kpi ${c}" style="animation-delay:${i*.05}s">${txt !== undefined ? `<b>${esc(txt).replace(/ (دینار)$/, " <small>$1</small>")}</b>` : `<b data-count="${v}">٠</b>`}<span>${l}</span></div>`).join("")}</div>`);
 
     if (!rows.length){
-      html.push(`<div class="acard"><p class="aempty">هیچ چالاکییەک لەم ماوەیەدا تۆمار نەکراوە.</p></div>`);
+      html.push(`<div class="acard"><p class="aempty">${ALL.length ? "هیچ چالاکییەک لەم ماوەیەدا تۆمار نەکراوە." : "هێشتا هیچ فۆڕمێک نییە — PDFـەکانی واتسئاپ لە سەرەوە زیاد بکە."}</p></div>`);
       $("#aContent").innerHTML = html.join(""); countUp(); return;
     }
 
@@ -1688,25 +1703,46 @@ const A = (() => {
       document.querySelectorAll("#adm .mcol .c").forEach(c => c.style.height = Math.max(c.dataset.h > 0 ? 4 : 0, c.dataset.h * .8) + "%");
     }));
   }
-  function demoRows(){
-    const cities = ["سلێمانی","هەولێر","کەرکوک","گەرمیان","ڕانیە","چەمچەماڵ","هەڵەبجە","کۆیە","دهۆک","کەلار"];
-    const reps = ["ئاراس محەمەد","شیلان عەلی","هێمن ڕەشید","دڵشاد کەریم","ڕێبوار ئەحمەد","ژیان عومەر","کاوە حەسەن","نەسرین جەلال"];
-    const types = ["پاڵەوانی","خولی ڕاهێنان","سیمینار","کۆبوونەوە","پڕۆژەی گەشەپێدانی وەرزش","چالاکیی ژنان","چالاکیی گەنجان","چالاکیی منداڵان"];
-    const acts = ["پاڵەوانیی تۆپی پێ","خولی ڕاهێنانی ڕاهێنەران","ڕاکردنی گەنجان","سیمیناری وەرزش و تەندروستی","پاڵەوانیی شەترەنج","ڕۆژی وەرزشی منداڵان"];
-    const funds = ["بودجەی بۆردی وەرزش","بودجەی مەڵبەند / بەش","بەخشین و پاڵپشتی"];
-    const out = [], now = Date.now();
-    for (let i = 0; i < 64; i++){
-      const ci = Math.floor(Math.pow(Math.random(),1.7) * cities.length), ri = (ci + Math.floor(Math.random()*2)) % reps.length;
-      const d = new Date(now - Math.floor(Math.random()*330)*864e5), n = 20 + Math.floor(Math.random()*280);
-      const usd = Math.random() < .15;
-      out.push({t:d.toISOString(), ref:"SB-DEMO-" + (1000+i), rep:reps[ri], city:cities[ci], unit:"مەڵبەندی " + cities[ci],
-        act:acts[i % acts.length], type:types[Math.floor(Math.random()*types.length)], date:d.toISOString().slice(0,10),
-        n, w:Math.floor(n*Math.random()*.5), y:Math.floor(n*Math.random()*.7),
-        cost: usd ? 100*(1+Math.floor(Math.random()*20)) : 50000*(1+Math.floor(Math.random()*60)), cur: usd ? "USD" : "IQD",
-        fund: funds[Math.floor(Math.random()*funds.length)], pdf:""});
-    }
-    return out;
+  /* ---------- فۆڕمەکان لە PDFـەکانەوە ---------- */
+  const LOCAL_KEY = "sb-admin-forms-v1";
+  function loadLocal(){ try{ return JSON.parse(localStorage.getItem(LOCAL_KEY) || "[]"); }catch(e){ return []; } }
+  function saveLocal(rows){ try{ localStorage.setItem(LOCAL_KEY, JSON.stringify(rows)); return true; }catch(e){ return false; } }
+  const num = v => parseInt(String(v ?? "").replace(/[^\d]/g, ""), 10) || 0;
+  function rowFromPdf(buf){
+    const bytes = new Uint8Array(buf); let txt = "";
+    for (let i = 0; i < bytes.length; i += 65536) txt += String.fromCharCode.apply(null, bytes.subarray(i, i + 65536));
+    const m = txt.match(/PUKSB1:([A-Za-z0-9+\/=]+):PUKSB1/);
+    if (!m) return null;
+    const d = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+    return {t: d.t || new Date().toISOString(), ref: d.ref, rep: d.repName, phone: d.repPhone, city: d.city, unit: d.unit,
+      act: d.actName, type: d.actType, date: d.actDate, n: num(d.nAll), w: num(d.nWomen), y: num(d.nYouth),
+      cost: num(d.cost), cur: d.currency || "IQD", fund: d.fund || "", pdf: ""};
   }
+  $("#aPdfs").addEventListener("change", async e => {
+    const files = [...e.target.files]; e.target.value = "";
+    if (!files.length) return;
+    const rows = loadLocal(), refs = new Set(rows.map(r => r.ref));
+    let added = 0, dup = 0, bad = 0;
+    for (const f of files){
+      try{
+        const r = rowFromPdf(await f.arrayBuffer());
+        if (!r || !r.ref){ bad++; continue; }
+        if (refs.has(r.ref)){ dup++; continue; }
+        rows.push(r); refs.add(r.ref); added++;
+      }catch(err){ bad++; }
+    }
+    saveLocal(rows); ALL = rows;
+    const parts = [];
+    if (added) parts.push(ku(added) + " فۆڕم زیاد کرا");
+    if (dup) parts.push(ku(dup) + " پێشتر هەبوو");
+    if (bad) parts.push(ku(bad) + " PDF ـی ئەم پۆرتاڵە نییە");
+    $("#aImpMsg").textContent = parts.join(" · ");
+    enter();
+  });
+  $("#aClear").addEventListener("click", () => {
+    if (!confirm("هەموو فۆڕمە زیادکراوەکان لەم ئامێرە بسڕدرێنەوە؟")) return;
+    saveLocal([]); ALL = []; $("#aImpMsg").textContent = "هەموو زانیارییەکان سڕانەوە."; enter();
+  });
   return {open};
 })();
 
@@ -1773,7 +1809,7 @@ function route(){
   const isAdmin = location.hash === "#admin";
   $("#formView").hidden = isAdmin; $("#adm").hidden = !isAdmin;
   document.title = isAdmin ? "ئاماری چالاکییەکان | ئیدارەی بۆردی وەرزش" : PORTAL;
-  if (isAdmin) A.open();
+  if (isAdmin){ modal.classList.remove("show"); A.open(); }
   scrollTo({top:0});
 }
 addEventListener("hashchange", route);
