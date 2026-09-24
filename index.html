@@ -818,10 +818,12 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 /* ================= گۆڕینی زمان ================= */
 .lang-switch{position:relative;z-index:3;direction:ltr;
   display:inline-flex;gap:2px;margin:16px auto 4px;padding:3px;border-radius:999px;
-  background:rgba(2,17,10,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  background:linear-gradient(180deg,#07170e,#020a06);   /* ڕەنگێکی جێگیر، بێ blur: لە کاتی کردنەوەدا تێکناچێت */
   border:1px solid rgba(77,255,171,.22);box-shadow:0 0 14px rgba(77,255,171,.10)}
 .lang-switch button{all:unset;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:700;line-height:1;
-  padding:6px 12px;border-radius:999px;color:var(--muted);transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+  padding:6px 12px;border-radius:999px;color:var(--muted)}
+/* گۆڕانی ڕەنگ تەنها کاتێک خەڵک زمان دەگۆڕێت، نەک لە کاتی کردنەوەدا */
+.lang-switch.ready button{transition:background .3s ease,color .3s ease,box-shadow .3s ease}
 .lang-switch button:hover{color:var(--neon)}
 .lang-switch button[aria-pressed="true"]{color:#04170c;background:linear-gradient(100deg,#8dffc9,var(--neon) 55%,var(--neon-2));
   box-shadow:0 0 10px rgba(77,255,171,.45)}
@@ -860,9 +862,9 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     </div>
     <p data-i18n="logoNote" class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
     <div class="lang-switch" role="group" aria-label="Language / زمان / اللغة">
-      <button type="button" data-lang="ku" lang="ckb">کوردی</button>
-      <button type="button" data-lang="ar" lang="ar">العربية</button>
-      <button type="button" data-lang="en" lang="en">English</button>
+      <button type="button" data-lang="ku" lang="ckb" aria-pressed="true">کوردی</button>
+      <button type="button" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
     </div>
 
     <h1 data-i18n="org" class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
@@ -2195,6 +2197,8 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     var saved = null;
     try { saved = localStorage.getItem(LANG_KEY); } catch(e){}
     setLang(fromUrl || saved || "ku", !!fromUrl);
+    var sw = document.querySelector(".lang-switch");
+    if(sw) requestAnimationFrame(function(){ requestAnimationFrame(function(){ sw.classList.add("ready"); }); });
   })();
 
 })();
