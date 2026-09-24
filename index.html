@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PUK SPORTS BOARD - FORM</title>
+<meta name="description" content="فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی – بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان">
+<meta name="theme-color" content="#01100a">
+<link rel="icon" href="assets/img/sports-board-logo.png">
+<link rel="preload" as="image" href="assets/img/banner.webp">
+<style>
+html{background-color:#04170c;}
+/* ---------- Zain (Google Fonts, self-hosted) ---------- */
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-arabic-400.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-latin-400.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-arabic-700.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-latin-700.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-arabic-900.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-latin-900.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+
+:root{
+  color-scheme:dark;
+  --black:#000000;
+  --deep-1:#01100a;
+  --deep-2:#031a0f;
+  --deep-3:#052414;
+
+  --neon:#4dffab;
+  --neon-2:#22e894;
+  --line:rgba(77,255,171,.20);
+  --line-soft:rgba(77,255,171,.11);
+  --glow:rgba(77,255,171,.16);
+
+  --text:#eafff4;
+  --text-2:#c6e8d6;
+  --muted:#7fa992;
+  --alert:#ff6f87;
+
+  --panel:rgba(4,22,13,.62);
+  --radius:30px;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Zain','Segoe UI',Tahoma,sans-serif;
+  font-weight:400;
+  font-size:18px;
+  color:var(--text);
+  line-height:1.85;
+  background-color:var(--black);
+  background-image:
+    radial-gradient(1000px 560px at 50% 26%, rgba(77,255,171,.11), transparent 62%),
+    radial-gradient(900px 720px at 88% 34%, rgba(12,110,64,.20), transparent 62%),
+    radial-gradient(820px 720px at 6% 74%, rgba(10,90,54,.15), transparent 62%),
+    linear-gradient(180deg, #000000 0%, #000503 9%, var(--deep-1) 28%, var(--deep-3) 58%, var(--deep-2) 80%, #000000 100%);
+  background-attachment:fixed;
+  -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
+}
+/* clip نەک hidden: ڕێگری لە دروستبوونی سکڕۆڵێکی جیاواز بۆ body */
+@supports (overflow-x:clip){ body{overflow-x:clip;} }
+
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 56px;}
+
+/* ================= کردنەوەی نەرمی لاپەڕەکە ================= */
+@keyframes page-in{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:none;}
+}
+.banner,.wrap{animation:page-in .7s cubic-bezier(.25,.6,.3,1) both;}
+.wrap{animation-delay:.08s;}
+@media (prefers-reduced-motion:reduce){
+  .banner,.wrap{animation:none;}
+}
+
+/* ================= HERO ================= */
+.banner{position:relative;width:100%;line-height:0;}
+.banner img{
+  width:100%;height:auto;display:block;
+  aspect-ratio:1600 / 595;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 84%, rgba(0,0,0,.45) 95%, transparent 100%),
+    linear-gradient(to left, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite:source-in;
+          mask-image:
+    linear-gradient(to bottom, #000 0%, #000 84%, rgba(0,0,0,.45) 95%, transparent 100%),
+    linear-gradient(to left, transparent 0%, #000 7%, #000 93%, transparent 100%);
+          mask-composite:intersect;
+}
+.banner::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(78% 96% at 50% 42%, transparent 48%, rgba(0,0,0,.55) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,.30) 0%, transparent 28%, rgba(1,16,10,.40) 98%);
+}
+.logo-note{
+  margin:0 auto;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transform:translateY(-6px) scale(.96);
+  letter-spacing:7px;
+  font-weight:700;
+  font-size:clamp(14px,3.8vw,18px);
+  color:#eafff5;
+  transition:max-height 1s cubic-bezier(.22,.7,.28,1),
+             opacity 1.25s cubic-bezier(.22,.7,.28,1),
+             transform 1.25s cubic-bezier(.22,.7,.28,1),
+             letter-spacing 1.45s cubic-bezier(.16,.8,.24,1);
+  text-shadow:
+    0 0 6px #ffffff,
+    0 0 14px var(--neon),
+    0 0 30px var(--neon),
+    0 0 58px rgba(77,255,171,.6);
+}
+.logo-note.is-open,
+.board-logo:hover + .logo-note,
+.board-logo:focus-visible + .logo-note{
+  max-height:70px;
+  opacity:1;
+  transform:translateY(10px) scale(1);
+  letter-spacing:1.5px;
+}
+
+.neon-line{
+  height:1px;margin:-1px auto 0;
+  width:min(680px,88%);
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.40;
+  box-shadow:0 0 22px rgba(77,255,171,.45);
+}
+
+.hero{text-align:center;position:relative;}
+
+.board-logo{
+  position:relative;
+  margin-top:-26px;
+  display:inline-grid;place-items:center;
+  width:128px;height:128px;
+  border-radius:50%;
+  cursor:pointer;
+  background:radial-gradient(circle at 50% 32%, #07331b 0%, #010d07 78%);
+  border:1px solid var(--line);
+  box-shadow:
+    0 0 0 7px rgba(0,0,0,.72),
+    0 0 30px var(--glow),
+    0 0 70px rgba(77,255,171,.10),
+    inset 0 0 26px rgba(77,255,171,.08);
+}
+.board-logo img{width:104px;height:104px;object-fit:contain;
+  filter:drop-shadow(0 0 12px rgba(77,255,171,.30));}
+
+.org{
+  margin:20px 0 0;
+  font-size:clamp(13px,3.3vw,16px);
+  font-weight:400;
+  letter-spacing:1.4px;
+  color:#9ec7b1;
+  text-shadow:0 0 12px rgba(77,255,171,.28);
+}
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:16px auto 0;width:min(340px,82%);
+}
+.hero-divider span{
+  height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+}
+.hero-divider i{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 14px var(--neon),0 0 30px rgba(77,255,171,.5);
+}
+
+.form-title{
+  margin:14px 0 0;
+  font-weight:900;
+  font-size:clamp(25px,6.2vw,40px);
+  line-height:1.4;
+  background:linear-gradient(180deg,#ffffff 0%,#d6ffe9 42%,var(--neon) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 16px rgba(77,255,171,.55)) drop-shadow(0 0 44px rgba(77,255,171,.30));
+}
+.tagline{
+  margin:16px auto 0;
+  max-width:520px;
+  font-weight:400;
+  font-size:clamp(14px,3.7vw,18px);
+  line-height:1.8;
+  color:#bfe6d3;
+  text-shadow:0 0 14px rgba(77,255,171,.30);
+}
+.intro{
+  margin:30px auto 0;
+  max-width:660px;
+  text-align:start;
+  padding:26px 22px;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.09);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.012) 42%, rgba(77,255,171,.025) 100%),
+    rgba(2,17,10,.84);
+  box-shadow:
+    0 0 0 1px rgba(77,255,171,.22),
+    0 0 22px rgba(77,255,171,.10),
+    0 18px 40px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.14);
+}
+.intro p{
+  margin:0;
+  font-size:clamp(13.5px,3.4vw,16px);
+  line-height:2.05;
+  color:#b9d8c8;
+  text-shadow:none;
+}
+.intro p + p{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(77,255,171,.14);
+}
+.hero-sub{
+  margin:26px auto 0;
+  max-width:520px;
+  font-size:clamp(12.5px,3.2vw,15px);
+  color:#7fa992;
+  line-height:1.85;
+}
+
+/* ================= CARDS ================= */
+.card{
+  position:relative;
+  margin-top:30px;
+  padding:26px 22px;
+  border-radius:var(--radius);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(77,255,171,.035) 1px, transparent 1.6px) 0 0/26px 26px,
+    linear-gradient(145deg, rgba(255,255,255,.075) 0%, rgba(255,255,255,.015) 38%, rgba(77,255,171,.03) 100%),
+    rgba(2,17,10,.86);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 0 0 1px rgba(77,255,171,.34),
+    0 0 26px rgba(77,255,171,.20),
+    0 0 60px rgba(77,255,171,.10),
+    0 26px 60px rgba(0,0,0,.55),
+    inset 0 0 26px rgba(77,255,171,.06),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.card::before{
+  content:"";position:absolute;
+  inset-inline:22%;top:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.55),transparent);
+  box-shadow:0 0 12px rgba(77,255,171,.4);
+}
+
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.sec-num{
+  flex:0 0 auto;
+  width:48px;height:48px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:22px;font-weight:700;
+  color:var(--neon);
+  background:radial-gradient(circle at 50% 30%, rgba(77,255,171,.14), rgba(0,0,0,.35));
+  border:1px solid rgba(77,255,171,.45);
+  box-shadow:0 0 18px rgba(77,255,171,.22), inset 0 0 16px rgba(77,255,171,.10);
+  text-shadow:0 0 14px rgba(77,255,171,.85), 0 0 30px rgba(77,255,171,.45);
+}
+.sec-title{
+  margin:0;font-weight:700;
+  font-size:clamp(18px,4.6vw,24px);
+  color:#d5ffe9;
+  text-shadow:0 0 14px rgba(77,255,171,.60), 0 0 32px rgba(77,255,171,.35);
+  line-height:1.45;
+}
+.sec-title span{
+  display:block;font-weight:400;
+  font-size:.72em;
+  color:var(--muted);
+  text-shadow:none;
+}
+
+.field{margin-top:22px;position:relative;}
+.field + .field{margin-top:26px;padding-top:26px;}
+.field + .field::before{
+  content:"";
+  position:absolute;top:0;
+  inset-inline:4%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.22),transparent);
+  box-shadow:0 0 8px rgba(77,255,171,.18);
+}
+.field + .field::after{
+  content:"";
+  position:absolute;top:-2px;
+  inset-inline-start:50%;
+  width:5px;height:5px;
+  transform:translateX(50%);
+  border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 8px var(--neon),0 0 18px rgba(77,255,171,.5);
+  opacity:.5;
+}
+label{
+  display:block;margin-bottom:10px;
+  font-size:clamp(15px,3.9vw,18px);
+  font-weight:700;
+  color:#b9f6d9;
+  text-shadow:0 0 12px rgba(77,255,171,.58), 0 0 28px rgba(77,255,171,.30);
+}
+label .req{color:var(--alert);margin-inline-start:5px;text-shadow:0 0 10px rgba(255,111,135,.45);}
+label .opt{
+  display:inline-block;
+  margin-inline-start:8px;
+  padding:1px 10px;
+  border-radius:999px;
+  font-size:.66em;font-weight:400;
+  color:var(--muted);
+  border:1px solid var(--line-soft);
+  text-shadow:none;
+  vertical-align:middle;
+}
+label .hint{
+  display:block;font-weight:400;
+  font-size:.8em;color:var(--muted);text-shadow:none;
+}
+
+input,textarea{
+  font-family:inherit;font-size:17px;line-height:1.8;
+  width:100%;padding:14px 16px;
+  color:var(--text);
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(77,255,171,.34);
+  border-radius:18px;
+  box-shadow:0 0 16px rgba(77,255,171,.14), inset 0 0 16px rgba(77,255,171,.05), inset 0 1px 0 rgba(255,255,255,.10);
+  transition:border-color .22s, box-shadow .22s, background .22s;
+}
+input::placeholder,textarea::placeholder{color:#5f8873;}
+input:focus,textarea:focus{
+  outline:none;
+  background:rgba(255,255,255,.07);
+  border-color:rgba(77,255,171,.75);
+  box-shadow:0 0 30px rgba(77,255,171,.40), inset 0 0 26px rgba(77,255,171,.10);
+}
+textarea{min-height:118px;resize:vertical;}
+.invalid{
+  border-color:rgba(255,111,135,.75)!important;
+  box-shadow:0 0 22px rgba(255,111,135,.25)!important;
+}
+
+/* ================= QUOTE ================= */
+.quote{
+  position:relative;margin-top:32px;
+  padding:30px 24px;text-align:center;
+  border-radius:var(--radius);overflow:hidden;
+  background:
+    radial-gradient(130% 150% at 50% 0%, rgba(77,255,171,.12), transparent 62%),
+    linear-gradient(145deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,.012) 45%, rgba(77,255,171,.028) 100%),
+    rgba(2,17,10,.86);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 0 0 1px rgba(77,255,171,.38),
+    0 0 30px rgba(77,255,171,.22),
+    0 0 66px rgba(77,255,171,.10),
+    0 24px 52px rgba(0,0,0,.5),
+    inset 0 0 26px rgba(77,255,171,.07),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.quote::before,.quote::after{
+  content:"";position:absolute;inset-inline:18%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.5;
+}
+.quote::before{top:0;}
+.quote::after{bottom:0;}
+.quote p{margin:0;}
+.quote .q-top{
+  font-size:clamp(14px,3.6vw,17px);
+  color:var(--muted);
+  letter-spacing:.4px;
+  margin-bottom:12px!important;
+}
+.quote .q-body{
+  font-weight:700;
+  font-size:clamp(17px,4.4vw,23px);
+  line-height:1.75;
+  color:#e6fff2;
+  text-shadow:0 0 18px rgba(77,255,171,.60), 0 0 40px rgba(77,255,171,.32);
+}
+
+/* ================= ACTIONS ================= */
+.actions{margin-top:30px;display:grid;gap:14px;}
+button{
+  font-family:inherit;font-weight:700;
+  font-size:clamp(17px,4.4vw,21px);
+  border:none;border-radius:16px;
+  padding:16px 22px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transition:transform .14s, box-shadow .22s, filter .22s, background .22s;
+}
+button:active{transform:translateY(2px);}
+
+.btn-send{
+  position:relative;overflow:hidden;
+  padding:19px 26px;
+  border-radius:999px;
+  color:#04230f;
+  background:linear-gradient(135deg, #5ee07f 0%, #3ed46a 42%, #1faa4e 100%);
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.45),
+    0 0 26px rgba(61,212,106,.22),
+    inset 0 1px 0 rgba(255,255,255,.28);
+}
+.btn-send[disabled]{opacity:.65;cursor:progress;}
+.btn-send:hover{filter:brightness(1.05);box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 34px rgba(61,212,106,.34);}
+.btn-send .wa-icon{width:28px;height:28px;flex:0 0 auto;}
+
+.btn-pdf{
+  color:#eafff4;
+  background:linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+  border:1px solid rgba(77,255,171,.42);
+  box-shadow:0 0 0 1px rgba(77,255,171,.18), inset 0 1px 0 rgba(255,255,255,.14);
+  border-radius:999px;
+}
+.btn-pdf:hover{background:rgba(77,255,171,.10);box-shadow:0 0 24px rgba(77,255,171,.24);}
+.btn-pdf[disabled]{opacity:.65;cursor:progress;}
+.btn-pdf .pdf-icon{width:26px;height:26px;flex:0 0 auto;}
+.btn-send .wa-icon{width:26px;height:26px;flex:0 0 auto;}
+
+.btn-copy{
+  color:#c9ffe6;
+  background:linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 0 1px var(--line), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.btn-copy:hover{background:rgba(77,255,171,.07);box-shadow:0 0 22px rgba(77,255,171,.18);}
+
+.btn-clear{
+  color:var(--muted);background:transparent;
+  font-weight:400;
+  font-size:clamp(14px,3.4vw,16px);
+  padding:6px 12px;
+  text-decoration:underline;text-underline-offset:6px;
+  text-decoration-color:var(--line);
+}
+.btn-clear:hover{color:var(--alert);text-decoration-color:rgba(255,111,135,.5);}
+
+.note{
+  text-align:center;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--muted);margin-top:6px;
+}
+.toast{
+  position:fixed;inset-inline:16px;bottom:22px;
+  margin:0 auto;max-width:430px;
+  background:rgba(1,16,10,.96);
+  border:1px solid var(--line);
+  color:#d9fdeb;text-align:center;
+  padding:14px 18px;border-radius:14px;
+  box-shadow:0 0 30px rgba(77,255,171,.22), 0 16px 38px rgba(0,0,0,.65);
+  opacity:0;transform:translateY(14px);
+  transition:opacity .25s, transform .25s;
+  pointer-events:none;z-index:50;font-size:16px;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ================= FOOTER ================= */
+.footer{margin-top:44px;text-align:center;}
+.footer .line{
+  width:200px;height:1px;margin:0 auto 20px;
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  opacity:.45;
+  box-shadow:0 0 16px rgba(77,255,171,.45);
+}
+.dev-by{
+  direction:ltr;margin:0 0 2px;
+  font-size:12px;font-weight:400;
+  letter-spacing:5px;text-transform:uppercase;
+  color:var(--muted);
+}
+.dev-name{
+  display:inline-block;
+  direction:ltr;margin:0;padding:6px 10px;
+  border:none;background:none;cursor:pointer;
+  font-family:inherit;
+  font-size:clamp(26px,6.6vw,46px);
+  font-weight:900;letter-spacing:3px;line-height:1.3;
+  white-space:nowrap;
+  background-image:linear-gradient(110deg,
+    #ffffff 0%, #c9ffe6 22%, var(--neon) 42%, #ffffff 52%, var(--neon) 62%, #c9ffe6 82%, #ffffff 100%);
+  background-size:280% 100%;
+  background-position:0% 50%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(77,255,171,.65)) drop-shadow(0 0 46px rgba(77,255,171,.35));
+  transition:transform .45s cubic-bezier(.22,.8,.3,1),
+             letter-spacing .45s cubic-bezier(.22,.8,.3,1),
+             background-position 1.1s ease,
+             filter .45s ease;
+}
+.dev-name:hover,
+.footer.is-open .dev-name{
+  transform:scale(1.06) translateY(-2px);
+  letter-spacing:4.5px;
+  background-position:100% 50%;
+  filter:drop-shadow(0 0 26px rgba(77,255,171,.9)) drop-shadow(0 0 60px rgba(77,255,171,.5));
+}
+.dev-name:focus-visible{outline:2px solid var(--neon);outline-offset:6px;border-radius:12px;}
+
+.dev-motto{
+  margin:0;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transform:translateY(-10px);
+  font-size:clamp(18px,4.8vw,24px);
+  font-weight:700;
+  letter-spacing:1px;
+  color:#eafff5;
+  text-shadow:
+    0 0 6px #ffffff,
+    0 0 14px var(--neon),
+    0 0 28px var(--neon),
+    0 0 54px rgba(77,255,171,.75),
+    0 0 90px rgba(77,255,171,.45);
+  transition:max-height .5s cubic-bezier(.22,.8,.3,1),
+             opacity .5s ease,
+             transform .5s cubic-bezier(.22,.8,.3,1);
+}
+.footer.is-in .dev-motto,
+.footer:hover .dev-motto,
+.footer.is-open .dev-motto{
+  max-height:90px;
+  opacity:1;
+  transform:translateY(10px);
+  animation:neon-pulse 2.4s ease-in-out .5s infinite;
+}
+/* بەبێ JavaScript ـیش دیارە */
+html:not(.js-reveal) .dev-motto{
+  max-height:90px;
+  opacity:1;
+  transform:translateY(10px);
+  animation:neon-pulse 2.4s ease-in-out .5s infinite;
+}
+@keyframes neon-pulse{
+  0%,100%{filter:brightness(1);}
+  50%{filter:brightness(1.22);}
+}
+@media (prefers-reduced-motion:reduce){
+  .footer.is-in .dev-motto,
+  .footer:hover .dev-motto,
+  .footer.is-open .dev-motto,
+  html:not(.js-reveal) .dev-motto{animation:none;}
+}
+.dev-dots{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;}
+.dev-dots i{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--neon);box-shadow:0 0 12px var(--neon);opacity:.8;
+}
+.dev-dots b{height:1px;width:54px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+
+/* ================= بەڵگەنامەی PDF ================= */
+.print-doc{display:none;}
+
+@media print{
+  @page{size:A4;margin:14mm 13mm;}
+
+  html,body{
+    background:#ffffff!important;
+    color:#111111!important;
+    font-size:12pt;
+    line-height:1.75;
+  }
+  body > *{display:none!important;}
+  body > .print-doc{display:block!important;}
+
+  .pd-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14mm;
+    padding-bottom:5mm;
+    border-bottom:1.6pt solid #0a7d32;
+  }
+  .pd-head img{width:22mm;height:22mm;object-fit:contain;}
+  .pd-head-mid{text-align:center;flex:1;}
+  .pd-org{
+    margin:0;
+    font-size:15pt;font-weight:700;
+    color:#06561f;
+  }
+  .pd-title{
+    margin:2mm 0 0;
+    font-size:12pt;font-weight:400;
+    color:#333333;
+  }
+  .pd-meta{
+    margin:4mm 0 7mm;
+    display:flex;justify-content:space-between;
+    font-size:9.5pt;color:#555555;
+  }
+
+  .pd-section{margin-bottom:7mm;break-inside:avoid;}
+  .pd-section h2{
+    margin:0 0 3mm;
+    padding:1.6mm 4mm;
+    font-size:11.5pt;font-weight:700;
+    color:#ffffff;background:#0a7d32;
+    border-radius:2mm;
+  }
+  .pd-row{
+    padding:2.2mm 0;
+    border-bottom:0.4pt solid #d8e3da;
+    break-inside:avoid;
+  }
+  .pd-row:last-child{border-bottom:none;}
+  .pd-label{
+    margin:0 0 0.8mm;
+    font-size:10pt;font-weight:700;color:#06561f;
+  }
+  .pd-value{
+    margin:0;
+    font-size:11.5pt;color:#111111;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    unicode-bidi:isolate;
+  }
+  .pd-value[dir="ltr"]{text-align:right;}
+  .pd-value.empty{color:#999999;}
+
+  .pd-quote{
+    margin-top:8mm;
+    padding:4mm 5mm;
+    border:0.8pt solid #0a7d32;
+    border-radius:2.5mm;
+    text-align:center;
+    background:#f4faf6;
+    break-inside:avoid;
+  }
+  .pd-quote p{margin:0;font-size:11pt;color:#06561f;}
+  .pd-quote small{display:block;margin-top:1.5mm;font-size:9pt;color:#666666;}
+
+  .pd-foot{
+    margin-top:6mm;
+    padding-top:3mm;
+    border-top:0.4pt solid #d8e3da;
+    display:flex;justify-content:space-between;
+    font-size:8.5pt;color:#777777;
+  }
+  .pd-foot span{direction:ltr;letter-spacing:.6pt;}
+}
+
+/* ============ جوڵە بەبێ JavaScript ============
+   هەندێک بینەری فایل (وەک پێشبینینی iOS) JavaScript ناخەنە کار،
+   بۆیە هەمان دەرکەوتن بە CSS ـی تەنها ئامادە کراوە. */
+@keyframes tx-rise{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:none;}
+}
+html:not(.js-reveal) .reveal{
+  animation:tx-rise .95s cubic-bezier(.22,.8,.3,1) both;
+}
+html:not(.js-reveal) .card .field:nth-of-type(2){animation-delay:.08s;}
+html:not(.js-reveal) .card .field:nth-of-type(3){animation-delay:.16s;}
+html:not(.js-reveal) .card .field:nth-of-type(4){animation-delay:.24s;}
+html:not(.js-reveal) .card .field:nth-of-type(5){animation-delay:.32s;}
+html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
+
+/* لە وێبگەڕە نوێیەکاندا ڕاستەوخۆ بە سکڕۆڵەوە دەبەسترێتەوە */
+@supports (animation-timeline:view()){
+  html:not(.js-reveal) .reveal{
+    animation:tx-rise linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 88%;
+    animation-delay:0s;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html:not(.js-reveal) .reveal{animation-duration:.6s;}
+  @keyframes tx-rise{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
+  }
+}
+
+/* ================= LINE MASK REVEAL ================= */
+.js-reveal .reveal.lines{opacity:1;transform:none;filter:none;}
+.js-reveal .tline{
+  display:block;
+  overflow:hidden;
+  padding:0.16em 0.12em;
+  margin:-0.16em -0.12em;
+}
+.js-reveal .tline-in{
+  display:block;
+  transform:translateY(102%);
+  opacity:0;
+  transition:transform .8s cubic-bezier(.25,.6,.3,1),
+             opacity .6s cubic-bezier(.25,.6,.3,1);
+}
+.js-reveal .reveal.lines.is-in .tline-in{transform:translateY(0);opacity:1;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .tline-in{transform:translateY(40%);}
+}
+
+/* ================= WORD-BY-WORD MOTION ================= */
+.js-reveal .reveal.words{opacity:1;transform:none;filter:none;}
+.js-reveal .reveal.words .word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(11px);
+  transition:opacity .62s cubic-bezier(.25,.6,.3,1),
+             transform .62s cubic-bezier(.25,.6,.3,1);
+}
+.js-reveal .reveal.words.is-in .word{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal.words .word{transform:translateY(8px);}
+}
+
+/* ================= SECTION LEDs ================= */
+.stepper{
+  position:fixed;
+  inset-inline-end:8px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:40;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:14px 8px;
+  border-radius:999px;
+  background:rgba(2,17,10,.88);
+  border:1px solid rgba(77,255,171,.14);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .5s ease;
+}
+.stepper.is-visible{opacity:1;pointer-events:auto;}
+.step{
+  all:unset;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  width:16px;height:16px;
+  border-radius:50%;
+  position:relative;
+}
+.step i{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(77,255,171,.22);
+  box-shadow:0 0 0 1px rgba(77,255,171,.18) inset;
+  transition:background .4s ease, box-shadow .4s ease, transform .4s cubic-bezier(.22,.8,.3,1);
+}
+.step[aria-current="true"] i{
+  background:var(--neon);
+  transform:scale(1.5);
+  box-shadow:0 0 10px var(--neon), 0 0 22px rgba(77,255,171,.75), 0 0 40px rgba(77,255,171,.4);
+}
+.step span{
+  position:absolute;
+  inset-inline-end:22px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--neon);
+  white-space:nowrap;
+  opacity:0;
+  transform:translateX(-6px);
+  transition:opacity .4s ease, transform .4s ease;
+  text-shadow:0 0 12px rgba(77,255,171,.7);
+  pointer-events:none;
+}
+.step[aria-current="true"] span{opacity:1;transform:none;}
+.step:focus-visible{outline:2px solid var(--neon);outline-offset:4px;border-radius:50%;}
+@media (max-width:420px){
+  .stepper{gap:14px;padding:12px 7px;inset-inline-end:5px;}
+  .step span{display:none;}
+}
+
+/* ================= SCROLL DRIFT ================= */
+
+
+/* ================= SCROLL REVEAL ================= */
+.js-reveal .reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .85s cubic-bezier(.22,.7,.28,1),
+             transform .85s cubic-bezier(.22,.7,.28,1);
+  will-change:opacity, transform;
+}
+.js-reveal .reveal.is-in{opacity:1;transform:none;filter:none;}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal{transform:translateY(10px);}
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:none;}
+}
+.hero{animation:rise .8s cubic-bezier(.22,.8,.3,1) both;}
+@media (prefers-reduced-motion:reduce){ .hero{animation:none;} }
+
+/* ================= گۆڕینی زمان ================= */
+.lang-switch{position:relative;z-index:3;direction:ltr;
+  display:inline-flex;gap:2px;margin:16px auto 4px;padding:3px;border-radius:999px;
+  background:linear-gradient(180deg,#07170e,#020a06);   /* ڕەنگێکی جێگیر، بێ blur: لە کاتی کردنەوەدا تێکناچێت */
+  border:1px solid rgba(77,255,171,.22);box-shadow:0 0 14px rgba(77,255,171,.10)}
+.lang-switch button{all:unset;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:700;line-height:1;
+  padding:6px 12px;border-radius:999px;color:var(--muted)}
+/* گۆڕانی ڕەنگ تەنها کاتێک خەڵک زمان دەگۆڕێت، نەک لە کاتی کردنەوەدا */
+.lang-switch.ready button{transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+.lang-switch button:hover{color:var(--neon)}
+.lang-switch button[aria-pressed="true"]{color:#04170c;background:linear-gradient(100deg,#8dffc9,var(--neon) 55%,var(--neon-2));
+  box-shadow:0 0 10px rgba(77,255,171,.45)}
+.lang-switch button:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+html[dir="ltr"] .hint{text-align:left}
+
+/* ناوی پەرەپێدەر بە کوردی/عەرەبی: پیتەکان نابێت لێک جیا بکرێنەوە */
+.dev-by{direction:inherit;letter-spacing:.5px;text-transform:none;font-size:15px;}
+.dev-name{direction:inherit;letter-spacing:0;white-space:normal;font-size:clamp(26px,6.4vw,42px);}
+.dev-name:hover,.footer.is-open .dev-name{letter-spacing:0;}
+html[lang="en"] .dev-by{letter-spacing:4px;text-transform:uppercase;font-size:12px;}
+html[lang="en"] .dev-name{letter-spacing:2px;}
+
+@media (max-width:520px){
+  body{font-size:17px;}
+  .board-logo{width:104px;height:104px;margin-top:-6px;}
+  .board-logo img{width:84px;height:84px;}
+  .card{padding:20px 16px;border-radius:18px;}
+  .sec-num{width:42px;height:42px;font-size:20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <img src="assets/img/banner.webp" alt="یەکێتیی نیشتمانیی کوردستان — مەکتەبی سکرتاریەتی سەرۆک مام جەلال — بۆردی وەرزش">
+</div>
+<div class="neon-line"></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="board-logo" id="boardLogo" role="button" tabindex="0"
+         aria-label="دروشمی بۆردی وەرزش پیشان بدە">
+      <img src="assets/img/sports-board-logo.png" alt="لۆگۆی بۆردی وەرزشی">
+    </div>
+    <p data-i18n="logoNote" class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
+    <div class="lang-switch" role="group" aria-label="Language / زمان / اللغة">
+      <button type="button" data-lang="ku" lang="ckb" aria-pressed="true">کوردی</button>
+      <button type="button" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+    </div>
+
+    <h1 data-i18n="org" class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <div class="hero-divider"><span></span><i></i><span></span></div>
+    <p data-i18n="formTitle" class="form-title reveal">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p data-i18n="tagline" class="tagline reveal lines">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
+
+    <div class="intro reveal">
+      <p data-i18n="intro1" class="reveal lines">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
+      <p data-i18n="intro2" class="reveal lines">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
+    </div>
+
+    <p data-i18n="heroSub" class="hero-sub reveal lines">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+  </header>
+
+  <form id="projectForm" novalidate>
+
+    <!-- بەشی یەکەم -->
+    <section class="card reveal">
+      <div class="sec-head reveal">
+        <div class="sec-num">١</div>
+        <h2 data-i18n="sec1" class="sec-title reveal words">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_fullname" for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
+        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" data-i18n-ph="ph_fullname" placeholder="ناوی سیانی بنووسە">
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_age" for="age">تەمەن <span class="req">*</span></label>
+        <input id="age" name="تەمەن" type="text" inputmode="numeric" data-i18n-ph="ph_age" placeholder="بۆ نموونە ٢٧ ساڵ">
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_phone" for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
+        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" data-i18n-ph="ph_phone" placeholder="07XX XXX XXXX">
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_sport" for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
+        <input id="sport" name="بواری وەرزشی" type="text" data-i18n-ph="ph_sport" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_place" for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
+        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" data-i18n-ph="ph_place" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
+      </div>
+    </section>
+
+
+    <!-- بەشی دووەم -->
+    <section class="card reveal">
+      <div class="sec-head reveal">
+        <div class="sec-num">٢</div>
+        <h2 data-i18n="sec2" class="sec-title reveal words">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_pname" for="pname">ناوی پڕۆژە <span class="req">*</span></label>
+        <input id="pname" name="ناوی پڕۆژە" type="text" data-i18n-ph="ph_pname" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_psummary" for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
+        <textarea id="psummary" name="پوختەی پڕۆژە" data-i18n-ph="ph_psummary" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_pdetails" for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
+        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" data-i18n-ph="ph_pdetails" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_pgoals" for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
+        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" data-i18n-ph="ph_pgoals" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_pbenefits" for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
+        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" data-i18n-ph="ph_pbenefits" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_pbudget" for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
+        <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text">
+      </div>
+    </section>
+
+
+    <!-- بەشی سێیەم -->
+    <section class="card reveal">
+      <div class="sec-head reveal">
+        <div class="sec-num">٣</div>
+        <h2 data-i18n="sec3" class="sec-title reveal words">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_problem" for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
+        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" data-i18n-ph="ph_problem" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
+      </div>
+
+      <div class="field reveal">
+        <label data-i18n="lbl_solution" for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
+        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" data-i18n-ph="ph_solution" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
+      </div>
+    </section>
+
+    <div class="quote reveal">
+      <p data-i18n="qTop" class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+      <p data-i18n="qBody" class="q-body reveal lines">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+    </div>
+
+    <div class="actions reveal">
+      <button type="submit" class="btn-send">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 20.5 11.6z"/>
+          <path d="M9.1 8.3c.16-.3.33-.3.5-.3h.42c.14 0 .33 0 .5.38l.72 1.7c.08.2.04.35-.6.5l-.38.47c-.1.13-.2.28-.06.53.38.62.96 1.34 1.68 1.87.46.34.8.47 1.04.33l.48-.53c.14-.15.3-.2.48-.1l1.62.8c.2.1.28.2.28.38 0 .48-.34 1.14-.8 1.34-.4.15-.9.2-1.42.06-1-.25-2.2-.85-3.3-1.85-1.05-.95-1.8-2.05-2.1-2.95-.25-.75-.2-1.4 0-1.9l.15-.5z"/>
+        </svg>
+        <span data-i18n="btn1">١ · ناردنی نامە بۆ وەتسئەپ</span>
+      </button>
+
+      <button type="button" class="btn-pdf" id="pdfBtn">
+        <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 3v5h5"/>
+          <path d="M12 12v5"/>
+          <path d="M9.5 14.5 12 12l2.5 2.5"/>
+        </svg>
+        <span data-i18n="btn2">٢ · ناردنی زانیارییەکان بە PDF</span>
+      </button>
+      <button type="button" class="btn-copy" id="copyBtn" data-i18n="btnCopy">کۆپیکردنی زانیارییەکان</button>
+      <button type="button" class="btn-clear" id="clearBtn" data-i18n="btnClear">سڕینەوەی فۆڕمەکە</button>
+      <p data-i18n="note" class="note">سەرەتا دوگمەی <b>١</b> لێبدە و نامەکە بنێرە، پاشان بگەڕێوە و دوگمەی <b>٢</b> لێبدە بۆ ناردنی PDF.<br>دوای ناردنی PDF، فۆڕمەکە خۆکارانە دەسڕدرێتەوە.</p>
+    </div>
+  </form>
+
+  <footer class="footer reveal">
+    <div class="line"></div>
+    <p class="dev-by" data-i18n="devBy">پەرەی پێدراوە لە لایەن</p>
+    <button type="button" class="dev-name" id="devName" data-i18n="devName" aria-expanded="false">ڕاگەیاندنی بۆردی وەرزش</button>
+    <div class="dev-dots"><b></b><i></i><b></b></div>
+  </footer>
+
+</div>
+
+<div class="print-doc" id="printDoc" aria-hidden="true">
+  <div class="pd-head">
+    <img src="assets/img/sports-board-logo.png" alt="">
+    <div class="pd-head-mid">
+      <p class="pd-org" data-i18n="org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+      <p class="pd-title" data-i18n="formTitle">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    </div>
+    <img src="assets/img/puk-logo.webp" alt="">
+  </div>
+  <div class="pd-meta">
+    <span id="pdDate"></span>
+  </div>
+  <div id="pdBody"></div>
+  <div class="pd-quote">
+    <p data-i18n="qBody">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+    <small>بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</small>
+  </div>
+  <div class="pd-foot">
+    <span>PUK SPORTS BOARD</span>
+    <span data-i18n="credit">پەرەی پێدراوە لە لایەن ڕاگەیاندنی بۆردی وەرزش</span>
+  </div>
+</div>
+
+<nav class="stepper" id="stepper" aria-label="بەشەکانی فۆڕم">
+  <button type="button" class="step" data-step="0" aria-current="false"><i></i><span data-i18n="step1">بەشی یەکەم</span></button>
+  <button type="button" class="step" data-step="1" aria-current="false"><i></i><span data-i18n="step2">بەشی دووەم</span></button>
+  <button type="button" class="step" data-step="2" aria-current="false"><i></i><span data-i18n="step3">بەشی سێیەم</span></button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= سێ زمان: کوردی · العربية · English =================
+     تەنها ڕووی پەڕەکە وەردەگێڕدرێت. نامەی وەتسئەپ و PDF هەمیشە بە کوردی دەچن
+     بۆ ژمارەی بۆرد، چونکە ناونیشانەکانیان لە name ـی خانەکان و ناونیشانی بەشەکانەوە دێن. */
+  var I18N = {
+ "ar": {
+  "title": "استمارة تقديم المشاريع الرياضية — المجلس الرياضي",
+  "logoNote": "( نحن هنا لخدمتكم )",
+  "org": "المجلس الرياضي في الاتحاد الوطني الكوردستاني",
+  "formTitle": "استمارة تقديم المشاريع الرياضية",
+  "tagline": "فرصةٌ لإيصال أفكارك ومشاريعك الرياضية",
+  "intro1": "حرصاً من المجلس الرياضي على إتاحة الفرص ودعم طاقات الشباب والرياضيين، أعدّ هذه الاستمارة لاستقبال جميع الأفكار والمشاريع والأنشطة الرياضية التي تجول في أذهانكم، والتي لم تُتَح لكم حتى الآن فرصة إيصالها بشكلٍ مباشر.",
+  "intro2": "نحن في المجلس الرياضي نؤمن إيماناً تاماً بقدرات الشباب وإبداعهم ورؤيتهم في تطوير القطاع الرياضي.",
+  "heroSub": "يُرجى ملء الحقول أدناه بدقّة، ثم الضغط على زر الإرسال ليصل طلبك مباشرةً إلى المجلس الرياضي عبر واتساب.",
+  "sec1": "القسم الأول <span>المعلومات الشخصية والمهنية</span>",
+  "sec2": "القسم الثاني <span>تفاصيل المشروع</span>",
+  "sec3": "القسم الثالث <span>الرؤية والتطلعات لقطاع الرياضة</span>",
+  "lbl_fullname": "الاسم الكامل (الثلاثي) <span class=\"req\">*</span>",
+  "ph_fullname": "اكتب اسمك الثلاثي",
+  "lbl_age": "العمر <span class=\"req\">*</span>",
+  "ph_age": "مثال: ٢٧ سنة",
+  "lbl_phone": "رقم الهاتف (الموبايل) <span class=\"req\">*</span>",
+  "ph_phone": "07XX XXX XXXX",
+  "lbl_sport": "المجال الرياضي <span class=\"req\">*</span><span class=\"hint\">في أي مجالٍ رياضي أنت؟</span>",
+  "ph_sport": "مثال: كرة القدم، السباحة، الكاراتيه...",
+  "lbl_place": "مكان / مركز عملك الرياضي الحالي <span class=\"opt\">اختياري</span><span class=\"hint\">إن لم تكن تعمل في أي مركزٍ رياضي، اتركه فارغاً</span>",
+  "ph_place": "اسم النادي أو المركز أو مكان العمل",
+  "lbl_pname": "اسم المشروع <span class=\"req\">*</span>",
+  "ph_pname": "اسمٌ قصير ومناسب للمشروع",
+  "lbl_psummary": "ملخّص المشروع <span class=\"req\">*</span><span class=\"hint\">نبذة عامة</span>",
+  "ph_psummary": "عرّف بالمشروع في جملتين أو ثلاث",
+  "lbl_pdetails": "شرح المشروع بالكامل <span class=\"req\">*</span><span class=\"hint\">التفاصيل وآلية التنفيذ</span>",
+  "ph_pdetails": "خطوات التنفيذ، الوقت، المكان والمتطلبات...",
+  "lbl_pgoals": "أهداف المشروع <span class=\"req\">*</span>",
+  "ph_pgoals": "اكتب الأهداف الرئيسية واحداً تلو الآخر",
+  "lbl_pbenefits": "فوائد المشروع <span class=\"req\">*</span><span class=\"hint\">أهميته ومكتسباته</span>",
+  "ph_pbenefits": "ما الفائدة التي يقدّمها للرياضة والمجتمع؟",
+  "lbl_pbudget": "الميزانية / الكلفة التقديرية <span class=\"req\">*</span><span class=\"hint\">المبلغ اللازم للمشروع</span>",
+  "lbl_problem": "من وجهة نظرك، ما أبرز مشكلةٍ يواجهها القطاع الرياضي في إقليم كوردستان؟ <span class=\"req\">*</span>",
+  "ph_problem": "اكتب رأيك بصراحة",
+  "lbl_solution": "ما مقترحاتك وحلولك لهذه المشكلة؟ <span class=\"req\">*</span>",
+  "ph_solution": "حلولٌ عملية ومقترحاتك",
+  "qTop": "من المجلس الرياضي في الاتحاد الوطني الكوردستاني",
+  "qBody": "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا.",
+  "btn1": "١ · إرسال رسالة عبر واتساب",
+  "btn2": "٢ · إرسال المعلومات كملف PDF",
+  "btnCopy": "نسخ المعلومات",
+  "btnClear": "مسح الاستمارة",
+  "note": "اضغط أولاً على الزر <b>١</b> وأرسل الرسالة، ثم عُد واضغط على الزر <b>٢</b> لإرسال ملف PDF.<br>بعد إرسال الـ PDF تُمسح الاستمارة تلقائياً.",
+  "motto": "الرياضة حياتي",
+  "step1": "القسم الأول",
+  "step2": "القسم الثاني",
+  "step3": "القسم الثالث",
+  "devBy": "طُوِّر من قِبَل",
+  "devName": "إعلام المجلس الرياضي",
+  "credit": "طُوِّر من قِبَل إعلام المجلس الرياضي"
+ },
+ "en": {
+  "title": "Sports Project Submission Form — PUK Sports Board",
+  "logoNote": "( We are here to serve )",
+  "org": "Sports Board of the Patriotic Union of Kurdistan",
+  "formTitle": "Sports Project Submission Form",
+  "tagline": "A chance to share your sports ideas and projects",
+  "intro1": "To open doors and support the talent of young people and athletes, the Sports Board has prepared this form to receive every sports idea, project and activity you have in mind — the ones you have not yet had a direct way to share.",
+  "intro2": "At the Sports Board, we fully believe in the ability, creativity and vision of young people to move the sports sector forward.",
+  "heroSub": "Please fill in the fields below carefully, then tap send so your form reaches the Sports Board directly on WhatsApp.",
+  "sec1": "Section One <span>Personal &amp; professional details</span>",
+  "sec2": "Section Two <span>Project details</span>",
+  "sec3": "Section Three <span>Your view of the sports sector</span>",
+  "lbl_fullname": "Full name (three-part) <span class=\"req\">*</span>",
+  "ph_fullname": "Your full three-part name",
+  "lbl_age": "Age <span class=\"req\">*</span>",
+  "ph_age": "e.g. 27 years",
+  "lbl_phone": "Phone number (mobile) <span class=\"req\">*</span>",
+  "ph_phone": "07XX XXX XXXX",
+  "lbl_sport": "Sport <span class=\"req\">*</span><span class=\"hint\">Which sport are you in?</span>",
+  "ph_sport": "e.g. football, swimming, karate…",
+  "lbl_place": "Current sports club or workplace <span class=\"opt\">Optional</span><span class=\"hint\">Leave it empty if you don’t work at a sports centre</span>",
+  "ph_place": "Club, centre or workplace name",
+  "lbl_pname": "Project name <span class=\"req\">*</span>",
+  "ph_pname": "A short, fitting name for the project",
+  "lbl_psummary": "Project summary <span class=\"req\">*</span><span class=\"hint\">A short overview</span>",
+  "ph_psummary": "Describe the project in two or three sentences",
+  "lbl_pdetails": "Full project description <span class=\"req\">*</span><span class=\"hint\">Details and how it will be carried out</span>",
+  "ph_pdetails": "Steps, timing, location and what it needs…",
+  "lbl_pgoals": "Project goals <span class=\"req\">*</span>",
+  "ph_pgoals": "List the main goals one by one",
+  "lbl_pbenefits": "Project benefits <span class=\"req\">*</span><span class=\"hint\">Why it matters and what it achieves</span>",
+  "ph_pbenefits": "How will it benefit sport and the community?",
+  "lbl_pbudget": "Budget / estimated cost <span class=\"req\">*</span><span class=\"hint\">The amount the project needs</span>",
+  "lbl_problem": "In your view, what is the biggest problem facing the sports sector in the Kurdistan Region? <span class=\"req\">*</span>",
+  "ph_problem": "Share your view openly",
+  "lbl_solution": "What do you suggest to solve it? <span class=\"req\">*</span>",
+  "ph_solution": "Practical solutions and suggestions",
+  "qTop": "From the PUK Sports Board",
+  "qBody": "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland.",
+  "btn1": "1 · Send a WhatsApp message",
+  "btn2": "2 · Send the details as PDF",
+  "btnCopy": "Copy the details",
+  "btnClear": "Clear the form",
+  "note": "First tap button <b>1</b> and send the message, then come back and tap button <b>2</b> to send the PDF.<br>Once the PDF is sent, the form clears itself.",
+  "motto": "Sport is my life",
+  "step1": "Section 1",
+  "step2": "Section 2",
+  "step3": "Section 3",
+  "devBy": "Developed by",
+  "devName": "Sports Board Media",
+  "credit": "Developed by Sports Board Media"
+ }
+};
+  var I18N_MSG = {
+ "ar": {
+  "تکایە هەموو خانە پێویستەکان پڕ بکەرەوە": "يُرجى ملء جميع الحقول المطلوبة",
+  "نەتوانرا کۆپی بکرێت": "تعذّر النسخ",
+  "فۆڕمەکە پاک کرایەوە": "تم تفريغ الاستمارة",
+  "PDF دروست دەکرێت…": "جارٍ إنشاء ملف PDF…",
+  "نەتوانرا PDF دروست بکرێت": "تعذّر إنشاء ملف PDF",
+  "PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە": "تم حفظ ملف PDF — جارٍ فتح المحادثة",
+  "PDF دەنێردرێت…": "جارٍ إرسال ملف PDF…",
+  "نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە": "الرسالة جاهزة — أرسلها، ثم اضغط الزر ٢",
+  "زانیارییەکان کۆپی کران ✔": "تم نسخ المعلومات ✔",
+  "فۆڕمەکە سڕایەوە": "تم مسح الاستمارة",
+  "دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟": "هل أنت متأكد من مسح جميع المعلومات؟"
+ },
+ "en": {
+  "تکایە هەموو خانە پێویستەکان پڕ بکەرەوە": "Please fill in all required fields",
+  "نەتوانرا کۆپی بکرێت": "Couldn’t copy",
+  "فۆڕمەکە پاک کرایەوە": "The form has been cleared",
+  "PDF دروست دەکرێت…": "Creating the PDF…",
+  "نەتوانرا PDF دروست بکرێت": "Couldn’t create the PDF",
+  "PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە": "PDF saved — opening the chat",
+  "PDF دەنێردرێت…": "Sending the PDF…",
+  "نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە": "Message ready — send it, then tap button 2",
+  "زانیارییەکان کۆپی کران ✔": "Details copied ✔",
+  "فۆڕمەکە سڕایەوە": "The form was cleared",
+  "دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟": "Are you sure you want to clear everything?"
+ }
+};
+  var LANG_KEY = "puk-form-lang";
+  var lang = "ku";
+  var I18N_KU = {}, I18N_KU_PH = {};
+  [].forEach.call(document.querySelectorAll("[data-i18n]"), function(el){ I18N_KU[el.getAttribute("data-i18n")] = el.innerHTML; });
+  [].forEach.call(document.querySelectorAll("[data-i18n-ph]"), function(el){ I18N_KU_PH[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
+  var TITLE_KU = document.title;
+  function tr(msg){ return (I18N_MSG[lang] && I18N_MSG[lang][msg]) || msg; }
+
+  /* ئەوەی دەنێردرێت (PDF، نامە، کۆپی) بە هەمان زمانی پەڕەکە دەبێت */
+  var DOC = {
+    ku: { org: "بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", form: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی",
+          date: "بەروار: ", page: function(i, n){ return "لاپەڕەی " + i + " لە " + n; },
+          quote: "بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.", credit: "پەرەی پێدراوە لە لایەن ڕاگەیاندنی بۆردی وەرزش" },
+    ar: { org: "المجلس الرياضي في الاتحاد الوطني الكوردستاني", form: "استمارة تقديم المشاريع الرياضية",
+          date: "التاريخ: ", page: function(i, n){ return "الصفحة " + i + " من " + n; },
+          quote: "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا.", credit: "طُوِّر من قِبَل إعلام المجلس الرياضي" },
+    en: { org: "Sports Board of the Patriotic Union of Kurdistan", form: "Sports Project Submission Form",
+          date: "Date: ", page: function(i, n){ return "Page " + i + " of " + n; },
+          quote: "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland.", credit: "Developed by Sports Board Media" }
+  };
+  function doc(key){ return (DOC[lang] || DOC.ku)[key]; }
+  function isLtr(){ return lang === "en"; }
+  function htmlText(html, dropSpans){
+    var box = document.createElement("div");
+    box.innerHTML = html;
+    if(dropSpans) [].forEach.call(box.querySelectorAll("span"), function(sp){ sp.parentNode.removeChild(sp); });
+    return box.textContent.replace(/\s+/g, " ").trim();
+  }
+  // ناونیشانی خانەیەک بە زمانی پەڕەکە (بە کوردی: name ـی خانەکە وەک پێشوو)
+  function fieldLabel(id){
+    var el = document.getElementById(id);
+    var own = (el && el.getAttribute("name")) || id;
+    if(lang === "ku") return own;
+    return htmlText((I18N[lang] || {})["lbl_" + id] || "", true) || own;
+  }
+  function sectionTitle(i){
+    if(lang === "ku") return sections[i].title;
+    var html = (I18N[lang] || {})["sec" + (i + 1)];
+    if(!html) return sections[i].title;
+    var box = document.createElement("div"); box.innerHTML = html;
+    var sub = box.querySelector("span"), subText = sub ? sub.textContent.trim() : "";
+    if(sub) sub.parentNode.removeChild(sub);
+    return box.textContent.trim() + (subText ? ": " + subText : "");
+  }
+
+  var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
+
+  /* ئەگەر Worker ـی بەرزکردنەوە دابنرێت (بڕوانە پەڕگەی worker/README.md)،
+     PDF ـەکە بەرز دەکرێتەوە و لینکەکەی لەناو نامەی وەتسئەپدا دەنێردرێت،
+     بۆ ئەوەی کەسەکە تەنها Send لێبدات. بەتاڵ بێت، شێوازی ئاسایی کاردەکات. */
+  var UPLOAD_ENDPOINT = "";
+  var MAX_URL = 20000;                   // سنووری ئاسایی بەڕاوزەرەکان
+  var STORAGE_KEY = "puk-sports-form-draft";
+  var SHORT_MESSAGE = "فۆڕمی بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان";
+  var SHORT_MESSAGES = { ku: SHORT_MESSAGE, ar: "استمارة المجلس الرياضي في الاتحاد الوطني الكوردستاني", en: "PUK Sports Board — Project Submission Form" };
+  function shortMessage(){ return SHORT_MESSAGES[lang] || SHORT_MESSAGE; }
+  var OPTIONAL = ["place"];              // خانە ئارەزوومەندانەکان
+
+  var form = document.getElementById("projectForm");
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+
+  var sections = [
+    { title: "بەشی یەکەم: زانیارییە کەسی و پیشەییەکان", ids: ["fullname","age","phone","sport","place"] },
+    { title: "بەشی دووەم: وردەکاریی پڕۆژەکە", ids: ["pname","psummary","pdetails","pgoals","pbenefits","pbudget"] },
+    { title: "بەشی سێیەم: دیدگا و تێڕوانین بۆ کەرتی وەرزش", ids: ["problem","solution"] }
+  ];
+
+  function allFields(){
+    var ids = [];
+    sections.forEach(function(s){ ids = ids.concat(s.ids); });
+    return ids;
+  }
+
+  function toast(msg){
+    toastEl.textContent = tr(msg);
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 3200);
+  }
+
+  function buildMessage(){
+    var lines = [];
+    lines.push("🏅 *" + doc("form") + "*");
+    lines.push(doc("org"));
+    sections.forEach(function(sec, si){
+      lines.push("");
+      lines.push("━━━━━━━━━━━━━━");
+      lines.push("*" + sectionTitle(si) + "*");
+      sec.ids.forEach(function(id){
+        var el = document.getElementById(id);
+        var val = (el.value || "").trim();
+        lines.push("• *" + fieldLabel(id) + ":* " + (val || "—"));
+      });
+    });
+    lines.push("");
+    lines.push("━━━━━━━━━━━━━━");
+    lines.push("_" + doc("quote") + "_");
+    return lines.join("\n");
+  }
+
+  function validate(){
+    var firstBad = null;
+    allFields().forEach(function(id){
+      var el = document.getElementById(id);
+      if(OPTIONAL.indexOf(id) !== -1) return;
+      var empty = !(el.value || "").trim();
+      el.classList.toggle("invalid", empty);
+      if(empty && !firstBad) firstBad = el;
+    });
+    if(firstBad){
+      firstBad.scrollIntoView({behavior:"smooth", block:"center"});
+      firstBad.focus({preventScroll:true});
+      toast("تکایە هەموو خانە پێویستەکان پڕ بکەرەوە");
+      return false;
+    }
+    return true;
+  }
+
+  function legacyCopy(text, onDone){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly","");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch(err){ ok = false; }
+    document.body.removeChild(ta);
+    if(ok){ onDone(); } else { toast("نەتوانرا کۆپی بکرێت"); }
+  }
+
+  function copyText(text, onDone){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(onDone, function(){ legacyCopy(text, onDone); });
+    } else {
+      legacyCopy(text, onDone);
+    }
+  }
+
+
+  /* ================= دروستکردنی PDF لەناو وێبگەڕەکەدا =================
+     لاپەڕەکان لەسەر canvas دەکێشرێن (بۆ ئەوەی نووسینی کوردی دروست بێت)
+     پاشان بە دەست دەکرێن بە فایلێکی PDF — بەبێ هیچ کتێبخانەیەکی دەرەکی. */
+
+  var PAGE_W = 1240, PAGE_H = 1754;          // A4 بە ١٥٠ DPI
+  var PT_W = 595.28, PT_H = 841.89;          // A4 بە خاڵ
+  var MARGIN = 88;
+  var GREEN = "#0a7d32", DARK = "#141414", GREY = "#6a6a6a", LINE = "#dce7e0";
+
+  function wrapText(ctx, text, maxWidth){
+    var out = [];
+    String(text).split("\n").forEach(function(paragraph){
+      var words = paragraph.split(/\s+/).filter(Boolean);
+      if(!words.length){ out.push(""); return; }
+      var line = words[0];
+      for(var i = 1; i < words.length; i++){
+        var next = line + " " + words[i];
+        if(ctx.measureText(next).width > maxWidth){
+          out.push(line);
+          line = words[i];
+        } else {
+          line = next;
+        }
+      }
+      out.push(line);
+    });
+    return out;
+  }
+
+  function isNumeric(v){ return /^[\d\s+\-().,/]+$/.test(v); }
+
+  function renderPdfPages(withLogos){
+    var right = PAGE_W - MARGIN;
+    var LTR = isLtr();
+    var start = LTR ? MARGIN : right;          // سەرەتای دێڕ: ڕاست بۆ کوردی و عەرەبی، چەپ بۆ ئینگلیزی
+    var ALIGN = LTR ? "left" : "right", DIR = LTR ? "ltr" : "rtl";
+    var contentW = PAGE_W - MARGIN * 2;
+    var pages = [];
+    var ctx, y;
+
+    function paintBackground(x){
+      var bg = x.createLinearGradient(0, 0, PAGE_W * 0.4, PAGE_H);
+      bg.addColorStop(0, "#f4fbf6");
+      bg.addColorStop(0.45, "#ffffff");
+      bg.addColorStop(1, "#eef8f1");
+      x.fillStyle = bg;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      // تیشکێکی نەرمی سەوز لە گۆشەکان
+      var glow = x.createRadialGradient(PAGE_W, 0, 40, PAGE_W, 0, PAGE_W * 0.9);
+      glow.addColorStop(0, "rgba(10,125,50,.12)");
+      glow.addColorStop(1, "rgba(10,125,50,0)");
+      x.fillStyle = glow;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      var glow2 = x.createRadialGradient(0, PAGE_H, 40, 0, PAGE_H, PAGE_W * 0.8);
+      glow2.addColorStop(0, "rgba(18,162,71,.10)");
+      glow2.addColorStop(1, "rgba(18,162,71,0)");
+      x.fillStyle = glow2;
+      x.fillRect(0, 0, PAGE_W, PAGE_H);
+
+      // شریتی سەوز لە خوارەوە
+      var strip = x.createLinearGradient(0, 0, PAGE_W, 0);
+      strip.addColorStop(0, "#0a7d32");
+      strip.addColorStop(0.5, "#17b355");
+      strip.addColorStop(1, "#0a7d32");
+      x.fillStyle = strip;
+      x.fillRect(0, PAGE_H - 14, PAGE_W, 14);
+    }
+
+    function newPage(){
+      var c = document.createElement("canvas");
+      c.width = PAGE_W; c.height = PAGE_H;
+      var x = c.getContext("2d");
+      paintBackground(x);
+      x.direction = DIR;
+      x.textAlign = ALIGN;
+      x.textBaseline = "alphabetic";
+      pages.push(c);
+      ctx = x;
+      y = MARGIN;
+      return x;
+    }
+
+    function space(need){
+      if(y + need > PAGE_H - MARGIN - 60){ newPage(); drawRunningHead(); }
+    }
+
+    function drawRunningHead(){
+      ctx.fillStyle = GREY;
+      ctx.font = "400 22px Zain, sans-serif";
+      ctx.fillText(doc("form"), start, y + 6);
+      ctx.strokeStyle = LINE; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(MARGIN, y + 22); ctx.lineTo(right, y + 22); ctx.stroke();
+      y += 66;
+    }
+
+    newPage();
+
+    /* ---- سەرپەڕە: شریتی سەوزی گرادیەنتدار ---- */
+    var logoA = document.querySelector('.board-logo img');
+    var logoB = document.querySelector('#printDoc .pd-head img:last-child');
+    var bandH = 232, logoSize = 128;
+
+    var band = ctx.createLinearGradient(0, 0, PAGE_W, bandH);
+    band.addColorStop(0, "#053f1a");
+    band.addColorStop(0.5, "#0a7d32");
+    band.addColorStop(1, "#12a247");
+    ctx.fillStyle = band;
+    ctx.fillRect(0, 0, PAGE_W, bandH);
+
+    // ڕووناکییەکی نەرم بەسەر شریتەکەدا
+    var sheen = ctx.createLinearGradient(0, 0, PAGE_W * 0.7, bandH);
+    sheen.addColorStop(0, "rgba(255,255,255,.16)");
+    sheen.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = sheen;
+    ctx.fillRect(0, 0, PAGE_W, bandH);
+
+    var logoY = (bandH - logoSize) / 2;
+    if(withLogos){
+      try{
+        if(logoA && logoA.complete){
+          ctx.fillStyle = "rgba(255,255,255,.95)";
+          ctx.beginPath();
+          ctx.arc(right - logoSize / 2, logoY + logoSize / 2, logoSize / 2 + 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.drawImage(logoA, right - logoSize, logoY, logoSize, logoSize);
+        }
+        if(logoB && logoB.complete){
+          ctx.fillStyle = "rgba(255,255,255,.95)";
+          ctx.beginPath();
+          ctx.arc(MARGIN + logoSize / 2, logoY + logoSize / 2, logoSize / 2 + 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.drawImage(logoB, MARGIN, logoY, logoSize, logoSize);
+        }
+      }catch(err){ /* وێنەکان بەردەست نین */ }
+    }
+
+    // نووسینەکە نابێت بێتە سەر لۆگۆکان
+    var titleSpace = PAGE_W - (MARGIN + logoSize + 26) * 2;
+
+    function fitText(text, weight, startSize, minSize){
+      var size = startSize;
+      ctx.font = weight + " " + size + "px Zain, sans-serif";
+      while(size > minSize && ctx.measureText(text).width > titleSpace){
+        size -= 2;
+        ctx.font = weight + " " + size + "px Zain, sans-serif";
+      }
+      return size;
+    }
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#ffffff";
+    fitText(doc("org"), "700", 42, 24);
+    ctx.fillText(doc("org"), PAGE_W / 2, bandH / 2 - 4);
+    ctx.fillStyle = "rgba(233,255,240,.92)";
+    fitText(doc("form"), "400", 30, 20);
+    ctx.fillText(doc("form"), PAGE_W / 2, bandH / 2 + 44);
+    ctx.textAlign = ALIGN;
+
+    y = bandH + 54;
+
+    /* ---- بەروار ---- */
+    var d = new Date();
+    var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
+    ctx.font = "400 24px Zain, sans-serif";
+    ctx.fillStyle = GREY;
+    ctx.fillText(doc("date") + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()), start, y);
+    y += 46;
+
+    /* ---- بەشەکان ---- */
+    sections.forEach(function(sec, si){
+      space(150);
+
+      ctx.fillStyle = GREEN;
+      if(ctx.roundRect){
+        ctx.beginPath(); ctx.roundRect(MARGIN, y, contentW, 58, 10); ctx.fill();
+      } else {
+        ctx.fillRect(MARGIN, y, contentW, 58);
+      }
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "700 30px Zain, sans-serif";
+      ctx.fillText(sectionTitle(si), LTR ? start + 18 : start - 18, y + 39);
+      y += 58 + 30;
+
+      sec.ids.forEach(function(id, idx){
+        var el = document.getElementById(id);
+        var label = fieldLabel(id);
+        var value = (el.value || "").trim() || "—";
+
+        ctx.font = "400 30px Zain, sans-serif";
+        var lines = wrapText(ctx, value, contentW - 8);
+
+        space(46 + lines.length * 44 + 26);
+
+        ctx.fillStyle = GREEN;
+        ctx.font = "700 25px Zain, sans-serif";
+        ctx.fillText(label, start, y);
+        y += 42;
+
+        ctx.fillStyle = DARK;
+        ctx.font = "400 30px Zain, sans-serif";
+        var numeric = isNumeric(value);
+        if(numeric) ctx.direction = "ltr";
+        lines.forEach(function(line){
+          ctx.fillText(line, start, y);
+          y += 44;
+        });
+        ctx.direction = DIR;
+
+        y += 12;
+        if(idx < sec.ids.length - 1){
+          ctx.strokeStyle = LINE; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(MARGIN + 10, y); ctx.lineTo(right - 10, y); ctx.stroke();
+          y += 26;
+        }
+      });
+
+      y += 34;
+    });
+
+    /* ---- وتەی کۆتایی ---- */
+    space(190);
+    ctx.font = "400 28px Zain, sans-serif";
+    var quote = doc("quote");
+    var qLines = wrapText(ctx, quote, contentW - 80);
+    var boxH = 44 + qLines.length * 42 + 40;
+
+    ctx.fillStyle = "#f3faf5";
+    ctx.strokeStyle = GREEN; ctx.lineWidth = 2;
+    if(ctx.roundRect){
+      ctx.beginPath(); ctx.roundRect(MARGIN, y, contentW, boxH, 12); ctx.fill(); ctx.stroke();
+    } else {
+      ctx.fillRect(MARGIN, y, contentW, boxH);
+      ctx.strokeRect(MARGIN, y, contentW, boxH);
+    }
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = GREEN;
+    var qy = y + 54;
+    qLines.forEach(function(line){ ctx.fillText(line, PAGE_W / 2, qy); qy += 42; });
+    ctx.fillStyle = GREY;
+    ctx.font = "400 22px Zain, sans-serif";
+    ctx.fillText(doc("org"), PAGE_W / 2, qy + 6);
+    ctx.textAlign = ALIGN;
+
+    /* ---- پێپەڕەی هەموو لاپەڕەکان ---- */
+    pages.forEach(function(page, i){
+      var x = page.getContext("2d");
+      x.textAlign = "right"; x.direction = DIR;
+      x.strokeStyle = LINE; x.lineWidth = 1;
+      x.beginPath(); x.moveTo(MARGIN, PAGE_H - MARGIN - 34); x.lineTo(right, PAGE_H - MARGIN - 34); x.stroke();
+      x.fillStyle = GREY;
+      x.font = "400 20px Zain, sans-serif";
+      x.fillText(doc("page")(i + 1, pages.length), right, PAGE_H - MARGIN);
+      x.textAlign = "left"; x.direction = "ltr";
+      x.font = "400 19px Zain, sans-serif";
+      x.fillText("PUK SPORTS BOARD", MARGIN, PAGE_H - MARGIN);
+      x.textAlign = "center"; x.direction = DIR;
+      x.fillStyle = "#0a7d32";
+      x.font = "700 22px Zain, sans-serif";
+      x.fillText(doc("credit"), PAGE_W / 2, PAGE_H - MARGIN);
+    });
+
+    return pages;
+  }
+
+  /* ---------- نووسینی فایلی PDF بە دەست ---------- */
+  function base64ToBytes(b64){
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for(var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+
+  function strBytes(str){
+    var bytes = new Uint8Array(str.length);
+    for(var i = 0; i < str.length; i++) bytes[i] = str.charCodeAt(i) & 0xff;
+    return bytes;
+  }
+
+  function buildPdf(pages){
+    var chunks = [], length = 0, offsets = [];
+
+    function push(part){
+      var bytes = typeof part === "string" ? strBytes(part) : part;
+      chunks.push(bytes);
+      length += bytes.length;
+    }
+    function mark(){ offsets.push(length); }
+
+    push("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n");
+
+    var images = pages.map(function(page){
+      return base64ToBytes(page.toDataURL("image/jpeg", 0.92).split(",")[1]);
+    });
+
+    var kids = pages.map(function(_, i){ return (3 + i * 3) + " 0 R"; }).join(" ");
+
+    mark();
+    push("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+    mark();
+    push("2 0 obj\n<< /Type /Pages /Kids [" + kids + "] /Count " + pages.length + " >>\nendobj\n");
+
+    pages.forEach(function(page, i){
+      var pageId = 3 + i * 3, contentId = pageId + 1, imageId = pageId + 2;
+      var content = "q\n" + PT_W.toFixed(2) + " 0 0 " + PT_H.toFixed(2) + " 0 0 cm\n/Im0 Do\nQ\n";
+
+      mark();
+      push(pageId + " 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " +
+           PT_W.toFixed(2) + " " + PT_H.toFixed(2) +
+           "] /Resources << /XObject << /Im0 " + imageId + " 0 R >> >> /Contents " +
+           contentId + " 0 R >>\nendobj\n");
+
+      mark();
+      push(contentId + " 0 obj\n<< /Length " + content.length + " >>\nstream\n" + content + "endstream\nendobj\n");
+
+      mark();
+      push(imageId + " 0 obj\n<< /Type /XObject /Subtype /Image /Width " + page.width +
+           " /Height " + page.height + " /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length " +
+           images[i].length + " >>\nstream\n");
+      push(images[i]);
+      push("\nendstream\nendobj\n");
+    });
+
+    var xrefStart = length;
+    var total = offsets.length + 1;
+    var xref = "xref\n0 " + total + "\n0000000000 65535 f \n";
+    offsets.forEach(function(off){
+      xref += ("0000000000" + off).slice(-10) + " 00000 n \n";
+    });
+    push(xref);
+    push("trailer\n<< /Size " + total + " /Root 1 0 R >>\nstartxref\n" + xrefStart + "\n%%EOF\n");
+
+    var out = new Uint8Array(length), at = 0;
+    chunks.forEach(function(part){ out.set(part, at); at += part.length; });
+    return new Blob([out], { type: "application/pdf" });
+  }
+
+  // ناوی لاتینی، بۆ ئەوەی لە هەموو ئامێرێک و لە وەتسئەپدا بێ کێشە بێت
+  function pdfFileName(){
+    var d = new Date();
+    var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
+    return "PUK-Sports-Form-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) +
+           "-" + pad(d.getHours()) + pad(d.getMinutes()) + ".pdf";
+  }
+
+  function downloadBlob(blob, filename){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  }
+
+  // دوای ناردنی PDF، فۆڕمەکە پاک دەکرێتەوە بۆ ئەوەی کەسی داهاتوو
+  // زانیاریی کەسی پێشوو نەبینێت
+  function clearAfterSend(){
+    setTimeout(function(){
+      allFields().forEach(function(id){
+        var el = document.getElementById(id);
+        el.value = "";
+        el.classList.remove("invalid");
+      });
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+      toast("فۆڕمەکە پاک کرایەوە");
+    }, 2500);
+  }
+
+  function sendPdf(){
+    var sendBtn = document.getElementById("pdfBtn");
+    sendBtn.disabled = true;
+    toast("PDF دروست دەکرێت…");
+
+    setTimeout(function(){
+      var blob, file;
+      try {
+        blob = buildPdf(renderPdfPages(true));
+      } catch(err){
+        // کردنەوەی فایلەکە بە شێوەی ناوخۆیی ڕێگە بە هەناردەکردنی وێنە نادات،
+        // بۆیە بەڵگەنامەکە بەبێ لۆگۆ دروست دەکرێتەوە
+        try {
+          blob = buildPdf(renderPdfPages(false));
+        } catch(err2){
+          if(window.console && console.error) console.error("PDF:", err2);
+          sendBtn.disabled = false;
+          toast("نەتوانرا PDF دروست بکرێت");
+          return;
+        }
+      }
+
+      try {
+        file = new File([blob], pdfFileName(), { type: "application/pdf" });
+      } catch(err3){
+        file = null;
+      }
+
+      sendBtn.disabled = false;
+
+      // PDF پاشەکەوت دەکرێت و چاتی بۆردەکە بە نامەی ئامادەکراوەوە دەکرێتەوە،
+      // بۆ ئەوەی زانیارییەکان بە هەر حاڵێک بگەن
+      function openChatWithFile(){
+        downloadBlob(blob, pdfFileName());
+        toast("PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە");
+
+        setTimeout(function(){
+          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(shortMessage()),
+                      "_blank", "noopener");
+        }, 1100);
+        clearAfterSend();
+      }
+
+      // ئەگەر Worker دانرابێت: بەرزکردنەوە و ناردنی لینکەکە ڕاستەوخۆ بۆ ژمارەی بۆرد
+      if(UPLOAD_ENDPOINT){
+        sendBtn.disabled = true;
+        toast("PDF دەنێردرێت…");
+
+        fetch(UPLOAD_ENDPOINT.replace(/\/+$/, "") + "/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/pdf" },
+          body: blob
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+          if(!data || !data.url) throw new Error("no url");
+          sendBtn.disabled = false;
+          clearAfterSend();
+
+          var msg = shortMessage() + "\n\n📄 " + data.url;
+          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg),
+                      "_blank", "noopener");
+        })
+        .catch(function(){
+          sendBtn.disabled = false;
+          openChatWithFile();
+        });
+        return;
+      }
+
+      // ناردنی فایل تەنها لە ڕێگەی پەنجەرەی ناردنی ئامێرەکەوە دەکرێت
+      if(file && navigator.canShare && navigator.canShare({ files: [file] })){
+        // تەنها فایلەکە دەنێردرێت — ئەگەر دەق یان ناونیشان زیاد بکرێت،
+        // هەندێک سیستەم لینکی ناوخۆیی فایلەکەش لەگەڵدا دەنێرێت
+        navigator.share({
+          files: [file]
+        }).then(function(){
+          clearAfterSend();
+        }).catch(function(){
+          // ڕەتکرایەوە یان سەرنەکەوت: چاتی بۆردەکە دەکرێتەوە
+          openChatWithFile();
+        });
+        return;
+      }
+
+      openChatWithFile();
+    }, 60);
+  }
+
+  /* ---------- ئامادەکردنی بەڵگەنامەکە بۆ PDF ---------- */
+  function fillPrintDoc(){
+    var body = document.getElementById("pdBody");
+    if(!body) return;
+    body.innerHTML = "";
+
+    sections.forEach(function(sec, si){
+      var block = document.createElement("section");
+      block.className = "pd-section";
+
+      var head = document.createElement("h2");
+      head.textContent = sectionTitle(si);
+      block.appendChild(head);
+
+      sec.ids.forEach(function(id){
+        var el = document.getElementById(id);
+        var value = (el.value || "").trim();
+
+        var row = document.createElement("div");
+        row.className = "pd-row";
+
+        var label = document.createElement("p");
+        label.className = "pd-label";
+        label.textContent = fieldLabel(id);
+
+        var val = document.createElement("p");
+        val.className = "pd-value" + (value ? "" : " empty");
+        val.textContent = value || "—";
+        // ژمارەی مۆبایل و بڕەکان پێچەوانە پیشان نەدرێن
+        if(value && /^[\d\s+\-().,/]+$/.test(value)) val.setAttribute("dir", "ltr");
+
+        row.appendChild(label);
+        row.appendChild(val);
+        block.appendChild(row);
+      });
+
+      body.appendChild(block);
+    });
+
+    var dateEl = document.getElementById("pdDate");
+    if(dateEl){
+      var d = new Date();
+      var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
+      dateEl.textContent = doc("date") + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate());
+    }
+  }
+
+  // دوگمەی ١ — نامەکە ڕاستەوخۆ بۆ ژمارەی بۆرد
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!validate()) return;
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(shortMessage()),
+                "_blank", "noopener");
+    toast("نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە");
+  });
+
+  // دوگمەی ٢ — زانیارییەکان بە PDF
+  var pdfBtn = document.getElementById("pdfBtn");
+  if(pdfBtn){
+    pdfBtn.addEventListener("click", function(){
+      if(!validate()) return;
+      fillPrintDoc();
+      sendPdf();
+    });
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    copyText(buildMessage(), function(){ toast("زانیارییەکان کۆپی کران ✔"); });
+  });
+
+  document.getElementById("clearBtn").addEventListener("click", function(){
+    if(!confirm(tr("دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟"))) return;
+    allFields().forEach(function(id){
+      var el = document.getElementById(id);
+      el.value = "";
+      el.classList.remove("invalid");
+    });
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    window.scrollTo({top:0, behavior:"smooth"});
+    toast("فۆڕمەکە سڕایەوە");
+  });
+
+  /* ---------- وێنەی سەرەوە و لۆگۆکە: کلیک یان دەستلێدان ---------- */
+  function makeToggle(el, onToggle){
+    if(!el) return;
+    var timer;
+
+    function toggle(){
+      var open = onToggle();
+      clearTimeout(timer);
+      if(open) timer = setTimeout(function(){ if(onToggle(false) !== false){} }, 6000);
+    }
+
+    el.addEventListener("click", toggle);
+    el.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggle(); }
+    });
+  }
+
+  var boardLogo = document.getElementById("boardLogo");
+  var logoNote = document.getElementById("logoNote");
+
+  makeToggle(boardLogo, function(force){
+    if(!logoNote) return false;
+    var open = force === false ? (logoNote.classList.remove("is-open"), false)
+                               : logoNote.classList.toggle("is-open");
+    logoNote.setAttribute("aria-hidden", open ? "false" : "true");
+    return open;
+  });
+
+  /* ---------- ناوی دروستکەر: کلیک یان دەستلێدان ---------- */
+  var footer = document.querySelector(".footer");
+  var devName = document.getElementById("devName");
+
+  if(footer && devName){
+    devName.addEventListener("click", function(){
+      var open = footer.classList.toggle("is-open");
+      devName.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  // ڕەشنووس پاشەکەوت ناکرێت — زانیاریی کەسەکان لەسەر ئامێرەکە نامێنێتەوە
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+
+  allFields().forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener("input", function(){
+      el.classList.remove("invalid");
+    });
+  });
+
+  /* ---------- دەرکەوتنی نەرمی ناوەڕۆک لە کاتی سکڕۆڵدا ---------- */
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- ناسینەوەی سکڕۆڵ لە هەموو بینەرێکدا ----------
+     هەندێک بینەری HTML (وەک پێشبینینی فایل لە iOS) ڕووداوی scroll نانێرن،
+     بۆیە جگە لە گوێگرتن، بە rAF شوێنی لاپەڕەکەش دەپێوین. */
+  var scrollCallbacks = [];
+  var lastPos = null;
+  var pending = false;
+
+  function pagePos(){
+    var el = document.documentElement;
+    return window.pageYOffset || el.scrollTop || document.body.scrollTop ||
+           -el.getBoundingClientRect().top || 0;
+  }
+
+  function runCallbacks(){
+    pending = false;
+    scrollCallbacks.forEach(function(fn){ fn(); });
+  }
+
+  function requestRun(){
+    if(!pending){
+      pending = true;
+      window.requestAnimationFrame(runCallbacks);
+    }
+  }
+
+  function watchPosition(){
+    var pos = pagePos();
+    if(pos !== lastPos){
+      lastPos = pos;
+      requestRun();
+    }
+    window.requestAnimationFrame(watchPosition);
+  }
+
+  function onEveryScroll(fn){
+    scrollCallbacks.push(fn);
+  }
+
+  window.addEventListener("scroll", requestRun, { passive: true });
+  window.addEventListener("resize", requestRun, { passive: true });
+  document.addEventListener("scroll", requestRun, { passive: true });
+  if(window.visualViewport){
+    window.visualViewport.addEventListener("scroll", requestRun, { passive: true });
+    window.visualViewport.addEventListener("resize", requestRun, { passive: true });
+  }
+  window.requestAnimationFrame(watchPosition);
+
+  /* دەقەکانی ".lines" دێڕ بە دێڕ لە پشت پەردەوە دێنە سەرەوە.
+     دێڕەکان دوای ڕێکخستنی لاپەڕەکە دەپێوێن، بۆیە لەگەڵ هەر قەبارەیەکی شاشە دەگونجێن. */
+  function splitLines(el){
+    if(!el.dataset.raw) el.dataset.raw = el.innerHTML;
+
+    // سەرەتا هەموو وشەکان جیا دەکرێنەوە بۆ پێوانەی شوێنیان
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var texts = [], t;
+    while((t = walker.nextNode())) if(t.nodeValue.trim()) texts.push(t);
+
+    texts.forEach(function(node){
+      var frag = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach(function(part){
+        if(!part) return;
+        if(/^\s+$/.test(part)){
+          frag.appendChild(document.createTextNode(" "));
+        } else {
+          var w = document.createElement("span");
+          w.className = "lw";
+          w.style.display = "inline-block";
+          w.textContent = part;
+          frag.appendChild(w);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+
+    // وشەکان بەپێی بەرزیی خۆیان دەکرێن بە دێڕ
+    var nodes = [].slice.call(el.childNodes);
+    var lines = [], currentTop = null, bucket = null;
+
+    nodes.forEach(function(node){
+      if(node.nodeType === 1 && node.classList.contains("lw")){
+        var top = node.offsetTop;
+        if(currentTop === null || Math.abs(top - currentTop) > 4){
+          currentTop = top;
+          bucket = [];
+          lines.push(bucket);
+        }
+        bucket.push(node);
+      } else if(bucket){
+        bucket.push(node);
+      }
+    });
+
+    if(!lines.length) return;
+
+    el.innerHTML = "";
+    lines.forEach(function(group, i){
+      var line = document.createElement("span");
+      line.className = "tline";
+      var inner = document.createElement("span");
+      inner.className = "tline-in";
+      inner.style.transitionDelay = Math.min(i * 0.055, 0.5) + "s";
+      group.forEach(function(node){
+        if(node.nodeType === 1 && node.classList.contains("lw")) node.style.display = "";
+        inner.appendChild(node);
+      });
+      line.appendChild(inner);
+      el.appendChild(line);
+    });
+  }
+
+  function buildLines(){
+    [].forEach.call(document.querySelectorAll(".lines"), function(el){
+      if(el.dataset.raw) el.innerHTML = el.dataset.raw;
+      splitLines(el);
+    });
+  }
+
+  var lineTimer;
+  window.addEventListener("resize", function(){
+    clearTimeout(lineTimer);
+    lineTimer = setTimeout(function(){
+      var openOnes = [].slice.call(document.querySelectorAll(".lines.is-in"));
+      buildLines();
+      openOnes.forEach(function(el){ el.classList.add("is-in"); });
+    }, 250);
+  });
+
+  /* هەر دەقێکی ".words" دەکرێت بە وشەی جیاواز، بۆ ئەوەی یەک بە یەک بێن */
+  function splitWords(el){
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var nodes = [], n;
+    while((n = walker.nextNode())) if(n.nodeValue.trim()) nodes.push(n);
+
+    nodes.forEach(function(node){
+      var frag = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach(function(part){
+        if(!part) return;
+        if(/^\s+$/.test(part)){
+          frag.appendChild(document.createTextNode(part));
+        } else {
+          var span = document.createElement("span");
+          span.className = "word";
+          span.textContent = part;
+          frag.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+
+    [].forEach.call(el.querySelectorAll(".word"), function(w, i){
+      w.style.transitionDelay = Math.min(i * (reduced ? 0.02 : 0.032), 0.7) + "s";
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll(".words"), splitWords);
+
+  // دێڕەکان دوای بارکردنی فۆنتەکە دەپێوین، نەک پێشی —
+  // بەبێ ئەوە شکاندنی دێڕەکان دەگۆڕێت و دەق تێکدەچێت
+  if(document.fonts && document.fonts.ready && document.fonts.ready.then){
+    document.fonts.ready.then(buildLines);
+  } else {
+    buildLines();
+  }
+
+  if(!reduced && "IntersectionObserver" in window){
+    document.documentElement.classList.add("js-reveal");
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
+
+    [].forEach.call(document.querySelectorAll(".reveal"), function(el, i){
+      el.style.transitionDelay = (Math.min(i % 6, 5) * 0.05) + "s";
+      io.observe(el);
+    });
+
+    // پشکنینێکی زیادە لەگەڵ هەر جوڵەیەکی لاپەڕەکە
+    onEveryScroll(function(){
+      [].forEach.call(document.querySelectorAll(".reveal:not(.is-in)"), function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.94 && r.bottom > 0) el.classList.add("is-in");
+      });
+    });
+  }
+
+  /* ---------- لیدی بەشەکان: کام بەش لەبەردەستە ---------- */
+  var cards = [].slice.call(document.querySelectorAll(".card"));
+  var stepper = document.getElementById("stepper");
+  var steps = stepper ? [].slice.call(stepper.querySelectorAll(".step")) : [];
+
+  if(cards.length && steps.length === cards.length){
+    steps.forEach(function(step, i){
+      step.addEventListener("click", function(){
+        var top = cards[i].getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top: top, behavior: reduced ? "auto" : "smooth" });
+      });
+    });
+
+    var current = -1;
+
+    function markActive(){
+      var vh = window.innerHeight, best = -1, bestArea = 0;
+
+      cards.forEach(function(card, i){
+        var r = card.getBoundingClientRect();
+        var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+        if(visible > bestArea){ bestArea = visible; best = i; }
+      });
+
+      // لیدەکان تەنها ئەو کاتە دەردەکەون کە فۆڕمەکە لەبەردەستدایە
+      var firstTop = cards[0].getBoundingClientRect().top;
+      var lastBottom = cards[cards.length - 1].getBoundingClientRect().bottom;
+      stepper.classList.toggle("is-visible", bestArea > 0 && firstTop < vh * 0.7 && lastBottom > 0);
+
+      if(best !== current){
+        current = best;
+        steps.forEach(function(step, i){
+          step.setAttribute("aria-current", i === best ? "true" : "false");
+        });
+      }
+    }
+
+    onEveryScroll(markActive);
+    markActive();
+  }
+
+
+  /* ---------- گۆڕینی زمان ---------- */
+  function setLang(next, save){
+    if(!I18N[next] && next !== "ku") next = "ku";
+    lang = next;
+    var d = I18N[lang] || {};
+    var root = document.documentElement;
+    root.lang = lang === "ku" ? "ckb" : lang;
+    root.dir = lang === "en" ? "ltr" : "rtl";
+    document.title = lang === "ku" ? TITLE_KU : (d.title || TITLE_KU);
+
+    [].forEach.call(document.querySelectorAll("[data-i18n]"), function(el){
+      var key = el.getAttribute("data-i18n");
+      var html = lang === "ku" ? I18N_KU[key] : (d[key] || I18N_KU[key]);
+      if(html == null) return;
+      if(el.classList.contains("lines")){
+        el.dataset.raw = html;           // دێڕەکان دووبارە دەپێورێنەوە
+      } else if(el.classList.contains("words")){
+        el.innerHTML = html;
+        splitWords(el);
+      } else {
+        el.innerHTML = html;
+      }
+    });
+    [].forEach.call(document.querySelectorAll("[data-i18n-ph]"), function(el){
+      var key = el.getAttribute("data-i18n-ph");
+      el.setAttribute("placeholder", lang === "ku" ? I18N_KU_PH[key] : (d[key] || I18N_KU_PH[key]));
+    });
+    buildLines();
+
+    [].forEach.call(document.querySelectorAll(".lang-switch button"), function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    if(save){ try { localStorage.setItem(LANG_KEY, lang); } catch(e){} }
+  }
+
+  [].forEach.call(document.querySelectorAll(".lang-switch button"), function(b){
+    b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang"), true); });
+  });
+
+  (function(){
+    var fromUrl = (location.search.match(/[?&]lang=(ku|ar|en)\b/) || [])[1];
+    var saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch(e){}
+    setLang(fromUrl || saved || "ku", !!fromUrl);
+    var sw = document.querySelector(".lang-switch");
+    if(sw) requestAnimationFrame(function(){ requestAnimationFrame(function(){ sw.classList.add("ready"); }); });
+  })();
+
+})();
+</script>
+</body>
+</html>

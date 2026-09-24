@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Zain;font-weight:400;src:url(zain-arabic-400.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:Zain;font-weight:700;src:url(zain-arabic-700.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:Zain;font-weight:900;src:url(zain-arabic-900.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:Zain;font-weight:400;src:url(zain-latin-400.woff2);unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Zain;font-weight:700;src:url(zain-latin-700.woff2);unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Zain;font-weight:900;src:url(zain-latin-900.woff2);unicode-range:U+0000-00FF,U+2000-206F}
+:root{--neon:#4dffab;--text:#eafff4;--muted:#8db5a0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000}
+.card{position:relative;overflow:hidden;font-family:Zain,sans-serif;color:var(--text);text-align:center;
+  background:
+    radial-gradient(760px 520px at 50% 48%,rgba(77,255,171,.13),transparent 65%),
+    radial-gradient(700px 700px at 100% 70%,rgba(12,110,64,.22),transparent 60%),
+    radial-gradient(700px 600px at 0% 100%,rgba(10,90,54,.22),transparent 62%),
+    linear-gradient(180deg,#000 0%,#01100a 40%,#052414 70%,#020e08 100%)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(77,255,171,.13) 1px,transparent 1.4px);background-size:26px 26px;
+  -webkit-mask:linear-gradient(180deg,transparent 35%,#000 100%);mask:linear-gradient(180deg,transparent 35%,#000 100%);opacity:.6}
+/* the form's own banner, melting into the page */
+.banner{position:absolute;top:0;left:0;right:0;z-index:1}
+.banner img{display:block;width:100%;height:auto;
+  -webkit-mask:linear-gradient(180deg,#000 62%,transparent 100%);mask:linear-gradient(180deg,#000 62%,transparent 100%)}
+.banner::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(77,255,171,.55),transparent)}
+.frame{position:absolute;inset:24px;border:1.5px solid rgba(77,255,171,.25);border-radius:40px;z-index:5;pointer-events:none;
+  box-shadow:0 0 30px rgba(77,255,171,.1),inset 0 0 40px rgba(77,255,171,.04)}
+/* the board badge, as on the form */
+.badge{position:absolute;left:50%;transform:translateX(-50%);z-index:3;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle,rgba(4,30,18,.95) 60%,rgba(2,14,8,.95));
+  border:1.5px solid rgba(77,255,171,.55);
+  box-shadow:0 0 0 10px rgba(77,255,171,.05),0 0 40px rgba(77,255,171,.35),inset 0 0 30px rgba(77,255,171,.12)}
+.badge img{width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.body{position:absolute;left:70px;right:70px;z-index:4}
+.eyebrow{font-weight:700;letter-spacing:2px;color:#cfe9dc}
+.divider{display:flex;align-items:center;justify-content:center;gap:16px}
+.divider span{flex:1;max-width:260px;height:1px;background:linear-gradient(90deg,transparent,rgba(77,255,171,.5),transparent)}
+.divider i{width:12px;height:12px;border-radius:50%;background:var(--neon);box-shadow:0 0 14px var(--neon),0 0 28px rgba(77,255,171,.6)}
+.big{font-weight:900;line-height:1.14;color:#fff}
+.big .n{color:var(--neon);text-shadow:0 0 18px rgba(77,255,171,.6),0 0 46px rgba(77,255,171,.3)}
+.formname{display:inline-flex;align-items:center;gap:14px;border-radius:99px;font-weight:900;color:#03170d;
+  background:linear-gradient(100deg,#5be584,#35c96a 55%,#1faf5a);box-shadow:0 12px 30px rgba(31,175,90,.35),inset 0 1px 0 rgba(255,255,255,.45)}
+.formname svg{flex:0 0 auto}
+.tag{color:var(--muted)}
+.cta{position:absolute;z-index:4;left:70px;right:70px;display:flex;align-items:center;gap:26px;text-align:right;
+  padding:22px 26px;border-radius:30px;border:1.5px solid rgba(77,255,171,.5);
+  background:linear-gradient(180deg,rgba(6,34,21,.88),rgba(2,16,10,.92));
+  box-shadow:0 0 30px rgba(77,255,171,.16),inset 0 0 24px rgba(77,255,171,.06)}
+.cta .qr{flex:0 0 auto;background:#eafff4;border-radius:18px;padding:12px;box-shadow:0 0 22px rgba(77,255,171,.45)}
+.cta .qr img{display:block}
+.cta small{display:block;font-size:23px;color:var(--muted)}
+.cta b{display:block;font-weight:900;font-size:34px;line-height:1.35}
+.cta .url{display:inline-block;direction:ltr;margin-top:6px;font-weight:700;font-size:26px;color:var(--neon);
+  text-shadow:0 0 12px rgba(77,255,171,.5);letter-spacing:.5px}
+.brand{position:absolute;z-index:4;left:0;right:0;direction:ltr;font-weight:900;letter-spacing:.34em;font-size:18px;color:rgba(77,255,171,.7)}
+
+.post br.s,.story br.p{display:none}
+/* post 1080 × 1350 */
+.post{width:1080px;height:1350px}
+.post .badge{top:392px;width:188px;height:188px}
+.post .body{top:604px}
+.post .eyebrow{font-size:30px}
+.post .divider{margin:14px 0 16px}
+.post .big{font-size:66px}
+.post .formname{margin-top:26px;font-size:30px;padding:12px 30px}
+.post .cta{bottom:84px}
+.post .cta .qr img{width:138px;height:138px}
+.post .brand{bottom:44px}
+
+/* story 1080 × 1920 */
+.story{width:1080px;height:1920px}
+
+.story .badge{top:420px;width:270px;height:270px}
+.story .body{top:750px;left:44px;right:44px}
+.story .eyebrow{font-size:36px}
+.story .divider{margin:20px 0 26px}
+.story .big{font-size:83px;line-height:1.24}
+.story .formname{margin-top:40px;font-size:34px;padding:14px 36px}
+.story .tag{margin-top:26px;font-size:32px}
+.story .cta{bottom:130px}
+.story .cta .qr img{width:170px;height:170px}
+.story .brand{bottom:70px}
+</style></head>
+<body>
+<template id="doc">
+  <div class="frame"></div>
+  <div class="banner"><img src="banner.webp" alt=""></div>
+  <div class="badge"><img src="sports-board-logo.png" alt=""></div>
+  <div class="body">
+    <p class="eyebrow">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+    <div class="divider"><span></span><i></i><span></span></div>
+    <h1 class="big">دەرگا بە ڕووی<br class="s"> <span class="n">خاوەن بیرۆکە<br class="p"> و پڕۆژەکاندا</span><br class="s"> واڵا دەکات</h1>
+    <div class="formname"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M9 13h6M9 17h4"/></svg>فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</div>
+    <p class="tag"></p>
+  </div>
+  <div class="cta">
+    <div class="qr"><img src="qr.svg" alt=""></div>
+    <div><small>دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</small><b>فۆڕمەکە پڕ بکەرەوە و بینێرە</b><span class="url">puk-sports-board.pages.dev</span></div>
+  </div>
+  <div class="brand">PUK SPORTS BOARD</div>
+</template>
+<section class="card post" id="post"></section>
+<section class="card story" id="story"></section>
+<script>
+const t = document.getElementById('doc').innerHTML;
+document.getElementById('post').innerHTML = t;
+document.getElementById('story').innerHTML = t;
+</script>
+</body></html>
