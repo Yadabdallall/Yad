@@ -815,6 +815,19 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 .hero{animation:rise .8s cubic-bezier(.22,.8,.3,1) both;}
 @media (prefers-reduced-motion:reduce){ .hero{animation:none;} }
 
+/* ================= گۆڕینی زمان ================= */
+.lang-switch{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:30;direction:ltr;
+  display:flex;gap:4px;padding:4px;border-radius:999px;
+  background:rgba(2,17,10,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid rgba(77,255,171,.32);box-shadow:0 0 18px rgba(77,255,171,.16)}
+.lang-switch button{all:unset;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;line-height:1;
+  padding:8px 14px;border-radius:999px;color:var(--text-2);transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+.lang-switch button:hover{color:var(--neon)}
+.lang-switch button[aria-pressed="true"]{color:#04170c;background:linear-gradient(100deg,#8dffc9,var(--neon) 55%,var(--neon-2));
+  box-shadow:0 0 14px rgba(77,255,171,.55)}
+.lang-switch button:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+html[dir="ltr"] .hint{text-align:left}
+
 @media (max-width:520px){
   body{font-size:17px;}
   .board-logo{width:104px;height:104px;margin-top:-6px;}
@@ -826,6 +839,11 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 </head>
 <body>
 
+<div class="lang-switch" role="group" aria-label="Language / زمان / اللغة">
+  <button type="button" data-lang="ku" lang="ckb">کوردی</button>
+  <button type="button" data-lang="ar" lang="ar">العربية</button>
+  <button type="button" data-lang="en" lang="en">English</button>
+</div>
 <div class="banner">
   <img src="assets/img/banner.webp" alt="یەکێتیی نیشتمانیی کوردستان — مەکتەبی سکرتاریەتی سەرۆک مام جەلال — بۆردی وەرزش">
 </div>
@@ -838,19 +856,19 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
          aria-label="دروشمی بۆردی وەرزش پیشان بدە">
       <img src="assets/img/sports-board-logo.png" alt="لۆگۆی بۆردی وەرزشی">
     </div>
-    <p class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
+    <p data-i18n="logoNote" class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
 
-    <h1 class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
+    <h1 data-i18n="org" class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
-    <p class="form-title reveal">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
-    <p class="tagline reveal lines">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
+    <p data-i18n="formTitle" class="form-title reveal">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+    <p data-i18n="tagline" class="tagline reveal lines">دەرفەتێک بۆ گەیاندنی بیرۆکە و پڕۆژە وەرزشییەکانت</p>
 
     <div class="intro reveal">
-      <p class="reveal lines">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
-      <p class="reveal lines">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
+      <p data-i18n="intro1" class="reveal lines">بۆردی وەرزشی، لە پێناو ڕەخساندنی دەرفەت و پشتگیریکردنی توانای گەنجان و وەرزشوانان، هەستاوە بە ئامادەکردنی ئەم فۆڕمە بە مەبەستی وەرگرتنی سەرجەم ئەو بیرۆکە، پڕۆژە و چالاکییە وەرزشییانەی لە هزر و بیری ئێوەی وەرزشواندایە و تا ئێستا دەرفەتی گەیاندنی ڕاستەوخۆتان بۆ نەڕەخساوە.</p>
+      <p data-i18n="intro2" class="reveal lines">ئێمە لە بۆردی وەرزشی، باوەڕی تەواومان بە توانا، داهێنان و دیدگای ئێوەی گەنج هەیە بۆ بەرەوپێشبردنی کەرتی وەرزش.</p>
     </div>
 
-    <p class="hero-sub reveal lines">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
+    <p data-i18n="heroSub" class="hero-sub reveal lines">تکایە خانەکانی خوارەوە بە وردی پڕ بکەرەوە، پاشان کلیکی دوگمەی ناردن بکە بۆ ئەوەی فۆڕمەکەت ڕاستەوخۆ بگاتە بۆردی وەرزشی لە ڕێگەی وەتسئەپەوە.</p>
   </header>
 
   <form id="projectForm" novalidate>
@@ -859,32 +877,32 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     <section class="card reveal">
       <div class="sec-head reveal">
         <div class="sec-num">١</div>
-        <h2 class="sec-title reveal words">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
+        <h2 data-i18n="sec1" class="sec-title reveal words">بەشی یەکەم <span>زانیارییە کەسی و پیشەییەکان</span></h2>
       </div>
 
       <div class="field reveal">
-        <label for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
-        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" placeholder="ناوی سیانی بنووسە">
+        <label data-i18n="lbl_fullname" for="fullname">ناوی تەواو (سیانی) <span class="req">*</span></label>
+        <input id="fullname" name="ناوی تەواو (سیانی)" type="text" data-i18n-ph="ph_fullname" placeholder="ناوی سیانی بنووسە">
       </div>
 
       <div class="field reveal">
-        <label for="age">تەمەن <span class="req">*</span></label>
-        <input id="age" name="تەمەن" type="text" inputmode="numeric" placeholder="بۆ نموونە ٢٧ ساڵ">
+        <label data-i18n="lbl_age" for="age">تەمەن <span class="req">*</span></label>
+        <input id="age" name="تەمەن" type="text" inputmode="numeric" data-i18n-ph="ph_age" placeholder="بۆ نموونە ٢٧ ساڵ">
       </div>
 
       <div class="field reveal">
-        <label for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
-        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" placeholder="07XX XXX XXXX">
+        <label data-i18n="lbl_phone" for="phone">ژمارەی پەیوەندی (مۆبایل) <span class="req">*</span></label>
+        <input id="phone" name="ژمارەی پەیوەندی (مۆبایل)" type="tel" inputmode="tel" data-i18n-ph="ph_phone" placeholder="07XX XXX XXXX">
       </div>
 
       <div class="field reveal">
-        <label for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
-        <input id="sport" name="بواری وەرزشی" type="text" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
+        <label data-i18n="lbl_sport" for="sport">بواری وەرزشی <span class="req">*</span><span class="hint">وەرزشوان لە چ بوارێکدا؟</span></label>
+        <input id="sport" name="بواری وەرزشی" type="text" data-i18n-ph="ph_sport" placeholder="بۆ نموونە: تۆپی پێ، مەلەوانی، کاراتێ...">
       </div>
 
       <div class="field reveal">
-        <label for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
-        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
+        <label data-i18n="lbl_place" for="place">شوێن / ناوەندی وەرزشیی ئێستات بۆ کارکردن <span class="opt">ئارەزوومەندانە</span><span class="hint">ئەگەر لە هیچ ناوەندێکی وەرزشیدا کار ناکەیت، بەتاڵی بهێڵەوە</span></label>
+        <input id="place" name="شوێن / ناوەندی وەرزشیی ئێستا" type="text" data-i18n-ph="ph_place" placeholder="ناوی یانە، ناوەند یان شوێنی کارکردن">
       </div>
     </section>
 
@@ -893,36 +911,36 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     <section class="card reveal">
       <div class="sec-head reveal">
         <div class="sec-num">٢</div>
-        <h2 class="sec-title reveal words">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
+        <h2 data-i18n="sec2" class="sec-title reveal words">بەشی دووەم <span>وردەکاریی پڕۆژەکە</span></h2>
       </div>
 
       <div class="field reveal">
-        <label for="pname">ناوی پڕۆژە <span class="req">*</span></label>
-        <input id="pname" name="ناوی پڕۆژە" type="text" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
+        <label data-i18n="lbl_pname" for="pname">ناوی پڕۆژە <span class="req">*</span></label>
+        <input id="pname" name="ناوی پڕۆژە" type="text" data-i18n-ph="ph_pname" placeholder="ناوێکی کورت و گونجاو بۆ پڕۆژەکە">
       </div>
 
       <div class="field reveal">
-        <label for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
-        <textarea id="psummary" name="پوختەی پڕۆژە" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
+        <label data-i18n="lbl_psummary" for="psummary">پوختەی پڕۆژە <span class="req">*</span><span class="hint">کورتەیەکی گشتی</span></label>
+        <textarea id="psummary" name="پوختەی پڕۆژە" data-i18n-ph="ph_psummary" placeholder="بە دوو–سێ ڕستە پڕۆژەکە بناسێنە"></textarea>
       </div>
 
       <div class="field reveal">
-        <label for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
-        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
+        <label data-i18n="lbl_pdetails" for="pdetails">ڕوونکردنەوەی تەواوی پڕۆژەکە <span class="req">*</span><span class="hint">وردەکاری و چۆنیەتیی جێبەجێکردن</span></label>
+        <textarea id="pdetails" name="ڕوونکردنەوەی تەواوی پڕۆژەکە" style="min-height:158px" data-i18n-ph="ph_pdetails" placeholder="هەنگاوەکانی جێبەجێکردن، کات، شوێن و پێداویستییەکان..."></textarea>
       </div>
 
       <div class="field reveal">
-        <label for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
-        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
+        <label data-i18n="lbl_pgoals" for="pgoals">ئامانجەکانی پڕۆژەکە <span class="req">*</span></label>
+        <textarea id="pgoals" name="ئامانجەکانی پڕۆژەکە" data-i18n-ph="ph_pgoals" placeholder="ئامانجە سەرەکییەکان یەک بە یەک بنووسە"></textarea>
       </div>
 
       <div class="field reveal">
-        <label for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
-        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
+        <label data-i18n="lbl_pbenefits" for="pbenefits">سوودەکانی پڕۆژەکە <span class="req">*</span><span class="hint">گرنگی و دەستکەوتەکانی</span></label>
+        <textarea id="pbenefits" name="سوودەکانی پڕۆژەکە" data-i18n-ph="ph_pbenefits" placeholder="چ سوودێک بە وەرزش و کۆمەڵگا دەگەیەنێت؟"></textarea>
       </div>
 
       <div class="field reveal">
-        <label for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
+        <label data-i18n="lbl_pbudget" for="pbudget">بودجە / تێچووی خەمڵێنراو <span class="req">*</span><span class="hint">بڕی پێویست بۆ پڕۆژەکە</span></label>
         <input id="pbudget" name="بودجە / تێچووی خەمڵێنراو" type="text">
       </div>
     </section>
@@ -932,23 +950,23 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     <section class="card reveal">
       <div class="sec-head reveal">
         <div class="sec-num">٣</div>
-        <h2 class="sec-title reveal words">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
+        <h2 data-i18n="sec3" class="sec-title reveal words">بەشی سێیەم <span>دیدگا و تێڕوانین بۆ کەرتی وەرزش</span></h2>
       </div>
 
       <div class="field reveal">
-        <label for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
-        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
+        <label data-i18n="lbl_problem" for="problem">لە دیدگای تۆوە، دیارترین کێشەی کەرتی وەرزش لە هەرێمی کوردستان چییە؟ <span class="req">*</span></label>
+        <textarea id="problem" name="دیارترین کێشەی کەرتی وەرزش" style="min-height:138px" data-i18n-ph="ph_problem" placeholder="بە ڕاشکاوی تێڕوانینی خۆت بنووسە"></textarea>
       </div>
 
       <div class="field reveal">
-        <label for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
-        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
+        <label data-i18n="lbl_solution" for="solution">پێشنیار و چارەسەری تۆ بۆ ئەو کێشەیە چییە؟ <span class="req">*</span></label>
+        <textarea id="solution" name="پێشنیار و چارەسەر" style="min-height:138px" data-i18n-ph="ph_solution" placeholder="چارەسەری کردەیی و پێشنیارەکانت"></textarea>
       </div>
     </section>
 
     <div class="quote reveal">
-      <p class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
-      <p class="q-body reveal lines">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+      <p data-i18n="qTop" class="q-top">لە بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+      <p data-i18n="qBody" class="q-body reveal lines">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     </div>
 
     <div class="actions reveal">
@@ -958,7 +976,7 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
           <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 20.5 11.6z"/>
           <path d="M9.1 8.3c.16-.3.33-.3.5-.3h.42c.14 0 .33 0 .5.38l.72 1.7c.08.2.04.35-.6.5l-.38.47c-.1.13-.2.28-.06.53.38.62.96 1.34 1.68 1.87.46.34.8.47 1.04.33l.48-.53c.14-.15.3-.2.48-.1l1.62.8c.2.1.28.2.28.38 0 .48-.34 1.14-.8 1.34-.4.15-.9.2-1.42.06-1-.25-2.2-.85-3.3-1.85-1.05-.95-1.8-2.05-2.1-2.95-.25-.75-.2-1.4 0-1.9l.15-.5z"/>
         </svg>
-        <span>١ · ناردنی نامە بۆ وەتسئەپ</span>
+        <span data-i18n="btn1">١ · ناردنی نامە بۆ وەتسئەپ</span>
       </button>
 
       <button type="button" class="btn-pdf" id="pdfBtn">
@@ -969,11 +987,11 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
           <path d="M12 12v5"/>
           <path d="M9.5 14.5 12 12l2.5 2.5"/>
         </svg>
-        <span>٢ · ناردنی زانیارییەکان بە PDF</span>
+        <span data-i18n="btn2">٢ · ناردنی زانیارییەکان بە PDF</span>
       </button>
-      <button type="button" class="btn-copy" id="copyBtn">کۆپیکردنی زانیارییەکان</button>
-      <button type="button" class="btn-clear" id="clearBtn">سڕینەوەی فۆڕمەکە</button>
-      <p class="note">سەرەتا دوگمەی <b>١</b> لێبدە و نامەکە بنێرە، پاشان بگەڕێوە و دوگمەی <b>٢</b> لێبدە بۆ ناردنی PDF.<br>دوای ناردنی PDF، فۆڕمەکە خۆکارانە دەسڕدرێتەوە.</p>
+      <button type="button" class="btn-copy" id="copyBtn" data-i18n="btnCopy">کۆپیکردنی زانیارییەکان</button>
+      <button type="button" class="btn-clear" id="clearBtn" data-i18n="btnClear">سڕینەوەی فۆڕمەکە</button>
+      <p data-i18n="note" class="note">سەرەتا دوگمەی <b>١</b> لێبدە و نامەکە بنێرە، پاشان بگەڕێوە و دوگمەی <b>٢</b> لێبدە بۆ ناردنی PDF.<br>دوای ناردنی PDF، فۆڕمەکە خۆکارانە دەسڕدرێتەوە.</p>
     </div>
   </form>
 
@@ -981,7 +999,7 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     <div class="line"></div>
     <p class="dev-by">Developed by</p>
     <button type="button" class="dev-name" id="devName" aria-expanded="false">SOLIN OTHMAN</button>
-    <p class="dev-motto" id="devMotto" aria-hidden="true">وەرزش ژیانمە</p>
+    <p class="dev-motto" data-i18n="motto" id="devMotto" aria-hidden="true">وەرزش ژیانمە</p>
     <div class="dev-dots"><b></b><i></i><b></b></div>
   </footer>
 
@@ -1011,9 +1029,9 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 </div>
 
 <nav class="stepper" id="stepper" aria-label="بەشەکانی فۆڕم">
-  <button type="button" class="step" data-step="0" aria-current="false"><i></i><span>بەشی یەکەم</span></button>
-  <button type="button" class="step" data-step="1" aria-current="false"><i></i><span>بەشی دووەم</span></button>
-  <button type="button" class="step" data-step="2" aria-current="false"><i></i><span>بەشی سێیەم</span></button>
+  <button type="button" class="step" data-step="0" aria-current="false"><i></i><span data-i18n="step1">بەشی یەکەم</span></button>
+  <button type="button" class="step" data-step="1" aria-current="false"><i></i><span data-i18n="step2">بەشی دووەم</span></button>
+  <button type="button" class="step" data-step="2" aria-current="false"><i></i><span data-i18n="step3">بەشی سێیەم</span></button>
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -1021,6 +1039,145 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 <script>
 (function(){
   "use strict";
+
+  /* ================= سێ زمان: کوردی · العربية · English =================
+     تەنها ڕووی پەڕەکە وەردەگێڕدرێت. نامەی وەتسئەپ و PDF هەمیشە بە کوردی دەچن
+     بۆ ژمارەی بۆرد، چونکە ناونیشانەکانیان لە name ـی خانەکان و ناونیشانی بەشەکانەوە دێن. */
+  var I18N = {
+ "ar": {
+  "title": "استمارة تقديم المشاريع الرياضية — المجلس الرياضي",
+  "logoNote": "( نحن هنا لخدمتكم )",
+  "org": "المجلس الرياضي في الاتحاد الوطني الكوردستاني",
+  "formTitle": "استمارة تقديم المشاريع الرياضية",
+  "tagline": "فرصةٌ لإيصال أفكارك ومشاريعك الرياضية",
+  "intro1": "حرصاً من المجلس الرياضي على إتاحة الفرص ودعم طاقات الشباب والرياضيين، أعدّ هذه الاستمارة لاستقبال جميع الأفكار والمشاريع والأنشطة الرياضية التي تجول في أذهانكم، والتي لم تُتَح لكم حتى الآن فرصة إيصالها بشكلٍ مباشر.",
+  "intro2": "نحن في المجلس الرياضي نؤمن إيماناً تاماً بقدرات الشباب وإبداعهم ورؤيتهم في تطوير القطاع الرياضي.",
+  "heroSub": "يُرجى ملء الحقول أدناه بدقّة، ثم الضغط على زر الإرسال ليصل طلبك مباشرةً إلى المجلس الرياضي عبر واتساب.",
+  "sec1": "القسم الأول <span>المعلومات الشخصية والمهنية</span>",
+  "sec2": "القسم الثاني <span>تفاصيل المشروع</span>",
+  "sec3": "القسم الثالث <span>الرؤية والتطلعات لقطاع الرياضة</span>",
+  "lbl_fullname": "الاسم الكامل (الثلاثي) <span class=\"req\">*</span>",
+  "ph_fullname": "اكتب اسمك الثلاثي",
+  "lbl_age": "العمر <span class=\"req\">*</span>",
+  "ph_age": "مثال: ٢٧ سنة",
+  "lbl_phone": "رقم الهاتف (الموبايل) <span class=\"req\">*</span>",
+  "ph_phone": "07XX XXX XXXX",
+  "lbl_sport": "المجال الرياضي <span class=\"req\">*</span><span class=\"hint\">في أي مجالٍ رياضي أنت؟</span>",
+  "ph_sport": "مثال: كرة القدم، السباحة، الكاراتيه...",
+  "lbl_place": "مكان / مركز عملك الرياضي الحالي <span class=\"opt\">اختياري</span><span class=\"hint\">إن لم تكن تعمل في أي مركزٍ رياضي، اتركه فارغاً</span>",
+  "ph_place": "اسم النادي أو المركز أو مكان العمل",
+  "lbl_pname": "اسم المشروع <span class=\"req\">*</span>",
+  "ph_pname": "اسمٌ قصير ومناسب للمشروع",
+  "lbl_psummary": "ملخّص المشروع <span class=\"req\">*</span><span class=\"hint\">نبذة عامة</span>",
+  "ph_psummary": "عرّف بالمشروع في جملتين أو ثلاث",
+  "lbl_pdetails": "شرح المشروع بالكامل <span class=\"req\">*</span><span class=\"hint\">التفاصيل وآلية التنفيذ</span>",
+  "ph_pdetails": "خطوات التنفيذ، الوقت، المكان والمتطلبات...",
+  "lbl_pgoals": "أهداف المشروع <span class=\"req\">*</span>",
+  "ph_pgoals": "اكتب الأهداف الرئيسية واحداً تلو الآخر",
+  "lbl_pbenefits": "فوائد المشروع <span class=\"req\">*</span><span class=\"hint\">أهميته ومكتسباته</span>",
+  "ph_pbenefits": "ما الفائدة التي يقدّمها للرياضة والمجتمع؟",
+  "lbl_pbudget": "الميزانية / الكلفة التقديرية <span class=\"req\">*</span><span class=\"hint\">المبلغ اللازم للمشروع</span>",
+  "lbl_problem": "من وجهة نظرك، ما أبرز مشكلةٍ يواجهها القطاع الرياضي في إقليم كوردستان؟ <span class=\"req\">*</span>",
+  "ph_problem": "اكتب رأيك بصراحة",
+  "lbl_solution": "ما مقترحاتك وحلولك لهذه المشكلة؟ <span class=\"req\">*</span>",
+  "ph_solution": "حلولٌ عملية ومقترحاتك",
+  "qTop": "من المجلس الرياضي في الاتحاد الوطني الكوردستاني",
+  "qBody": "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا.",
+  "btn1": "١ · إرسال رسالة عبر واتساب",
+  "btn2": "٢ · إرسال المعلومات كملف PDF",
+  "btnCopy": "نسخ المعلومات",
+  "btnClear": "مسح الاستمارة",
+  "note": "اضغط أولاً على الزر <b>١</b> وأرسل الرسالة، ثم عُد واضغط على الزر <b>٢</b> لإرسال ملف PDF.<br>بعد إرسال الـ PDF تُمسح الاستمارة تلقائياً.",
+  "motto": "الرياضة حياتي",
+  "step1": "القسم الأول",
+  "step2": "القسم الثاني",
+  "step3": "القسم الثالث"
+ },
+ "en": {
+  "title": "Sports Project Submission Form — PUK Sports Board",
+  "logoNote": "( We are here to serve )",
+  "org": "Sports Board of the Patriotic Union of Kurdistan",
+  "formTitle": "Sports Project Submission Form",
+  "tagline": "A chance to share your sports ideas and projects",
+  "intro1": "To open doors and support the talent of young people and athletes, the Sports Board has prepared this form to receive every sports idea, project and activity you have in mind — the ones you have not yet had a direct way to share.",
+  "intro2": "At the Sports Board, we fully believe in the ability, creativity and vision of young people to move the sports sector forward.",
+  "heroSub": "Please fill in the fields below carefully, then tap send so your form reaches the Sports Board directly on WhatsApp.",
+  "sec1": "Section One <span>Personal &amp; professional details</span>",
+  "sec2": "Section Two <span>Project details</span>",
+  "sec3": "Section Three <span>Your view of the sports sector</span>",
+  "lbl_fullname": "Full name (three-part) <span class=\"req\">*</span>",
+  "ph_fullname": "Your full three-part name",
+  "lbl_age": "Age <span class=\"req\">*</span>",
+  "ph_age": "e.g. 27 years",
+  "lbl_phone": "Phone number (mobile) <span class=\"req\">*</span>",
+  "ph_phone": "07XX XXX XXXX",
+  "lbl_sport": "Sport <span class=\"req\">*</span><span class=\"hint\">Which sport are you in?</span>",
+  "ph_sport": "e.g. football, swimming, karate…",
+  "lbl_place": "Current sports club or workplace <span class=\"opt\">Optional</span><span class=\"hint\">Leave it empty if you don’t work at a sports centre</span>",
+  "ph_place": "Club, centre or workplace name",
+  "lbl_pname": "Project name <span class=\"req\">*</span>",
+  "ph_pname": "A short, fitting name for the project",
+  "lbl_psummary": "Project summary <span class=\"req\">*</span><span class=\"hint\">A short overview</span>",
+  "ph_psummary": "Describe the project in two or three sentences",
+  "lbl_pdetails": "Full project description <span class=\"req\">*</span><span class=\"hint\">Details and how it will be carried out</span>",
+  "ph_pdetails": "Steps, timing, location and what it needs…",
+  "lbl_pgoals": "Project goals <span class=\"req\">*</span>",
+  "ph_pgoals": "List the main goals one by one",
+  "lbl_pbenefits": "Project benefits <span class=\"req\">*</span><span class=\"hint\">Why it matters and what it achieves</span>",
+  "ph_pbenefits": "How will it benefit sport and the community?",
+  "lbl_pbudget": "Budget / estimated cost <span class=\"req\">*</span><span class=\"hint\">The amount the project needs</span>",
+  "lbl_problem": "In your view, what is the biggest problem facing the sports sector in the Kurdistan Region? <span class=\"req\">*</span>",
+  "ph_problem": "Share your view openly",
+  "lbl_solution": "What do you suggest to solve it? <span class=\"req\">*</span>",
+  "ph_solution": "Practical solutions and suggestions",
+  "qTop": "From the PUK Sports Board",
+  "qBody": "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland.",
+  "btn1": "1 · Send a WhatsApp message",
+  "btn2": "2 · Send the details as PDF",
+  "btnCopy": "Copy the details",
+  "btnClear": "Clear the form",
+  "note": "First tap button <b>1</b> and send the message, then come back and tap button <b>2</b> to send the PDF.<br>Once the PDF is sent, the form clears itself.",
+  "motto": "Sport is my life",
+  "step1": "Section 1",
+  "step2": "Section 2",
+  "step3": "Section 3"
+ }
+};
+  var I18N_MSG = {
+ "ar": {
+  "تکایە هەموو خانە پێویستەکان پڕ بکەرەوە": "يُرجى ملء جميع الحقول المطلوبة",
+  "نەتوانرا کۆپی بکرێت": "تعذّر النسخ",
+  "فۆڕمەکە پاک کرایەوە": "تم تفريغ الاستمارة",
+  "PDF دروست دەکرێت…": "جارٍ إنشاء ملف PDF…",
+  "نەتوانرا PDF دروست بکرێت": "تعذّر إنشاء ملف PDF",
+  "PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە": "تم حفظ ملف PDF — جارٍ فتح المحادثة",
+  "PDF دەنێردرێت…": "جارٍ إرسال ملف PDF…",
+  "نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە": "الرسالة جاهزة — أرسلها، ثم اضغط الزر ٢",
+  "زانیارییەکان کۆپی کران ✔": "تم نسخ المعلومات ✔",
+  "فۆڕمەکە سڕایەوە": "تم مسح الاستمارة",
+  "دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟": "هل أنت متأكد من مسح جميع المعلومات؟"
+ },
+ "en": {
+  "تکایە هەموو خانە پێویستەکان پڕ بکەرەوە": "Please fill in all required fields",
+  "نەتوانرا کۆپی بکرێت": "Couldn’t copy",
+  "فۆڕمەکە پاک کرایەوە": "The form has been cleared",
+  "PDF دروست دەکرێت…": "Creating the PDF…",
+  "نەتوانرا PDF دروست بکرێت": "Couldn’t create the PDF",
+  "PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە": "PDF saved — opening the chat",
+  "PDF دەنێردرێت…": "Sending the PDF…",
+  "نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە": "Message ready — send it, then tap button 2",
+  "زانیارییەکان کۆپی کران ✔": "Details copied ✔",
+  "فۆڕمەکە سڕایەوە": "The form was cleared",
+  "دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟": "Are you sure you want to clear everything?"
+ }
+};
+  var LANG_KEY = "puk-form-lang";
+  var lang = "ku";
+  var I18N_KU = {}, I18N_KU_PH = {};
+  [].forEach.call(document.querySelectorAll("[data-i18n]"), function(el){ I18N_KU[el.getAttribute("data-i18n")] = el.innerHTML; });
+  [].forEach.call(document.querySelectorAll("[data-i18n-ph]"), function(el){ I18N_KU_PH[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
+  var TITLE_KU = document.title;
+  function tr(msg){ return (I18N_MSG[lang] && I18N_MSG[lang][msg]) || msg; }
 
   var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
 
@@ -1050,7 +1207,7 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   }
 
   function toast(msg){
-    toastEl.textContent = msg;
+    toastEl.textContent = tr(msg);
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 3200);
@@ -1646,7 +1803,7 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
   });
 
   document.getElementById("clearBtn").addEventListener("click", function(){
-    if(!confirm("دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟")) return;
+    if(!confirm(tr("دڵنیایت لە سڕینەوەی هەموو زانیارییەکان؟"))) return;
     allFields().forEach(function(id){
       var el = document.getElementById(id);
       el.value = "";
@@ -1939,6 +2096,53 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
     onEveryScroll(markActive);
     markActive();
   }
+
+
+  /* ---------- گۆڕینی زمان ---------- */
+  function setLang(next, save){
+    if(!I18N[next] && next !== "ku") next = "ku";
+    lang = next;
+    var d = I18N[lang] || {};
+    var root = document.documentElement;
+    root.lang = lang === "ku" ? "ckb" : lang;
+    root.dir = lang === "en" ? "ltr" : "rtl";
+    document.title = lang === "ku" ? TITLE_KU : (d.title || TITLE_KU);
+
+    [].forEach.call(document.querySelectorAll("[data-i18n]"), function(el){
+      var key = el.getAttribute("data-i18n");
+      var html = lang === "ku" ? I18N_KU[key] : (d[key] || I18N_KU[key]);
+      if(html == null) return;
+      if(el.classList.contains("lines")){
+        el.dataset.raw = html;           // دێڕەکان دووبارە دەپێورێنەوە
+      } else if(el.classList.contains("words")){
+        el.innerHTML = html;
+        splitWords(el);
+      } else {
+        el.innerHTML = html;
+      }
+    });
+    [].forEach.call(document.querySelectorAll("[data-i18n-ph]"), function(el){
+      var key = el.getAttribute("data-i18n-ph");
+      el.setAttribute("placeholder", lang === "ku" ? I18N_KU_PH[key] : (d[key] || I18N_KU_PH[key]));
+    });
+    buildLines();
+
+    [].forEach.call(document.querySelectorAll(".lang-switch button"), function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    if(save){ try { localStorage.setItem(LANG_KEY, lang); } catch(e){} }
+  }
+
+  [].forEach.call(document.querySelectorAll(".lang-switch button"), function(b){
+    b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang"), true); });
+  });
+
+  (function(){
+    var fromUrl = (location.search.match(/[?&]lang=(ku|ar|en)\b/) || [])[1];
+    var saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch(e){}
+    setLang(fromUrl || saved || "ku", !!fromUrl);
+  })();
 
 })();
 </script>
