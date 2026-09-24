@@ -1009,8 +1009,8 @@ html[dir="ltr"] .hint{text-align:left}
   <div class="pd-head">
     <img src="assets/img/sports-board-logo.png" alt="">
     <div class="pd-head-mid">
-      <p class="pd-org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
-      <p class="pd-title">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
+      <p class="pd-org" data-i18n="org">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</p>
+      <p class="pd-title" data-i18n="formTitle">فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی</p>
     </div>
     <img src="assets/img/puk-logo.webp" alt="">
   </div>
@@ -1019,7 +1019,7 @@ html[dir="ltr"] .hint{text-align:left}
   </div>
   <div id="pdBody"></div>
   <div class="pd-quote">
-    <p>بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
+    <p data-i18n="qBody">بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.</p>
     <small>بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</small>
   </div>
   <div class="pd-foot">
@@ -1179,6 +1179,43 @@ html[dir="ltr"] .hint{text-align:left}
   var TITLE_KU = document.title;
   function tr(msg){ return (I18N_MSG[lang] && I18N_MSG[lang][msg]) || msg; }
 
+  /* ئەوەی دەنێردرێت (PDF، نامە، کۆپی) بە هەمان زمانی پەڕەکە دەبێت */
+  var DOC = {
+    ku: { org: "بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", form: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی",
+          date: "بەروار: ", page: function(i, n){ return "لاپەڕەی " + i + " لە " + n; },
+          quote: "بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە." },
+    ar: { org: "المجلس الرياضي في الاتحاد الوطني الكوردستاني", form: "استمارة تقديم المشاريع الرياضية",
+          date: "التاريخ: ", page: function(i, n){ return "الصفحة " + i + " من " + n; },
+          quote: "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا." },
+    en: { org: "Sports Board of the Patriotic Union of Kurdistan", form: "Sports Project Submission Form",
+          date: "Date: ", page: function(i, n){ return "Page " + i + " of " + n; },
+          quote: "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland." }
+  };
+  function doc(key){ return (DOC[lang] || DOC.ku)[key]; }
+  function isLtr(){ return lang === "en"; }
+  function htmlText(html, dropSpans){
+    var box = document.createElement("div");
+    box.innerHTML = html;
+    if(dropSpans) [].forEach.call(box.querySelectorAll("span"), function(sp){ sp.parentNode.removeChild(sp); });
+    return box.textContent.replace(/\s+/g, " ").trim();
+  }
+  // ناونیشانی خانەیەک بە زمانی پەڕەکە (بە کوردی: name ـی خانەکە وەک پێشوو)
+  function fieldLabel(id){
+    var el = document.getElementById(id);
+    var own = (el && el.getAttribute("name")) || id;
+    if(lang === "ku") return own;
+    return htmlText((I18N[lang] || {})["lbl_" + id] || "", true) || own;
+  }
+  function sectionTitle(i){
+    if(lang === "ku") return sections[i].title;
+    var html = (I18N[lang] || {})["sec" + (i + 1)];
+    if(!html) return sections[i].title;
+    var box = document.createElement("div"); box.innerHTML = html;
+    var sub = box.querySelector("span"), subText = sub ? sub.textContent.trim() : "";
+    if(sub) sub.parentNode.removeChild(sub);
+    return box.textContent.trim() + (subText ? ": " + subText : "");
+  }
+
   var WHATSAPP_NUMBER = "9647712364141"; // 0771 236 4141
 
   /* ئەگەر Worker ـی بەرزکردنەوە دابنرێت (بڕوانە پەڕگەی worker/README.md)،
@@ -1188,6 +1225,8 @@ html[dir="ltr"] .hint{text-align:left}
   var MAX_URL = 20000;                   // سنووری ئاسایی بەڕاوزەرەکان
   var STORAGE_KEY = "puk-sports-form-draft";
   var SHORT_MESSAGE = "فۆڕمی بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان";
+  var SHORT_MESSAGES = { ku: SHORT_MESSAGE, ar: "استمارة المجلس الرياضي في الاتحاد الوطني الكوردستاني", en: "PUK Sports Board — Project Submission Form" };
+  function shortMessage(){ return SHORT_MESSAGES[lang] || SHORT_MESSAGE; }
   var OPTIONAL = ["place"];              // خانە ئارەزوومەندانەکان
 
   var form = document.getElementById("projectForm");
@@ -1215,21 +1254,21 @@ html[dir="ltr"] .hint{text-align:left}
 
   function buildMessage(){
     var lines = [];
-    lines.push("🏅 *فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی*");
-    lines.push("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان");
-    sections.forEach(function(sec){
+    lines.push("🏅 *" + doc("form") + "*");
+    lines.push(doc("org"));
+    sections.forEach(function(sec, si){
       lines.push("");
       lines.push("━━━━━━━━━━━━━━");
-      lines.push("*" + sec.title + "*");
+      lines.push("*" + sectionTitle(si) + "*");
       sec.ids.forEach(function(id){
         var el = document.getElementById(id);
         var val = (el.value || "").trim();
-        lines.push("• *" + (el.getAttribute("name") || el.id) + ":* " + (val || "—"));
+        lines.push("• *" + fieldLabel(id) + ":* " + (val || "—"));
       });
     });
     lines.push("");
     lines.push("━━━━━━━━━━━━━━");
-    lines.push("_بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە._");
+    lines.push("_" + doc("quote") + "_");
     return lines.join("\n");
   }
 
@@ -1306,7 +1345,10 @@ html[dir="ltr"] .hint{text-align:left}
   function isNumeric(v){ return /^[\d\s+\-().,/]+$/.test(v); }
 
   function renderPdfPages(withLogos){
-    var right = PAGE_W - MARGIN;              // سەرەتای دێڕ (ڕاست بۆ چەپ)
+    var right = PAGE_W - MARGIN;
+    var LTR = isLtr();
+    var start = LTR ? MARGIN : right;          // سەرەتای دێڕ: ڕاست بۆ کوردی و عەرەبی، چەپ بۆ ئینگلیزی
+    var ALIGN = LTR ? "left" : "right", DIR = LTR ? "ltr" : "rtl";
     var contentW = PAGE_W - MARGIN * 2;
     var pages = [];
     var ctx, y;
@@ -1346,8 +1388,8 @@ html[dir="ltr"] .hint{text-align:left}
       c.width = PAGE_W; c.height = PAGE_H;
       var x = c.getContext("2d");
       paintBackground(x);
-      x.direction = "rtl";
-      x.textAlign = "right";
+      x.direction = DIR;
+      x.textAlign = ALIGN;
       x.textBaseline = "alphabetic";
       pages.push(c);
       ctx = x;
@@ -1362,7 +1404,7 @@ html[dir="ltr"] .hint{text-align:left}
     function drawRunningHead(){
       ctx.fillStyle = GREY;
       ctx.font = "400 22px Zain, sans-serif";
-      ctx.fillText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", right, y + 6);
+      ctx.fillText(doc("form"), start, y + 6);
       ctx.strokeStyle = LINE; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(MARGIN, y + 22); ctx.lineTo(right, y + 22); ctx.stroke();
       y += 66;
@@ -1424,12 +1466,12 @@ html[dir="ltr"] .hint{text-align:left}
 
     ctx.textAlign = "center";
     ctx.fillStyle = "#ffffff";
-    fitText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", "700", 42, 24);
-    ctx.fillText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", PAGE_W / 2, bandH / 2 - 4);
+    fitText(doc("org"), "700", 42, 24);
+    ctx.fillText(doc("org"), PAGE_W / 2, bandH / 2 - 4);
     ctx.fillStyle = "rgba(233,255,240,.92)";
-    fitText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", "400", 30, 20);
-    ctx.fillText("فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی", PAGE_W / 2, bandH / 2 + 44);
-    ctx.textAlign = "right";
+    fitText(doc("form"), "400", 30, 20);
+    ctx.fillText(doc("form"), PAGE_W / 2, bandH / 2 + 44);
+    ctx.textAlign = ALIGN;
 
     y = bandH + 54;
 
@@ -1438,11 +1480,11 @@ html[dir="ltr"] .hint{text-align:left}
     var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
     ctx.font = "400 24px Zain, sans-serif";
     ctx.fillStyle = GREY;
-    ctx.fillText("بەروار: " + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()), right, y);
+    ctx.fillText(doc("date") + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()), start, y);
     y += 46;
 
     /* ---- بەشەکان ---- */
-    sections.forEach(function(sec){
+    sections.forEach(function(sec, si){
       space(150);
 
       ctx.fillStyle = GREEN;
@@ -1453,12 +1495,12 @@ html[dir="ltr"] .hint{text-align:left}
       }
       ctx.fillStyle = "#ffffff";
       ctx.font = "700 30px Zain, sans-serif";
-      ctx.fillText(sec.title, right - 18, y + 39);
+      ctx.fillText(sectionTitle(si), LTR ? start + 18 : start - 18, y + 39);
       y += 58 + 30;
 
       sec.ids.forEach(function(id, idx){
         var el = document.getElementById(id);
-        var label = el.getAttribute("name") || id;
+        var label = fieldLabel(id);
         var value = (el.value || "").trim() || "—";
 
         ctx.font = "400 30px Zain, sans-serif";
@@ -1468,7 +1510,7 @@ html[dir="ltr"] .hint{text-align:left}
 
         ctx.fillStyle = GREEN;
         ctx.font = "700 25px Zain, sans-serif";
-        ctx.fillText(label, right, y);
+        ctx.fillText(label, start, y);
         y += 42;
 
         ctx.fillStyle = DARK;
@@ -1476,10 +1518,10 @@ html[dir="ltr"] .hint{text-align:left}
         var numeric = isNumeric(value);
         if(numeric) ctx.direction = "ltr";
         lines.forEach(function(line){
-          ctx.fillText(line, right, y);
+          ctx.fillText(line, start, y);
           y += 44;
         });
-        if(numeric) ctx.direction = "rtl";
+        ctx.direction = DIR;
 
         y += 12;
         if(idx < sec.ids.length - 1){
@@ -1495,7 +1537,7 @@ html[dir="ltr"] .hint{text-align:left}
     /* ---- وتەی کۆتایی ---- */
     space(190);
     ctx.font = "400 28px Zain, sans-serif";
-    var quote = "بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.";
+    var quote = doc("quote");
     var qLines = wrapText(ctx, quote, contentW - 80);
     var boxH = 44 + qLines.length * 42 + 40;
 
@@ -1514,18 +1556,18 @@ html[dir="ltr"] .hint{text-align:left}
     qLines.forEach(function(line){ ctx.fillText(line, PAGE_W / 2, qy); qy += 42; });
     ctx.fillStyle = GREY;
     ctx.font = "400 22px Zain, sans-serif";
-    ctx.fillText("بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", PAGE_W / 2, qy + 6);
-    ctx.textAlign = "right";
+    ctx.fillText(doc("org"), PAGE_W / 2, qy + 6);
+    ctx.textAlign = ALIGN;
 
     /* ---- پێپەڕەی هەموو لاپەڕەکان ---- */
     pages.forEach(function(page, i){
       var x = page.getContext("2d");
-      x.textAlign = "right"; x.direction = "rtl";
+      x.textAlign = "right"; x.direction = DIR;
       x.strokeStyle = LINE; x.lineWidth = 1;
       x.beginPath(); x.moveTo(MARGIN, PAGE_H - MARGIN - 34); x.lineTo(right, PAGE_H - MARGIN - 34); x.stroke();
       x.fillStyle = GREY;
       x.font = "400 20px Zain, sans-serif";
-      x.fillText("لاپەڕەی " + (i + 1) + " لە " + pages.length, right, PAGE_H - MARGIN);
+      x.fillText(doc("page")(i + 1, pages.length), right, PAGE_H - MARGIN);
       x.textAlign = "left"; x.direction = "ltr";
       x.font = "400 19px Zain, sans-serif";
       x.fillText("PUK SPORTS BOARD  ·  Developed by", MARGIN, PAGE_H - MARGIN);
@@ -1680,7 +1722,7 @@ html[dir="ltr"] .hint{text-align:left}
         toast("PDF پاشەکەوت کرا — چاتەکە دەکرێتەوە");
 
         setTimeout(function(){
-          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(SHORT_MESSAGE),
+          window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(shortMessage()),
                       "_blank", "noopener");
         }, 1100);
         clearAfterSend();
@@ -1702,7 +1744,7 @@ html[dir="ltr"] .hint{text-align:left}
           sendBtn.disabled = false;
           clearAfterSend();
 
-          var msg = SHORT_MESSAGE + "\n\n📄 " + data.url;
+          var msg = shortMessage() + "\n\n📄 " + data.url;
           window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg),
                       "_blank", "noopener");
         })
@@ -1738,12 +1780,12 @@ html[dir="ltr"] .hint{text-align:left}
     if(!body) return;
     body.innerHTML = "";
 
-    sections.forEach(function(sec){
+    sections.forEach(function(sec, si){
       var block = document.createElement("section");
       block.className = "pd-section";
 
       var head = document.createElement("h2");
-      head.textContent = sec.title;
+      head.textContent = sectionTitle(si);
       block.appendChild(head);
 
       sec.ids.forEach(function(id){
@@ -1755,7 +1797,7 @@ html[dir="ltr"] .hint{text-align:left}
 
         var label = document.createElement("p");
         label.className = "pd-label";
-        label.textContent = el.getAttribute("name") || id;
+        label.textContent = fieldLabel(id);
 
         var val = document.createElement("p");
         val.className = "pd-value" + (value ? "" : " empty");
@@ -1775,7 +1817,7 @@ html[dir="ltr"] .hint{text-align:left}
     if(dateEl){
       var d = new Date();
       var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
-      dateEl.textContent = "بەروار: " + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate());
+      dateEl.textContent = doc("date") + d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate());
     }
   }
 
@@ -1783,7 +1825,7 @@ html[dir="ltr"] .hint{text-align:left}
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if(!validate()) return;
-    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(SHORT_MESSAGE),
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(shortMessage()),
                 "_blank", "noopener");
     toast("نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە");
   });
