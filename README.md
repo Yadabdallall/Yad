@@ -74,4 +74,4 @@ var WHATSAPP_NUMBER = "9647712364141";
 
 ---
 
-Developed by **SOLIN QARAXARMAN**
+پەرەی پێدراوە لە لایەن **ڕاگەیاندنی بۆردی وەرزش**

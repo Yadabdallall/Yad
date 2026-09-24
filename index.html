@@ -828,6 +828,13 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 .lang-switch button:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
 html[dir="ltr"] .hint{text-align:left}
 
+/* ناوی پەرەپێدەر بە کوردی/عەرەبی: پیتەکان نابێت لێک جیا بکرێنەوە */
+.dev-by{direction:inherit;letter-spacing:.5px;text-transform:none;font-size:15px;}
+.dev-name{direction:inherit;letter-spacing:0;white-space:normal;font-size:clamp(26px,6.4vw,42px);}
+.dev-name:hover,.footer.is-open .dev-name{letter-spacing:0;}
+html[lang="en"] .dev-by{letter-spacing:4px;text-transform:uppercase;font-size:12px;}
+html[lang="en"] .dev-name{letter-spacing:2px;}
+
 @media (max-width:520px){
   body{font-size:17px;}
   .board-logo{width:104px;height:104px;margin-top:-6px;}
@@ -997,8 +1004,8 @@ html[dir="ltr"] .hint{text-align:left}
 
   <footer class="footer reveal">
     <div class="line"></div>
-    <p class="dev-by">Developed by</p>
-    <button type="button" class="dev-name" id="devName" aria-expanded="false">SOLIN OTHMAN</button>
+    <p class="dev-by" data-i18n="devBy">پەرەی پێدراوە لە لایەن</p>
+    <button type="button" class="dev-name" id="devName" data-i18n="devName" aria-expanded="false">ڕاگەیاندنی بۆردی وەرزش</button>
     <p class="dev-motto" data-i18n="motto" id="devMotto" aria-hidden="true">وەرزش ژیانمە</p>
     <div class="dev-dots"><b></b><i></i><b></b></div>
   </footer>
@@ -1024,7 +1031,7 @@ html[dir="ltr"] .hint{text-align:left}
   </div>
   <div class="pd-foot">
     <span>PUK SPORTS BOARD</span>
-    <span>Developed by SOLIN OTHMAN</span>
+    <span data-i18n="credit">پەرەی پێدراوە لە لایەن ڕاگەیاندنی بۆردی وەرزش</span>
   </div>
 </div>
 
@@ -1091,7 +1098,10 @@ html[dir="ltr"] .hint{text-align:left}
   "motto": "الرياضة حياتي",
   "step1": "القسم الأول",
   "step2": "القسم الثاني",
-  "step3": "القسم الثالث"
+  "step3": "القسم الثالث",
+  "devBy": "طُوِّر من قِبَل",
+  "devName": "إعلام المجلس الرياضي",
+  "credit": "طُوِّر من قِبَل إعلام المجلس الرياضي"
  },
  "en": {
   "title": "Sports Project Submission Form — PUK Sports Board",
@@ -1140,7 +1150,10 @@ html[dir="ltr"] .hint{text-align:left}
   "motto": "Sport is my life",
   "step1": "Section 1",
   "step2": "Section 2",
-  "step3": "Section 3"
+  "step3": "Section 3",
+  "devBy": "Developed by",
+  "devName": "Sports Board Media",
+  "credit": "Developed by Sports Board Media"
  }
 };
   var I18N_MSG = {
@@ -1183,13 +1196,13 @@ html[dir="ltr"] .hint{text-align:left}
   var DOC = {
     ku: { org: "بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان", form: "فۆڕمی پێشکەشکردنی پڕۆژەی وەرزشی",
           date: "بەروار: ", page: function(i, n){ return "لاپەڕەی " + i + " لە " + n; },
-          quote: "بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە." },
+          quote: "بڕوای تەواومان بەوەیە کە بیر و تێڕوانینی ئەمڕۆی تۆ، نەخشەڕێگای ئایندەی وەرزشی نیشتمانەکەمانە.", credit: "پەرەی پێدراوە لە لایەن ڕاگەیاندنی بۆردی وەرزش" },
     ar: { org: "المجلس الرياضي في الاتحاد الوطني الكوردستاني", form: "استمارة تقديم المشاريع الرياضية",
           date: "التاريخ: ", page: function(i, n){ return "الصفحة " + i + " من " + n; },
-          quote: "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا." },
+          quote: "نؤمن إيماناً تاماً بأن أفكارك ورؤيتك اليوم هي خارطة طريق مستقبل الرياضة في وطننا.", credit: "طُوِّر من قِبَل إعلام المجلس الرياضي" },
     en: { org: "Sports Board of the Patriotic Union of Kurdistan", form: "Sports Project Submission Form",
           date: "Date: ", page: function(i, n){ return "Page " + i + " of " + n; },
-          quote: "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland." }
+          quote: "We firmly believe that your ideas and vision today are the roadmap for the future of sport in our homeland.", credit: "Developed by Sports Board Media" }
   };
   function doc(key){ return (DOC[lang] || DOC.ku)[key]; }
   function isLtr(){ return lang === "en"; }
@@ -1570,11 +1583,11 @@ html[dir="ltr"] .hint{text-align:left}
       x.fillText(doc("page")(i + 1, pages.length), right, PAGE_H - MARGIN);
       x.textAlign = "left"; x.direction = "ltr";
       x.font = "400 19px Zain, sans-serif";
-      x.fillText("PUK SPORTS BOARD  ·  Developed by", MARGIN, PAGE_H - MARGIN);
-      var w = x.measureText("PUK SPORTS BOARD  ·  Developed by ").width;
+      x.fillText("PUK SPORTS BOARD", MARGIN, PAGE_H - MARGIN);
+      x.textAlign = "center"; x.direction = DIR;
       x.fillStyle = "#0a7d32";
-      x.font = "700 24px Zain, sans-serif";
-      x.fillText("SOLIN OTHMAN", MARGIN + w, PAGE_H - MARGIN);
+      x.font = "700 22px Zain, sans-serif";
+      x.fillText(doc("credit"), PAGE_W / 2, PAGE_H - MARGIN);
     });
 
     return pages;
