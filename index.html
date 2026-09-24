@@ -816,15 +816,15 @@ html:not(.js-reveal) .card .field:nth-of-type(6){animation-delay:.40s;}
 @media (prefers-reduced-motion:reduce){ .hero{animation:none;} }
 
 /* ================= گۆڕینی زمان ================= */
-.lang-switch{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:30;direction:ltr;
-  display:flex;gap:4px;padding:4px;border-radius:999px;
-  background:rgba(2,17,10,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  border:1px solid rgba(77,255,171,.32);box-shadow:0 0 18px rgba(77,255,171,.16)}
-.lang-switch button{all:unset;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;line-height:1;
-  padding:8px 14px;border-radius:999px;color:var(--text-2);transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+.lang-switch{position:relative;z-index:3;direction:ltr;
+  display:inline-flex;gap:2px;margin:16px auto 4px;padding:3px;border-radius:999px;
+  background:rgba(2,17,10,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(77,255,171,.22);box-shadow:0 0 14px rgba(77,255,171,.10)}
+.lang-switch button{all:unset;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:700;line-height:1;
+  padding:6px 12px;border-radius:999px;color:var(--muted);transition:background .3s ease,color .3s ease,box-shadow .3s ease}
 .lang-switch button:hover{color:var(--neon)}
 .lang-switch button[aria-pressed="true"]{color:#04170c;background:linear-gradient(100deg,#8dffc9,var(--neon) 55%,var(--neon-2));
-  box-shadow:0 0 14px rgba(77,255,171,.55)}
+  box-shadow:0 0 10px rgba(77,255,171,.45)}
 .lang-switch button:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
 html[dir="ltr"] .hint{text-align:left}
 
@@ -846,11 +846,6 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
 </head>
 <body>
 
-<div class="lang-switch" role="group" aria-label="Language / زمان / اللغة">
-  <button type="button" data-lang="ku" lang="ckb">کوردی</button>
-  <button type="button" data-lang="ar" lang="ar">العربية</button>
-  <button type="button" data-lang="en" lang="en">English</button>
-</div>
 <div class="banner">
   <img src="assets/img/banner.webp" alt="یەکێتیی نیشتمانیی کوردستان — مەکتەبی سکرتاریەتی سەرۆک مام جەلال — بۆردی وەرزش">
 </div>
@@ -864,6 +859,11 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
       <img src="assets/img/sports-board-logo.png" alt="لۆگۆی بۆردی وەرزشی">
     </div>
     <p data-i18n="logoNote" class="logo-note" id="logoNote" aria-hidden="true">( ئێمە بۆ خزمەت لێرەین )</p>
+    <div class="lang-switch" role="group" aria-label="Language / زمان / اللغة">
+      <button type="button" data-lang="ku" lang="ckb">کوردی</button>
+      <button type="button" data-lang="ar" lang="ar">العربية</button>
+      <button type="button" data-lang="en" lang="en">English</button>
+    </div>
 
     <h1 data-i18n="org" class="org reveal">بۆردی وەرزشیی یەکێتیی نیشتمانیی کوردستان</h1>
     <div class="hero-divider"><span></span><i></i><span></span></div>
@@ -1006,7 +1006,6 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     <div class="line"></div>
     <p class="dev-by" data-i18n="devBy">پەرەی پێدراوە لە لایەن</p>
     <button type="button" class="dev-name" id="devName" data-i18n="devName" aria-expanded="false">ڕاگەیاندنی بۆردی وەرزش</button>
-    <p class="dev-motto" data-i18n="motto" id="devMotto" aria-hidden="true">وەرزش ژیانمە</p>
     <div class="dev-dots"><b></b><i></i><b></b></div>
   </footer>
 
@@ -1905,7 +1904,6 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     devName.addEventListener("click", function(){
       var open = footer.classList.toggle("is-open");
       devName.setAttribute("aria-expanded", open ? "true" : "false");
-      document.getElementById("devMotto").setAttribute("aria-hidden", open ? "false" : "true");
     });
   }
 
