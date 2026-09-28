@@ -1252,6 +1252,37 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     { title: "بەشی سێیەم: دیدگا و تێڕوانین بۆ کەرتی وەرزش", ids: ["problem","solution"] }
   ];
 
+  // ڕەشنووس: تەنها دوای ناردنی PDF یان دوگمەی سڕینەوە لادەبرێت
+  var DRAFT_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
+  var sentLock = false;
+
+  function saveDraft(){
+    if(sentLock) return;
+    var values = {}, any = false;
+    allFields().forEach(function(id){
+      var v = document.getElementById(id).value || "";
+      values[id] = v;
+      if(v.trim()) any = true;
+    });
+    try {
+      if(any) localStorage.setItem(STORAGE_KEY, JSON.stringify({ t: Date.now(), v: values }));
+      else localStorage.removeItem(STORAGE_KEY);
+    } catch(e){}
+  }
+
+  function restoreDraft(){
+    var data;
+    try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); } catch(e){ data = null; }
+    if(!data || !data.v || !data.t || Date.now() - data.t > DRAFT_MAX_AGE){
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+      return;
+    }
+    allFields().forEach(function(id){
+      var el = document.getElementById(id);
+      if(typeof data.v[id] === "string" && !el.value) el.value = data.v[id];
+    });
+  }
+
   function allFields(){
     var ids = [];
     sections.forEach(function(s){ ids = ids.concat(s.ids); });
@@ -1687,6 +1718,9 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
   // دوای ناردنی PDF، فۆڕمەکە پاک دەکرێتەوە بۆ ئەوەی کەسی داهاتوو
   // زانیاریی کەسی پێشوو نەبینێت
   function clearAfterSend(){
+    // ڕەشنووسەکە یەکسەر دەسڕدرێتەوە، ئەگەر پەڕەکە لەو ماوەیەدا دابخرێت یان نوێ ببێتەوە
+    sentLock = true;
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
     setTimeout(function(){
       allFields().forEach(function(id){
         var el = document.getElementById(id);
@@ -1694,6 +1728,7 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
         el.classList.remove("invalid");
       });
       try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+      sentLock = false;
       toast("فۆڕمەکە پاک کرایەوە");
     }, 2500);
   }
@@ -1838,6 +1873,7 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if(!validate()) return;
+    saveDraft();
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(shortMessage()),
                 "_blank", "noopener");
     toast("نامەکە ئامادەیە — بینێرە، پاشان دوگمەی ٢ لێبدە");
@@ -1908,14 +1944,20 @@ html[lang="en"] .dev-name{letter-spacing:2px;}
     });
   }
 
-  // ڕەشنووس پاشەکەوت ناکرێت — زانیاریی کەسەکان لەسەر ئامێرەکە نامێنێتەوە
-  try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+  // ڕەشنووس: وەڵامەکان تا ناردنی PDF (دوگمەی ٢) یان سڕینەوەی فۆڕمەکە دەمێننەوە،
+  // بۆ ئەوەی گەڕانەوە لە وەتس ئەپ یان نوێبوونەوەی پەڕەکە هیچیان نەسڕێتەوە
+  restoreDraft();
 
   allFields().forEach(function(id){
     var el = document.getElementById(id);
     el.addEventListener("input", function(){
       el.classList.remove("invalid");
+      saveDraft();
     });
+  });
+  window.addEventListener("pagehide", saveDraft);
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") saveDraft();
   });
 
   /* ---------- دەرکەوتنی نەرمی ناوەڕۆک لە کاتی سکڕۆڵدا ---------- */
