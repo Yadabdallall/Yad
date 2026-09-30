@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>کۆڕبەندی نێودەوڵەتیی وەرزش لە سلێمانی</title>
+<meta name="description" content="پێشنیازی پڕۆژە — سەکۆیەکی ساڵانە بۆ داهێنان، هاوبەشیی نێودەوڵەتی و پێشخستنی کەرتی وەرزش لە کوردستان">
+<style>
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-arabic-400.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/zain-latin-400.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-arabic-700.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/zain-latin-700.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-arabic-900.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;}
+@font-face{font-family:'Zain';font-style:normal;font-weight:900;font-display:swap;
+  src:url('assets/fonts/zain-latin-900.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF;}
+
+:root{
+  color-scheme:light;
+
+  /* ڕەنگی بنەڕەتی — سەوزی یەکێتی */
+  --ink:#10211a;
+  --ink-2:#3c534a;
+  --ink-3:#6b8279;
+  --paper:#ffffff;
+  --paper-2:#f6faf7;
+  --rule:#dde8e1;
+
+  --green-900:#03321e;
+  --green-800:#064a2d;
+  --green-700:#065c37;
+  --green-600:#0b7d4c;
+  --green-500:#149a60;
+  --green-400:#3ab97f;
+  --green-100:#e6f6ec;
+
+  --gold:#b98b2e;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Zain','Segoe UI',Tahoma,sans-serif;
+  background:#e8ece9;
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ============ لاپەڕە ============ */
+.page{
+  position:relative;
+  width:210mm;
+  min-height:297mm;
+  margin:10mm auto;
+  padding:17mm 16mm 20mm;
+  background:var(--paper);
+  box-shadow:0 10px 40px rgba(8,40,26,.14);
+  overflow:hidden;
+  break-after:page;
+}
+.page:last-child{break-after:auto;}
+
+/* سەرپەڕە و پێپەڕە */
+.run-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:4mm;margin-bottom:8mm;
+  border-bottom:1px solid var(--rule);
+  font-size:9.5pt;color:var(--ink-3);
+}
+.run-head b{font-weight:700;color:var(--green-700);}
+.run-foot{
+  position:absolute;
+  inset-inline:16mm;bottom:10mm;
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:3mm;
+  border-top:1px solid var(--rule);
+  font-size:8.5pt;color:var(--ink-3);
+}
+.run-foot .pg{
+  display:grid;place-items:center;
+  width:7mm;height:7mm;border-radius:50%;
+  background:var(--green-700);color:#fff;font-weight:700;font-size:9pt;
+}
+
+/* ============ بەرگ ============ */
+.cover{
+  color:#eafff2;
+  padding:0;
+  background:
+    radial-gradient(90% 60% at 80% 0%, rgba(58,185,127,.28), transparent 60%),
+    radial-gradient(70% 50% at 0% 100%, rgba(11,125,76,.35), transparent 60%),
+    linear-gradient(160deg, #03321e 0%, #064a2d 45%, #065c37 100%);
+}
+.cover-inner{
+  position:relative;z-index:2;
+  height:297mm;
+  padding:22mm 18mm 18mm;
+  display:flex;flex-direction:column;
+}
+.cover::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px);
+}
+.cover-logos{display:flex;align-items:center;justify-content:flex-start;}
+.cover-logos img{width:46mm;height:46mm;object-fit:contain;
+  filter:drop-shadow(0 4mm 8mm rgba(0,0,0,.35));}
+.cover-kicker{
+  margin-top:auto;
+  font-size:11pt;letter-spacing:3px;color:rgba(190,240,213,.85);
+}
+.cover-rule{
+  width:34mm;height:2px;margin:5mm 0 7mm;
+  background:linear-gradient(270deg,var(--green-400),transparent);
+}
+.cover h1{
+  margin:0;
+  font-weight:900;
+  font-size:40pt;
+  line-height:1.25;
+  letter-spacing:-.5px;
+}
+.cover h1 span{
+  display:block;
+  background:linear-gradient(90deg,#8ef0bd,#3ab97f);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.cover-sub{
+  margin:7mm 0 0;
+  max-width:130mm;
+  font-size:14pt;line-height:1.8;
+  color:rgba(214,246,229,.92);
+}
+.cover-sub .en{display:block;direction:ltr;text-align:right;font-size:12.5pt;font-weight:700;letter-spacing:1.5px;color:rgba(142,240,189,.85);margin-bottom:3.5mm;}
+.cover-meta{
+  margin-top:12mm;padding-top:7mm;
+  border-top:1px solid rgba(154,226,187,.28);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:6mm 10mm;
+}
+.cover-meta div span{display:block;font-size:9.5pt;color:rgba(154,226,187,.75);letter-spacing:1.5px;}
+.cover-meta div b{font-size:12.5pt;font-weight:700;color:#eafff2;}
+.cover-foot{
+  margin-top:auto;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  font-size:10pt;color:rgba(190,240,213,.8);
+}
+.cover-foot .year{font-size:22pt;font-weight:900;color:rgba(142,240,189,.55);}
+
+/* ============ ناونیشانەکان ============ */
+.sec{margin:0 0 7.5mm;}
+.sec-num{
+  display:inline-grid;place-items:center;
+  width:9mm;height:9mm;border-radius:2.5mm;
+  background:var(--green-700);color:#fff;
+  font-weight:900;font-size:12pt;
+  margin-inline-end:3mm;
+  vertical-align:middle;
+}
+h2{
+  margin:0 0 4mm;
+  font-size:19pt;font-weight:900;color:var(--green-800);
+  line-height:1.4;
+}
+h3{
+  margin:0 0 2.5mm;
+  font-size:13pt;font-weight:700;color:var(--green-700);
+}
+p{margin:0 0 3.5mm;font-size:11.5pt;color:var(--ink-2);}
+p.lead{font-size:12.5pt;color:var(--ink);line-height:1.95;}
+strong{color:var(--ink);font-weight:700;}
+
+/* ============ کارتەکان ============ */
+.grid{display:grid;gap:5mm;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:repeat(3,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);}
+
+.card{
+  padding:4.5mm 5.5mm;
+  border:1px solid var(--rule);
+  border-radius:3mm;
+  background:var(--paper-2);
+  break-inside:avoid;
+}
+.card h4{
+  margin:0 0 2mm;
+  font-size:12pt;font-weight:700;color:var(--green-800);
+}
+.card p{margin:0;font-size:10.5pt;line-height:1.75;}
+.card .tag{
+  display:inline-block;margin-bottom:2.5mm;
+  font-size:9pt;font-weight:700;letter-spacing:1px;
+  color:var(--green-600);
+}
+
+.spec{
+  border:1px solid var(--rule);border-radius:3mm;overflow:hidden;
+}
+.spec div{
+  display:grid;grid-template-columns:38mm 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.spec div:last-child{border-bottom:none;}
+.spec dt{
+  margin:0;padding:2.6mm 5mm;
+  background:var(--green-100);
+  font-weight:700;font-size:10.5pt;color:var(--green-800);
+}
+.spec dd{margin:0;padding:2.6mm 5mm;font-size:10.5pt;color:var(--ink-2);}
+
+/* ============ هەنگاوەکان ============ */
+.steps{counter-reset:step;display:grid;gap:4mm;}
+.step{
+  position:relative;
+  padding:4mm 5mm;padding-inline-start:12mm;
+  border:1px solid var(--rule);
+  border-radius:3mm;
+  background:#fff;
+  break-inside:avoid;
+}
+.step::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;inset-inline-start:4mm;top:3.5mm;
+  display:grid;place-items:center;
+  width:7mm;height:7mm;border-radius:50%;
+  background:var(--green-100);color:var(--green-700);
+  font-weight:900;font-size:10pt;
+}
+.step b{display:block;font-size:11.5pt;color:var(--green-800);margin-bottom:1mm;}
+.step span{font-size:10.5pt;color:var(--ink-2);line-height:1.7;}
+
+/* ============ چارت ============ */
+.viz{
+  border:1px solid var(--rule);border-radius:3mm;
+  padding:5mm 6mm 4.5mm;background:#fff;
+  break-inside:avoid;
+}
+.viz-title{font-size:12pt;font-weight:700;color:var(--green-800);margin:0 0 1mm;}
+.viz-note{font-size:9.5pt;color:var(--ink-3);margin:0 0 4mm;}
+.bars{display:grid;gap:3mm;}
+.bar-row{display:grid;grid-template-columns:52mm 1fr 13mm;align-items:center;gap:3mm;}
+.bar-label{font-size:10.5pt;font-weight:700;color:var(--ink);}
+.bar-label small{display:block;font-weight:400;font-size:9pt;color:var(--ink-3);line-height:1.5;}
+.bar-track{height:6.5mm;background:#eef4f0;border-radius:1.5mm;overflow:hidden;}
+.bar-fill{height:100%;border-radius:1.5mm;}
+.bar-val{font-size:11pt;font-weight:900;color:var(--green-800);text-align:left;direction:ltr;}
+.bar-total{
+  margin-top:3mm;padding-top:2.5mm;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;
+  font-size:11pt;font-weight:700;color:var(--green-800);
+}
+
+/* قیفی هەڵبژاردن */
+.funnel{display:grid;gap:2.5mm;}
+.fn{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  padding:3.5mm 5mm;border-radius:2.5mm;color:#fff;
+  margin-inline:auto;width:100%;
+}
+.fn b{font-size:11.5pt;font-weight:700;}
+.fn span{font-size:14pt;font-weight:900;direction:ltr;}
+.fn.light{color:var(--green-800);}
+
+/* ============ کارنامە ============ */
+.agenda{display:grid;gap:0;border:1px solid var(--rule);border-radius:3mm;overflow:hidden;}
+.ag{
+  display:grid;grid-template-columns:32mm 1fr;
+  border-bottom:1px solid var(--rule);
+  break-inside:avoid;
+}
+.agenda .ag:last-child{border-bottom:none;}
+.ag time{
+  padding:2.6mm 4mm;
+  background:var(--green-100);
+  font-size:10.5pt;font-weight:700;color:var(--green-800);
+  direction:ltr;text-align:center;
+}
+.ag p{margin:0;padding:2.6mm 5mm;font-size:10.5pt;color:var(--ink-2);}
+.ag.hi time{background:var(--green-700);color:#fff;}
+.ag.hi p{font-weight:700;color:var(--ink);}
+
+/* ============ خەڵات ============ */
+.podium{display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:4mm;align-items:end;margin-top:6mm;}
+.pod{
+  border-radius:3mm;padding:5mm 4mm;text-align:center;color:#fff;
+  break-inside:avoid;
+}
+.pod .rank{font-size:26pt;font-weight:900;line-height:1;direction:ltr;}
+.pod b{display:block;margin:2mm 0 1.5mm;font-size:11.5pt;}
+.pod span{font-size:9.5pt;opacity:.9;line-height:1.6;display:block;}
+
+/* ============ نەخشەی کات ============ */
+.road{display:grid;grid-template-columns:repeat(7,1fr);gap:2mm;margin-top:2mm;}
+.road div{
+  padding:3.5mm 2mm;border-radius:2mm;text-align:center;
+  font-size:9pt;line-height:1.5;color:#fff;
+}
+.road div b{display:block;font-size:11pt;font-weight:900;margin-bottom:1mm;direction:ltr;}
+
+.callout{
+  margin-top:6mm;padding:6mm;
+  border-radius:3mm;
+  background:linear-gradient(140deg,var(--green-800),var(--green-600));
+  color:#eafff2;
+  break-inside:avoid;
+}
+.callout p{margin:0;color:#dff6e8;font-size:12pt;line-height:1.9;}
+.callout b{color:#fff;}
+
+@media print{
+  body{background:#fff;}
+  .page{margin:0;box-shadow:none;width:auto;min-height:auto;}
+  @page{size:A4;margin:0;}
+}
+
+/* ============ زیادکراوەکان ============ */
+.span2{grid-column:1 / -1;}
+.phase{display:flex;align-items:center;gap:4mm;margin:0 0 5mm;}
+.phase span{
+  font-size:9.5pt;font-weight:900;letter-spacing:1px;color:#fff;
+  background:linear-gradient(120deg,var(--green-800),var(--green-600));
+  padding:1.6mm 5mm;border-radius:99px;white-space:nowrap;
+}
+.phase i{flex:1;height:1px;background:var(--rule);}
+
+.people{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
+.person{
+  display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;
+  padding:4mm 5mm;border:1px solid var(--rule);border-radius:3mm;
+  background:var(--paper-2);break-inside:avoid;
+}
+.person .av{
+  display:grid;place-items:center;width:11mm;height:11mm;border-radius:50%;
+  background:linear-gradient(150deg,var(--green-700),var(--green-500));
+  color:#fff;font-weight:900;font-size:12pt;direction:ltr;
+}
+.person b{display:block;font-size:11.5pt;font-weight:700;color:var(--green-800);line-height:1.5;}
+.person span{display:block;font-size:9.5pt;color:var(--ink-3);line-height:1.6;}
+.person .role{
+  display:inline-block;margin-top:.8mm;font-size:9pt;font-weight:700;
+  color:var(--green-600);letter-spacing:.5px;
+}
+
+.olist{counter-reset:ol;display:grid;gap:3.5mm;margin:0;padding:0;list-style:none;}
+.olist li{
+  position:relative;padding:4mm 5mm;padding-inline-start:12mm;
+  border:1px solid var(--rule);border-radius:3mm;background:#fff;
+  font-size:10.8pt;color:var(--ink-2);line-height:1.75;break-inside:avoid;
+}
+.olist li::before{
+  counter-increment:ol;content:counter(ol);
+  position:absolute;inset-inline-start:4mm;top:3.5mm;
+  display:grid;place-items:center;width:7mm;height:7mm;border-radius:50%;
+  background:var(--green-100);color:var(--green-700);font-weight:900;font-size:10pt;
+}
+.olist li b{display:block;color:var(--green-800);font-size:11.3pt;margin-bottom:1mm;}
+
+.award{display:grid;gap:4mm;margin-top:5mm;}
+.aw{
+  display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:start;
+  padding:5mm 5mm;border:1px solid var(--rule);border-inline-start:4px solid var(--green-600);
+  border-radius:3mm;background:var(--paper-2);break-inside:avoid;
+}
+.aw em{
+  font-style:normal;font-weight:900;font-size:10pt;color:#fff;
+  background:var(--green-700);padding:1.2mm 3.5mm;border-radius:99px;white-space:nowrap;
+}
+.aw p{margin:0;font-size:10.5pt;line-height:1.75;}
+
+.sign{
+  margin-top:8mm;padding:6mm 7mm;
+  border:1px solid var(--rule);border-radius:3mm;
+  background:linear-gradient(160deg,var(--paper-2),#fff);
+  break-inside:avoid;
+}
+.sign .greet{font-size:11.5pt;color:var(--ink-2);margin:0 0 5mm;}
+.sign .who span{display:block;font-size:9.5pt;color:var(--ink-3);letter-spacing:1px;margin-bottom:1.5mm;}
+.sign .who b{display:block;font-size:15pt;font-weight:900;color:var(--green-800);}
+.sign .who i{display:block;font-style:normal;font-size:10.5pt;color:var(--ink-2);margin-top:1mm;}
+.sign .line{margin-top:6mm;height:2px;background:linear-gradient(270deg,var(--green-500),transparent);}
+
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:5mm;}
+.st{
+  padding:7mm 4mm;border-radius:3mm;text-align:center;color:#fff;break-inside:avoid;
+}
+.st b{display:block;font-size:26pt;font-weight:900;line-height:1.1;}
+.st span{display:block;font-size:10pt;opacity:.92;margin-top:1.5mm;line-height:1.6;}
+</style>
+<body>
+
+<!-- ============ ١ · بەرگ ============ -->
+<section class="page cover">
+  <div class="cover-inner">
+    <div class="cover-logos">
+      <img src="assets/img/sports-board-logo.png" alt="بۆردی وەرزش">
+    </div>
+
+    <p class="cover-kicker">پێشنیازی پڕۆژە</p>
+    <div class="cover-rule"></div>
+    <h1>کۆڕبەندی نێودەوڵەتیی وەرزش<span>لە سلێمانی</span></h1>
+    <p class="cover-sub"><span class="en">Sulaimani International Sports Forum</span>ڕووداوێکی ساڵانەی یەک‌ڕۆژە بۆ داهێنان، هاوبەشیی نێودەوڵەتی و پێشخستنی کەرتی وەرزش لە کوردستان.</p>
+
+    <div class="cover-meta">
+      <div><span>ڕێکخەر</span><b>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</b></div>
+      <div><span>بە پشتیوانی</span><b>بەڕێز قوباد تاڵەبانی</b></div>
+      <div><span>شوێن</span><b>شاری سلێمانی — هەرێمی کوردستان</b></div>
+      <div><span>ماوە</span><b>یەک ڕۆژ — هەموو ساڵێک</b></div>
+    </div>
+
+    <div class="cover-foot">
+      <span>پێشکەشکراوە بە بەڕێز د. علی طە — لێپرسراوی بۆردی وەرزشی (ی.ن.ک)</span>
+      <span class="year">2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ٢ · پێشەکی و ناونیشان ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>پێشەکی و ناونیشان</span></div>
+
+  <div class="sec">
+    <h2><span class="sec-num">١</span>پێشەکی و ناونیشان</h2>
+    <p class="lead">ڕێکخستنی <strong>«کۆڕبەندی نێودەوڵەتیی وەرزش لە سلێمانی»</strong>، کە ڕووداوێکی ساڵانەی یەک‌ڕۆژەیە هاوشێوەی کۆڕبەندە نێودەوڵەتییە گەورەکان (وەک کۆڕبەندی دێلفی)، بە پشتیوانی و ئامادەبوونی بەڕێز قوباد تاڵەبانی، بەرپرسانی باڵای وەرزشی، نوێنەرانی وەرزشیی چەندین وڵات، و خاوەن پڕۆژە و گەنجانی داهێنەر.</p>
+  </div>
+
+  <div class="sec">
+    <h3>ناسنامەی کۆڕبەند</h3>
+    <dl class="spec">
+      <div><dt>ناونیشان</dt><dd>کۆڕبەندی نێودەوڵەتیی وەرزش لە سلێمانی — Sulaimani International Sports Forum</dd></div>
+      <div><dt>ماوە</dt><dd>یەک ڕۆژ، هەموو ساڵێک</dd></div>
+      <div><dt>شوێن</dt><dd>شاری سلێمانی — هەرێمی کوردستان</dd></div>
+      <div><dt>ڕێکخەر</dt><dd>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</dd></div>
+      <div><dt>ئامادەبووان</dt><dd>بەڕێز قوباد تاڵەبانی، بەرپرسانی باڵای وەرزشی، نوێنەرانی وەرزشیی چەندین وڵات، خاوەن پڕۆژە و گەنجانی داهێنەر</dd></div>
+    </dl>
+  </div>
+
+  <div class="sec">
+    <h3>بۆچی سلێمانی؟</h3>
+    <p>سلێمانی مێژوویەکی دەوڵەمەندی وەرزشیی هەیە؛ یانە و تیمەکانی ئەم شارە لە ئاستی ناوخۆیی و نێودەوڵەتیدا ئامادەبوونێکی بەرچاویان هەبووە، و بەتایبەتی وەرزشی کچان بەشدارییەکی شایستەی لە پاڵەوانێتییە ئاسیاییەکاندا کردووە.</p>
+    <div class="grid g3">
+      <div class="card"><h4>کۆمەڵگەیەکی گەنج</h4><p>شارێکی کراوە و خاوەن وزەی لاوان.</p></div>
+      <div class="card"><h4>مێژووی وەرزشی</h4><p>یانە و تیمی خاوەن دەستکەوت لە ناوخۆ و ئاسیا.</p></div>
+      <div class="card"><h4>ژێرخانی میوانداری</h4><p>توانای میوانداریکردنی ڕووداوی نێودەوڵەتی.</p></div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٢</span></div>
+</section>
+
+<!-- ============ ٣ · ئامانجەکان ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>ئامانجەکانی کۆڕبەند</span></div>
+
+  <div class="sec">
+    <h2><span class="sec-num">٢</span>ئامانجەکانی کۆڕبەند</h2>
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag">٠١</span>
+        <h4>بەستنەوە بە ئاستی نێودەوڵەتی</h4>
+        <p>دروستکردنی پەیوەندی و کاری هاوبەش لەگەڵ وڵاتانی پێشکەوتوو و سوودوەرگرتن لە ئەزموونی ئەوان بۆ وەرزشی سلێمانی و کوردستان.</p>
+      </div>
+      <div class="card">
+        <span class="tag">٠٢</span>
+        <h4>پشتیوانیی گەنجان و خاوەن بیرۆکەکان</h4>
+        <p>ڕەخساندنی دەرفەت بۆ ئەو کەسانەی پڕۆژەی داهێنەرانەیان لە کەرتی وەرزشدا هەیە تا بیرۆکەکانیان بخەنەڕوو.</p>
+      </div>
+      <div class="card">
+        <span class="tag">٠٣</span>
+        <h4>ڕەخساندنی هەلی کار</h4>
+        <p>بەگەڕخستنی پڕۆژە وەرزشییەکان و واژۆکردنی گرێبەستی کاری هاوبەش، کە دەبێتە هۆی دابینکردنی هەلی کاری نوێ بۆ گەنجان.</p>
+      </div>
+      <div class="card">
+        <span class="tag">٠٤</span>
+        <h4>تیشکخستنەسەر وەرزشی ژنان و کچان</h4>
+        <p>خستنەڕووی پێشکەوتنی کچانی وەرزشوانی سلێمانی و دەستکەوتەکانیان لە پاڵەوانێتییە گەورەکاندا، بەتایبەت بەشدارییان لە پاڵەوانێتییەکانی ئاسیادا.</p>
+      </div>
+      <div class="card span2">
+        <span class="tag">٠٥</span>
+        <h4>واژۆکردنی گرێبەست و کاری هاوبەش</h4>
+        <p>ئەنجامدانی ڕێککەوتننامەی فەرمی لەنێوان وەرزشی کوردستان و وڵاتانی بەشداربوو لە پەراوێزی کۆڕبەندەکەدا.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٣</span></div>
+</section>
+
+<!-- ============ ٤ · قۆناغی یەکەم ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>قۆناغەکانی پڕۆژە</span></div>
+
+  <div class="sec">
+    <h2><span class="sec-num">٣</span>قۆناغەکانی پڕۆژەکە</h2>
+    <div class="phase"><span>قۆناغی یەکەم — ئامادەکاری و هەڵسەنگاندن (پێش کۆڕبەند)</span><i></i></div>
+    <p>ئەم قۆناغە چەند مانگێک بەر لە وادەی کۆڕبەندەکە دەست پێدەکات، و ئامانجی دۆزینەوە، هەڵسەنگاندن و پەرەپێدانی باشترین پڕۆژە وەرزشییەکانە بە شێوازێکی زانستی و دادپەروەرانە.</p>
+
+    <div class="steps">
+      <div class="step"><b>بڵاوکردنەوەی فۆڕم</b><span>چەند مانگێک بەر لە وادەی کۆڕبەندەکە، فۆڕمی وەرگرتنی پڕۆژە وەرزشییەکان بۆ سەرجەم خاوەن بیرۆکە و گەنجان بڵاودەکرێتەوە.</span></div>
+      <div class="step"><b>پێکهێنانی لیژنەی هەڵسەنگاندن</b><span>لە لایەن بۆردی وەرزشەوە لیژنەیەک بۆ هەڵسەنگاندن و پێداچوونەوەی پڕۆژەکان پێکدەهێنرێت.</span></div>
+      <div class="step"><b>پاڵاوتنی سەرەتایی — ٢٠ پڕۆژە</b><span>لەناو سەرجەم پڕۆژە پێشکەشکراوەکاندا، لیژنەکە باشترین ٢٠ پڕۆژە دەستنیشان دەکات.</span></div>
+      <div class="step"><b>پەرەپێدان — دوو مانگ</b><span>لە ماوەی دوو مانگدا، لیژنەکە لەگەڵ خاوەن پڕۆژەکان کار دەکات بۆ دەوڵەمەندکردن و پەرەپێدانی بیرۆکەکانیان بە شێوازێکی تۆکمە و زانستی.</span></div>
+      <div class="step"><b>هەڵبژاردنی کۆتایی — ١٠ پڕۆژە</b><span>لە کۆی ئەم ٢٠ پڕۆژەیە، باشترین ١٠ پڕۆژە دیاری دەکرێن بۆ ئەوەی لە ڕۆژی کۆڕبەندەکەدا بچنە سەر ستەیجی سەرەکی.</span></div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٤</span></div>
+</section>
+
+<!-- ============ ٥ · لیژنە و قیف ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>لیژنەی هەڵسەنگاندن</span></div>
+
+  <div class="sec">
+    <h3>لیژنەی هەڵسەنگاندن</h3>
+    <p>لە لایەن بۆردی وەرزشەوە لیژنەیەک بۆ هەڵسەنگاندن و پێداچوونەوەی پڕۆژەکان پێکدەهێنرێت. بۆ نموونە لیژنەکە پێکهاتبێت لەم بەڕێزانەی خوارەوە:</p>
+    <div class="people">
+      <div class="person">
+        <div class="av">١</div>
+        <div><b>بەڕێز هاوکار ڕەشید عەلی</b><span>ئەندامی بۆردی وەرزشی (ی.ن.ک)</span><em class="role">سەرۆکی لیژنە</em></div>
+      </div>
+      <div class="person">
+        <div class="av">٢</div>
+        <div><b>بەڕێز د. شنە زاهیر حەکیم</b><span>ئەندامی بۆردی وەرزشی (ی.ن.ک)</span><em class="role">ئەندام</em></div>
+      </div>
+      <div class="person">
+        <div class="av">٣</div>
+        <div><b>بەڕێز کاک ئەردەڵان</b><span>ئەندامی بۆردی وەرزشی (ی.ن.ک)</span><em class="role">ئەندام</em></div>
+      </div>
+      <div class="person">
+        <div class="av">٤</div>
+        <div><b>سۆلین عوسمان</b><span>ڕاگەیاندنی بۆردی وەرزشی (ی.ن.ک)</span><em class="role">ئەندام</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="viz">
+      <p class="viz-title">شێوازی پاڵاوتنی پڕۆژە</p>
+      <p class="viz-note">لە فۆڕمی کراوەوە تا سێ پڕۆژەی براوە — هەر قۆناغێک پاڵاوتنێکی زانستییە.</p>
+      <div class="funnel">
+        <div class="fn" style="width:100%;background:#065c37"><b>پڕۆژە پێشکەشکراوەکان</b><span>∞</span></div>
+        <div class="fn" style="width:86%;background:#0b7d4c"><b>دوای پاڵاوتنی سەرەتایی</b><span>20</span></div>
+        <div class="fn" style="width:72%;background:#149a60"><b>دوای قۆناغی پەرەپێدان</b><span>10</span></div>
+        <div class="fn light" style="width:58%;background:#3ab97f"><b>براوەکانی ڕۆژی کۆڕبەند</b><span>3</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٥</span></div>
+</section>
+
+<!-- ============ ٦ · پێوەرەکان و پەرەپێدان ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>پێوەر و بەرنامەی پەرەپێدان</span></div>
+
+  <div class="sec">
+    <h3>پێوەرەکانی هەڵسەنگاندن</h3>
+    <p>بۆ ئەوەی هەڵسەنگاندنەکە دادپەروەرانە و ڕوون بێت، پێشنیاز دەکرێت هەموو پڕۆژەکان بەپێی ئەم پێوەرانەی خوارەوە نمرە وەربگرن.</p>
+
+    <div class="viz">
+      <p class="viz-title">دابەشبوونی نمرەکان</p>
+      <p class="viz-note">ڕێژەی هەر پێوەرێک لە کۆی گشتیی نمرەی پڕۆژەکە — پێشنیازی بۆردی وەرزش.</p>
+
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label">داهێنان و نوێبوونەوە<small>ڕادەی تازەیی بیرۆکەکە</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#065c37"></div></div>
+          <div class="bar-val">25%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">توانای جێبەجێکردن<small>واقیعیبوونی پلان و سەرچاوەکان</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%;background:#0b7d4c"></div></div>
+          <div class="bar-val">20%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">کاریگەریی کۆمەڵایەتی<small>سوود بۆ گەنجان، کچان و کۆمەڵگە</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%;background:#0b7d4c"></div></div>
+          <div class="bar-val">20%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">بەردەوامی<small>توانای مانەوە و گەشەکردن لە درێژخایەندا</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%;background:#149a60"></div></div>
+          <div class="bar-val">15%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ڕەهەندی ئابووری<small>ڕەخساندنی هەلی کار و داهات</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:#3ab97f"></div></div>
+          <div class="bar-val">10%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">پێشکەشکردن<small>ڕوونی، پوختی و قەناعەتپێکردن</small></div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:#3ab97f"></div></div>
+          <div class="bar-val">10%</div>
+        </div>
+      </div>
+
+      <div class="bar-total"><span>کۆی گشتی</span><span>100%</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>بەرنامەی پەرەپێدان — دوو مانگ</h3>
+    <div class="grid g4">
+      <div class="card"><h4>کۆبوونەوەی تایبەت</h4><p>دیاریکردنی خاڵە بەهێز و لاوازەکانی هەر پڕۆژەیەک.</p></div>
+      <div class="card"><h4>وۆرکشۆپ</h4><p>پلاندانان، بودجەڕێژی و بەڕێوەبردنی پڕۆژە.</p></div>
+      <div class="card"><h4>ڕاهێنان</h4><p>هونەری پێشکەشکردنی پڕۆژە لە ماوەی ٢ خولەکدا.</p></div>
+      <div class="card"><h4>ئامادەکاری کۆتایی</h4><p>نمایشی بیرناو بۆ شاشەی گەورە و پێداچوونەوە.</p></div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٦</span></div>
+</section>
+
+<!-- ============ ٧ · قۆناغی دووەم · کارنامە ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>قۆناغی دووەم: ڕۆژی کۆڕبەند</span></div>
+
+  <div class="sec">
+    <div class="phase"><span>قۆناغی دووەم — بڕگە و کارنامەی ڕۆژی کۆڕبەند</span><i></i></div>
+    <p>ڕۆژی کۆڕبەند بە شێوەیەک ڕێکدەخرێت کە گفتوگۆی نێودەوڵەتی، ئەزموونی ناوخۆیی و داهێنانی گەنجان لە یەک سەکۆدا کۆبکاتەوە.</p>
+
+    <div class="agenda">
+      <div class="ag"><time>09:00 – 09:30</time><p>پێشوازی و تۆمارکردنی میوانان</p></div>
+      <div class="ag hi"><time>09:30 – 10:00</time><p>کردنەوەی فەرمی و وتاری بەڕێز قوباد تاڵەبانی</p></div>
+      <div class="ag"><time>10:00 – 11:30</time><p>پانێڵی نێودەوڵەتی</p></div>
+      <div class="ag"><time>11:30 – 12:00</time><p>پشوو و ناساندنی بەشداربووان بە یەکتری</p></div>
+      <div class="ag"><time>12:00 – 13:00</time><p>پانێڵی خۆجێیی: وەرزشی سلێمانی</p></div>
+      <div class="ag"><time>13:00 – 14:00</time><p>نانی نیوەڕۆ</p></div>
+      <div class="ag hi"><time>14:00 – 15:00</time><p>خستنەڕووی ١٠ پڕۆژەکە لەسەر ستەیج</p></div>
+      <div class="ag"><time>15:00 – 15:30</time><p>دەنگدان و هەڵسەنگاندنی کۆتایی</p></div>
+      <div class="ag hi"><time>15:30 – 16:30</time><p>ڕاگەیاندنی براوەکان، بەخشینی خەڵات و واژۆکردنی ڕێککەوتننامەکان</p></div>
+    </div>
+    <p class="viz-note" style="margin-top:3mm">کارنامەکە پێشنیازە و بەپێی ئامادەبوونی میوانە نێودەوڵەتییەکان ڕێک دەخرێتەوە.</p>
+  </div>
+
+  <div class="sec">
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag">بڕگەی ١</span>
+        <h4>پانێڵی نێودەوڵەتی</h4>
+        <p>میوانداریکردنی نوێنەر و بەرپرسانی وەرزشی لە وڵاتانی جیاواز (وەک: کۆریای باشوور، ئەمریکا، هیندستان و هتد)؛ گفتوگۆکردن لەسەر چۆنیەتیی پێشخستنی وەرزش لە وڵاتەکانیان و چۆنیەتیی دروستکردنی پەیوەندی و کاری هاوبەش لەگەڵ وەرزشی کوردستان.</p>
+      </div>
+      <div class="card">
+        <span class="tag">بڕگەی ٢</span>
+        <h4>پانێڵی خۆجێیی — وەرزشی سلێمانی</h4>
+        <p>خستنەڕووی ئەزموونی سەرکەوتووی وەرزشی شارەکە، بەتایبەت پێشخستنی وەرزشی کچان و بەشداریی شایستەیان لە پاڵەوانێتییە ئاسیاییەکاندا.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٧</span></div>
+</section>
+
+<!-- ============ ٨ · ستەیج و دەنگدان ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>نمایشی پڕۆژەکان و دەنگدان</span></div>
+
+  <div class="sec">
+    <h3>بڕگەی ٣ — خستنەڕووی پڕۆژەکان لەسەر ستەیج</h3>
+    <p>پڕۆژەی ئەو ١٠ کەسەی هەڵبژێردراون لە ڕێگەی شاشەی گەورەوە نمایش دەکرێن؛ هەر بەشداربوویەک بۆ ماوەی <strong>٢ خولەک</strong> بە پوختی باسی پڕۆژەکەی خۆی بۆ ئامادەبووان، بەڕێز قوباد تاڵەبانی، و میوانە نێودەوڵەتییەکان دەکات.</p>
+    <div class="stat">
+      <div class="st" style="background:linear-gradient(150deg,#065c37,#03321e)"><b>١٠</b><span>پڕۆژەی هەڵبژێردراو</span></div>
+      <div class="st" style="background:linear-gradient(150deg,#0b7d4c,#065c37)"><b>٢</b><span>خولەک بۆ هەر پێشکەشکردنێک</span></div>
+      <div class="st" style="background:linear-gradient(150deg,#149a60,#0b7d4c)"><b>٣</b><span>پڕۆژەی براوە</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>بڕگەی ٤ — دەنگدان و هەڵبژاردنی براوەکان</h3>
+    <p>بە دەنگدانی لیژنە و کەسایەتییە وەرزشییە ئامادەبووەکان، سێ پڕۆژەی یەکەم دیاری دەکرێن. دەنگدانەکە بە شێوازێکی ڕوون و شەفاف ئەنجام دەدرێت و ئەنجامەکان هەر لە هەمان ڕۆژدا ڕادەگەیەنرێن.</p>
+
+    <div class="award">
+      <div class="aw"><em>پلەی یەکەم</em><p>دەخرێتە بواری جێبەجێکردنەوە و پاڵپشتیی تەواوی دارایی و لۆجستیی بۆ دەکرێت.</p></div>
+      <div class="aw"><em>پلەی دووەم و سێیەم</em><p>خەڵاتی تایبەت و شایستەیان پێدەبەخشرێت.</p></div>
+      <div class="aw"><em>پڕۆژەکانی تر</em><p>لە کۆی ٢٠ پڕۆژەکە، بڕوانامەی ڕێزلێنان و سوپاسنامەیان پێشکەش دەکرێت.</p></div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٨</span></div>
+</section>
+
+<!-- ============ ٩ · خەڵاتەکان ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>خەڵاتەکان و دەرئەنجام</span></div>
+
+  <div class="sec">
+    <h3>سێ پڕۆژەی یەکەم</h3>
+    <div class="podium">
+      <div class="pod" style="background:#0b7d4c;padding-bottom:20mm">
+        <div class="rank">2</div><b>پڕۆژەی دووەم</b>
+        <span>خەڵاتی تایبەت و شایستە</span>
+      </div>
+      <div class="pod" style="background:linear-gradient(160deg,#065c37,#03321e);padding-bottom:30mm">
+        <div class="rank">1</div><b>پڕۆژەی یەکەم</b>
+        <span>جێبەجێکردن و پاڵپشتیی تەواوی دارایی و لۆجستی</span>
+      </div>
+      <div class="pod" style="background:#149a60;padding-bottom:14mm">
+        <div class="rank">3</div><b>پڕۆژەی سێیەم</b>
+        <span>خەڵاتی تایبەت و شایستە</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>خەڵاتەکان تەنها پاداشت نین، بەڵکو <b>پەیامێکن بۆ هەموو گەنجانی کوردستان</b> کە بیرۆکەی باش و کاری جددی دەرفەتی ڕاستەقینەی بۆ دەڕەخسێت.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="sec-num">٤</span>دەرئەنجام و بەردەوامی</h2>
+    <ul class="olist">
+      <li><b>واژۆکردنی گرێبەست</b>لە پەراوێزی کۆڕبەندەکەدا، چەندین گرێبەستی فەرمی و کاری هاوبەش لەنێوان کەرتی وەرزشی ناوخۆ و وڵاتانی بەشداربوو واژۆ دەکرێت.</li>
+      <li><b>هەلی کار</b>لە ڕێگەی جێبەجێکردنی پڕۆژە براوەکان و هاوبەشییە نێودەوڵەتییەکانەوە، هەلی کاری ڕاستەقینە بۆ گەنجان دەڕەخسێت.</li>
+      <li><b>بەردەوامیی کۆڕبەندەکە</b>ئەم کۆڕبەندە دەبێتە نەریتێکی فەرمیی ساڵانە و هەموو ساڵێک بۆ ماوەی یەک ڕۆژ ئەنجام دەدرێت.</li>
+    </ul>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">٩</span></div>
+</section>
+
+<!-- ============ ١٠ · نەخشەی کات و داواکاری کۆتایی ============ -->
+<section class="page">
+  <div class="run-head"><span><b>کۆڕبەندی نێودەوڵەتیی وەرزش</b> لە سلێمانی</span><span>نەخشەی کات و داواکاری کۆتایی</span></div>
+
+  <div class="sec">
+    <h3>نەخشەی کاتی گشتی</h3>
+    <div class="road">
+      <div style="background:#03321e"><b>1</b>پێکهێنانی لیژنە و ئامادەکردنی فۆڕم</div>
+      <div style="background:#064a2d"><b>2</b>بڵاوکردنەوەی فۆڕم و وەرگرتنی پڕۆژەکان</div>
+      <div style="background:#065c37"><b>3</b>پاڵاوتن و هەڵبژاردنی ٢٠ پڕۆژە</div>
+      <div style="background:#0b7d4c"><b>4</b>پەرەپێدانی پڕۆژەکان — دوو مانگ</div>
+      <div style="background:#149a60"><b>5</b>هەڵبژاردنی ١٠ پڕۆژەی کۆتایی</div>
+      <div style="background:#2aa872"><b>6</b>ڕۆژی کۆڕبەند</div>
+      <div style="background:#3ab97f"><b>7</b>جێبەجێکردنی پڕۆژەی براوە و بەدواداچوون</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="sec-num">٥</span>داواکاری و پێشنیازی کۆتایی</h2>
+    <p class="lead">بەندە وەک خاوەنی پڕۆژە (سۆلین عوسمان – ڕاگەیاندنی بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان)، بەوپەڕی دڵسۆزییەوە پێشنیاز دەکەم و تکاکارم لە بەڕێز د. علی طە، لێپرسراوی بەڕێزی بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان، ڕەزامەندیی بەڕێزتان بفەرموون لەسەر پەسەندکردن و بەڕێوەچوونی <strong>«کۆڕبەندی نێودەوڵەتیی وەرزش لە سلێمانی»</strong>، بە لەبەرچاوگرتنی گرنگی و کاریگەرییە پۆزەتیڤەکانی ئەم ئیڤێنتە لەسەر کەرتی وەرزش و لاوان لە شارەکەماندا.</p>
+
+    <div class="callout">
+      <p>ئەم کۆڕبەندە تەنها ڕووداوێکی یەک‌ڕۆژە نییە، بەڵکو <b>وەبەرهێنانێکی درێژخایەنە لە گەنجان و لە داهاتووی وەرزشی کوردستان</b>.</p>
+    </div>
+
+    <div class="sign">
+      <p class="greet">لەگەڵ ڕێز و پێزانیندا..</p>
+      <div class="who">
+        <span>خاوەنی پڕۆژە</span>
+        <b>سۆلین عوسمان</b>
+        <i>ڕاگەیاندنی بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</i>
+      </div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <div class="run-foot"><span>بۆردی وەرزشی یەکێتیی نیشتمانیی کوردستان</span><span class="pg">١٠</span></div>
+</section>
+
+</body>
+</html>
